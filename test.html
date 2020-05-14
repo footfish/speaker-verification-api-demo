@@ -1,0 +1,232 @@
+<html>
+
+<head>
+  <script type="text/javascript" src="meyda.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<p>
+  See https://meyda.js.org/guides/online-web-audio
+</p>
+
+<div id="activate" style="display: block;">
+  <button type="button" id="activateApi">Activate Web Audio API</button>
+</div>
+
+<div id="main" style="display: none;">
+
+  <div id="startButtons">
+    <button type="button" id="train">Train Mode</button>
+    <button type="button" id="test">Test Mode</button>
+    <button type="button" id="score">Score Mode</button>
+  </div>
+  <button type="button" id="stop" style="display: none;">Finished</button>
+
+  <div id="trainPanel" style="display: none;">
+    <p>Say the digit: <span id="htmlTrainIndicator"></span></p>
+  </div>
+  <div id="scorePanel" style="display: none;">
+    <p>Digit set [<span id="htmlDigitSet"> </span>]</p>
+    <p>Frames sent/matched: <span id="htmlNoFrames">0</span>/<span id="htmlScoreFrames">0</span></p>
+    <p>Progress: <span id="htmlProgress">-</span></p>
+    <p>Result: <b id="htmlResult">-</b>%</p>
+  </div>
+
+</div>
+
+<script>
+  var analyzer = Meyda;
+  var message = {}
+  message.mfcc = []
+  message.energy = []
+
+  var source
+  var stream
+  var mode = 'score'
+  var sayDigit = 0  //digit index to say for training/testing 
+  var digitSet = [0, 1, 3, 4] //digit set for training/testing
+
+  const silenceWindowLength = 15 //number of frames to consider for silence. 
+  const silenceEnergyLevel = 0.1 //energy level to consider silence for triggering REST call 
+  const soundEnergyLevel = 1 //energy level to trigger buffering of message data  
+  const maxRestFrames = 200 //max array size to be sent in REST call (protection)
+  const minRestFrames = 10 //min array size to be sent in REST call 
+
+  var htmlNoFrames = 0 //html counter 
+  var htmlScoreFrames = 0 //html counter 'matched' frames  
+  var htmlResult = 0 //html result score 
+  var htmlTrainIndicator = ''
+  var htmlProgress = ''
+
+  window.onload = function () {
+  }
+
+
+  document.querySelector('#activateApi').addEventListener('click', function () {
+    // Setup all nodes
+    const audioContext = new AudioContext();
+    console.log("connected audio")
+    if (navigator.mediaDevices) {
+      console.log('getUserMedia supported.');
+      navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+        .then(function (stream) {
+          document.querySelector('#activate').style.display = 'none'
+          document.querySelector('#main').style.display = 'block'
+          source = audioContext.createMediaStreamSource(stream);
+          console.log("connected to mic")
+
+          analyzer = Meyda.createMeydaAnalyzer({
+            "audioContext": audioContext,
+            "source": source,
+            "bufferSize": 512,
+            "featureExtractors": ["energy", "mfcc"],
+            "numberOfMFCCCoefficients": 12,
+            "callback": features => {
+              if (features.energy > soundEnergyLevel || message.mfcc.length > 0) { //start buffering message data
+                //add mfcc array to buffer 
+                message.mfcc.push(features.mfcc.slice(0))
+                message.energy.push(features.energy)
+
+                //if you have period of silence send to REST API 
+                if ((message.energy.slice(message.energy.length - silenceWindowLength, message.energy.length).reduce((a, b) => a + b) / silenceWindowLength <= silenceEnergyLevel && message.mfcc.length > silenceWindowLength) || message.mfcc.length >= maxRestFrames) {
+                  if (message.energy.slice(0).reduce((a, b) => a + b) / message.energy.length > silenceEnergyLevel) { //drop all frames if REST if average energy of frames is too low. 
+                    message.mfcc = message.mfcc.slice(0, message.mfcc.length - silenceWindowLength) //Drop trailing silence 
+                    message.energy = message.energy.slice(0, message.energy.length - silenceWindowLength) //Drop trailing silence 
+                    if (message.energy.length >= minRestFrames) {
+                      apiCall(mode, message)
+                    }
+                  }
+                  message.mfcc = []; //clear sent mfcc buffer
+                  message.energy = []; //clear sent energy buffer
+                }
+              }
+            }
+          })
+        }).catch(function (err) {
+          console.log("ooops, something went wrong not connected to mic")
+        });
+    }
+  });
+
+
+  document.querySelector('#stop').addEventListener('click', function () {
+    stopAnalysing()
+  });
+
+  function stopAnalysing() {
+    document.querySelector('#startButtons').style.display = 'block'
+    document.querySelector('#stop').style.display = 'none'
+    document.querySelector('#trainPanel').style.display = 'none'
+    console.log("Stopping analyser")
+    analyzer.stop();
+  }
+
+  document.querySelector('#train').addEventListener('click', function () {
+    document.querySelector('#startButtons').style.display = 'none'
+    document.querySelector('#stop').style.display = 'block'
+    document.querySelector('#trainPanel').style.display = 'block'
+    document.querySelector('#scorePanel').style.display = 'none'
+    console.log("Starting analyser")
+    analyzer.start();
+    console.log("Training mode")
+    sayDigit = 0
+    htmlTrainIndicator = sayDigit
+    mode = "train"
+    document.getElementById("htmlTrainIndicator").innerHTML = htmlTrainIndicator
+  });
+
+  document.querySelector('#test').addEventListener('click', function () {
+    document.querySelector('#startButtons').style.display = 'none'
+    document.querySelector('#stop').style.display = 'block'
+    document.querySelector('#trainPanel').style.display = 'block'
+    document.querySelector('#scorePanel').style.display = 'none'
+    console.log("Starting analyser")
+    analyzer.start();
+    console.log("Testing mode")
+    sayDigit = 0
+    htmlTrainIndicator = sayDigit
+    mode = "test"
+    document.getElementById("htmlTrainIndicator").innerHTML = htmlTrainIndicator
+  });
+
+  document.querySelector('#score').addEventListener('click', function () {
+    document.querySelector('#startButtons').style.display = 'none'
+    document.querySelector('#stop').style.display = 'block'
+    document.querySelector('#trainPanel').style.display = 'none'
+    document.querySelector('#scorePanel').style.display = 'block'
+    console.log("Starting analyser")
+    analyzer.start();
+    console.log("Scoring mode")
+    htmlNoFrames = 0 //html counter 
+    htmlScoreFrames = 0 //html counter 'matched' frames  
+    htmlResult = 0 //html result score 
+    document.getElementById("htmlDigitSet").innerHTML = digitSet
+    document.getElementById("htmlNoFrames").innerHTML = htmlNoFrames
+    document.getElementById("htmlScoreFrames").innerHTML = htmlScoreFrames
+    document.getElementById("htmlResult").innerHTML = '-'
+    document.getElementById("htmlProgress").innerHTML = ''
+    mode = "score"
+  });
+
+
+  function apiCall(mode, message) {
+//    const apiURL = 'http://127.0.0.1:5000/'
+    const apiURL = 'https://speaker-verification-api-demo.herokuapp.com/'
+
+    switch (mode) {
+      case 'train':
+        fetch(apiURL + mode, {
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          method: 'PUT',
+          body: JSON.stringify(message)
+        })
+          .then(response => response.json())
+          .then(data => {
+            sayDigit = (sayDigit < digitSet.length - 1) ? sayDigit + 1 : 0
+            htmlTrainIndicator = digitSet[sayDigit]
+            document.getElementById("htmlTrainIndicator").innerHTML = htmlTrainIndicator
+            console.log(data)
+          })
+        break
+      case 'test':
+        fetch(apiURL + mode, {
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          method: 'PUT',
+          body: JSON.stringify(message)
+        })
+          .then(response => response.json())
+          .then(data => {
+            sayDigit = (sayDigit < digitSet.length - 1) ? sayDigit + 1 : 0
+            htmlTrainIndicator = digitSet[sayDigit]
+            document.getElementById("htmlTrainIndicator").innerHTML = htmlTrainIndicator
+            console.log(data)
+          })
+        break
+      case 'score':
+        fetch(apiURL + mode, {
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          method: 'PUT',
+          body: JSON.stringify(message)
+        })
+          .then(response => response.json())
+          .then(data => {
+            htmlNoFrames += data.length
+            htmlScoreFrames += data.score
+            htmlProgress += '*'
+            document.getElementById("htmlNoFrames").innerHTML = htmlNoFrames
+            document.getElementById("htmlScoreFrames").innerHTML = htmlScoreFrames
+            document.getElementById("htmlProgress").innerHTML = htmlProgress
+            console.log(data)
+            if (htmlProgress.length >= digitSet.length) {
+              document.getElementById("htmlProgress").innerHTML = "*Done*"
+              document.getElementById("htmlResult").innerHTML = ((htmlScoreFrames / htmlNoFrames) * 100).toFixed(2)
+              htmlProgress = ''
+              stopAnalysing()
+            }
+          })
+        break
+    }
+  }
+
+</script>
+
+</html>
