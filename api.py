@@ -1,5 +1,6 @@
 import numpy as np
 from flask import Flask
+from flask import render_template
 from flask_restful import reqparse,Resource, Api
 from sklearn import mixture
 import pickle #persistance of gmm model
@@ -14,7 +15,6 @@ mfcc_test_store="mfcc_test_data.csv"
 pickle_store="gmm.pickle"
 n_gmmcomponents=5
 
-
 parser = reqparse.RequestParser()
 parser.add_argument('mfcc', type=list, location='json')
 
@@ -22,9 +22,10 @@ parser.add_argument('mfcc', type=list, location='json')
 # Provide api informatino
 class ApiInfo(Resource):
     def get(self):
-        return {'version': '0.1',
-            'usage': '/train /test /score'
-            }
+        return render_template('test.html')
+#        return {'version': '0.1',<!doctype html>
+#            'usage': '/train /test /score'
+#            }
 
 # 1. Training - train model 
 class Train(Resource):
@@ -120,7 +121,12 @@ class Score(Resource):
         return reply, 200
 
 
-api.add_resource(ApiInfo, '/')
+
+@app.route('/') #serve static demo page 
+def index():
+    return render_template('index.html')
+
+api.add_resource(ApiInfo, '/doc')
 api.add_resource(Train, '/train')
 api.add_resource(Test, '/test')
 api.add_resource(Score, '/score')
