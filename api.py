@@ -95,7 +95,6 @@ class Score(Resource):
     def put(self):
         #read mfcc features from resource
         args = parser.parse_args()
-        print(args)
         mfcc = np.array(args['mfcc'])        
         #validate features 
         # ** todo **
@@ -124,6 +123,7 @@ class Score(Resource):
 
 @app.route('/') #serve static demo page 
 def index():
+    api_url = "this"
     return render_template('index.html')
 
 api.add_resource(ApiInfo, '/doc')

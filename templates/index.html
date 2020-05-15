@@ -53,14 +53,14 @@
         <p>The more training, the more accurate the model becomes. Speak the 'digit' as it appears.</p>
         <button type="button" id="train" class="btn btn-primary">Start Training</button>
         <div id="trainPanel" style="display: none;">
-          <h3>Say the digit: <span id="htmlTrainIndicator" class="badge badge-warning"></span> <span class="spinner-grow text-warning"></span></h3>
+          <h3>Say the digit: <span id="htmlTrainIndicator" class="badge badge-warning"></span></h3>
         </div>
       </div>
       <div class="tab-pane container fade" id="ttest">
         <p>Testing benchmarks the model to provide accurate scoring. Speak the 'digit' as it appears</p>
         <button type="button" id="test" class="btn btn-primary">Start Testing</button>
         <div id="testPanel" style="display: none;">
-          <h3>Say the digit: <span id="htmlTestIndicator" class="badge badge-warning"></span> <span class="spinner-grow text-warning"></span></h3>
+          <h3>Say the digit: <span id="htmlTestIndicator" class="badge badge-warning"></span></h3>
         </div>
 
       </div>
@@ -75,8 +75,6 @@
       </div>
     </div>
     </div>
-
-    <button type="button" id="stop" style="display: none;" class="btn btn-primary">Finished</button>
 
   </div>
 </div>
@@ -104,10 +102,9 @@
   var htmlResult = 0 //html result score 
   var htmlTrainIndicator = ''
   var htmlProgress = ''
-
+  
   window.onload = function () {
   }
-
 
   document.querySelector('#activateApi').addEventListener('click', function () {
     // Setup all nodes
@@ -155,16 +152,16 @@
     }
   });
 
+  //always turn off analyser if tab is switched. 
+  $('.nav-tabs a').on('shown.bs.tab', function(){
+  stopAnalysing() 
+});
 
-  document.querySelector('#stop').addEventListener('click', function () {
-    stopAnalysing()
-  });
 
   function stopAnalysing() {
     document.querySelector('#train').style.display = 'block'
     document.querySelector('#test').style.display = 'block'
     document.querySelector('#score').style.display = 'block'    
-    document.querySelector('#stop').style.display = 'none'
     document.querySelector('#trainPanel').style.display = 'none'
     document.querySelector('#testPanel').style.display = 'none'    
     console.log("Stopping analyser")
@@ -173,7 +170,6 @@
 
   document.querySelector('#train').addEventListener('click', function () {
     document.querySelector('#train').style.display = 'none'
-    document.querySelector('#stop').style.display = 'block'
     document.querySelector('#trainPanel').style.display = 'block'
     document.querySelector('#testPanel').style.display = 'none'    
     document.querySelector('#scorePanel').style.display = 'none'
@@ -188,7 +184,6 @@
 
   document.querySelector('#test').addEventListener('click', function () {
     document.querySelector('#test').style.display = 'none'
-    document.querySelector('#stop').style.display = 'block'
     document.querySelector('#trainPanel').style.display = 'none'
     document.querySelector('#testPanel').style.display = 'block'
     document.querySelector('#scorePanel').style.display = 'none'
@@ -203,7 +198,6 @@
 
   document.querySelector('#score').addEventListener('click', function () {
     document.querySelector('#score').style.display = 'none'
-    document.querySelector('#stop').style.display = 'block'
     document.querySelector('#trainPanel').style.display = 'none'
     document.querySelector('#testPanel').style.display = 'none'
     document.querySelector('#scorePanel').style.display = 'block'
@@ -222,11 +216,13 @@
   });
 
   function apiCall(mode, message) {
-    //    const apiURL = 'http://127.0.0.1:5000/'
-    const apiURL = 'https://speaker-verification-api-demo.herokuapp.com/'
+    const apiURL = '{{ url_for('index', _external=True) }}'
 
     switch (mode) {
       case 'train':
+      document.getElementById("htmlTrainIndicator").innerHTML = ""
+      document.getElementById("htmlTrainIndicator").classList.add("spinner-grow","text-danger")
+      document.getElementById("htmlTrainIndicator").classList.remove("badge","badge-warning")
         fetch(apiURL + mode, {
           headers: { "Content-Type": "application/json; charset=utf-8" },
           method: 'PUT',
@@ -237,10 +233,16 @@
             sayDigit = (sayDigit < digitSet.length - 1) ? sayDigit + 1 : 0
             htmlTrainIndicator = digitSet[sayDigit]
             document.getElementById("htmlTrainIndicator").innerHTML = htmlTrainIndicator
+            document.getElementById("htmlTrainIndicator").classList.remove("spinner-grow","text-danger")
+            document.getElementById("htmlTrainIndicator").classList.add("badge","badge-warning")
             console.log(data)
           })
         break
       case 'test':
+        document.getElementById("htmlTestIndicator").innerHTML = ""
+      document.getElementById("htmlTestIndicator").classList.add("spinner-grow","text-danger")
+      document.getElementById("htmlTestIndicator").classList.remove("badge","badge-warning")
+
         fetch(apiURL + mode, {
           headers: { "Content-Type": "application/json; charset=utf-8" },
           method: 'PUT',
@@ -251,10 +253,13 @@
             sayDigit = (sayDigit < digitSet.length - 1) ? sayDigit + 1 : 0
             htmlTestIndicator = digitSet[sayDigit]
             document.getElementById("htmlTestIndicator").innerHTML = htmlTestIndicator
+            document.getElementById("htmlTestIndicator").classList.remove("spinner-grow","text-danger")
+            document.getElementById("htmlTestIndicator").classList.add("badge","badge-warning")
             console.log(data)
           })
         break
       case 'score':
+        document.getElementById("htmlProgress").innerHTML = ""
         fetch(apiURL + mode, {
           headers: { "Content-Type": "application/json; charset=utf-8" },
           method: 'PUT',
