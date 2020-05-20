@@ -44,13 +44,7 @@
     <!-- Tab panes -->
     <div class="tab-content p-3">
       <div class="tab-pane container active" id="train">
-        <p> <b>Training Mode</b> builds the remote speaker verification model.
-          Every time you record new digits it expands the model, ie. the more training, the better the model should
-          perform.
-          It's best to train over time to allow for variance (Your voice may sound 'fresh' in daytime, but 'tired' in
-          the evenings for example)
-        </p>
-        <div id="trainPanel" class="card" style="display: block;">
+        <div id="trainPanel" class="card mb-3" style="display: block;">
           <div class="card-body">
             <h5 class="card-title">Training information</h5>
             <p class="card-text">
@@ -59,12 +53,16 @@
             </p>
           </div>
         </div>
+        <p> <b>Training Mode</b> builds the remote speaker verification model.
+          Every time you record new digits it expands the model, ie. the more training, the better the model should
+          perform.
+          It's best to train over time to allow for variance (Your voice may sound 'fresh' in daytime, but 'tired' in
+          the evenings for example)
+        </p>
+
       </div>
-      <div class="tab-pane container pt-3 fade" id="test">
-        <p> <b>Testing Mode</b> benchmarks the trained model to provide accurate scoring by working out threshold to
-          determine a speaker 'match'.
-          Every time you record a training session you should record some testing.</p>
-        <div id="testPanel" class="card" style="display: block;">
+      <div class="tab-pane container fade" id="test">
+        <div id="testPanel" class="card mb-3" style="display: block;">
           <div class="card-body">
             <h5 class="card-title">Testing information</h5>
             <p class="card-text">
@@ -73,14 +71,12 @@
             </p>
           </div>
         </div>
-
+        <p> <b>Testing Mode</b> benchmarks the trained model to provide accurate scoring by working out threshold to
+          determine a speaker 'match'.
+          Every time you record a training session you should record some testing.</p>
       </div>
-      <div class="tab-pane container pt-3 fade" id="score">
-        <p> <b>Scoring Mode</b> provides an accumulated <i>verification result</i> as you speak the highlighted digits
-          above.
-          The result indicates the percentage of matched speech frames, the higher result score the better the speaker
-          matches the remote model.</p>
-        <div id="scorePanel" class="card" style="display: block;">
+      <div class="tab-pane container fade" id="score">
+        <div id="scorePanel" class="card mb-3" style="display: block;">
           <div class="card-body">
             <h5 class="card-title">Scoring information</h5>
             <p class="card-text">
@@ -89,9 +85,11 @@
             </p>
           </div>
         </div>
+        <p> <b>Scoring Mode</b> provides an accumulated <i>verification result</i> as you speak the highlighted digits
+          above.
+          The result indicates the percentage of matched speech frames, the higher result score the better the speaker
+          matches the remote model.</p>
       </div>
-
-
     </div>
   </div>
 
