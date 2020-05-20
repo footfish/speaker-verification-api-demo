@@ -105,8 +105,8 @@ class Score(Resource):
         if path.exists(mfcc_test_store):
             mfccTest = np.loadtxt(mfcc_test_store, delimiter=',')
         testResult = gmm.score_samples(mfccTest)
-        #scoreThreshold=np.average(testResult)-np.std(testResult) #Average test score - Std dev. 
-        scoreThreshold=np.average(testResult) #Average test score
+        scoreThreshold=np.average(testResult)-np.std(testResult) #Average test score - Std dev. 
+        #scoreThreshold=np.average(testResult) #Average test score
         #score 
         result = gmm.score_samples(mfcc)
         reply = {

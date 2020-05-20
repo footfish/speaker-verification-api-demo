@@ -31,13 +31,13 @@
     <!-- Nav tabs -->
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#train">Training Mode</a>
+        <a class="nav-link active" data-toggle="tab" href="#train">Train</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#test">Testing Mode</a>
+        <a class="nav-link" data-toggle="tab" href="#test">Test</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#score">Scoring Mode</a>
+        <a class="nav-link" data-toggle="tab" href="#score">Score</a>
       </li>
     </ul>
 
@@ -84,8 +84,8 @@
           <div class="card-body">
             <h5 class="card-title">Scoring information</h5>
             <p class="card-text">
-              Frames sent/matched: <span id="htmlScoreFrames">0</span>/<span id="htmlScoreMatches">0</span><br>
-              Result: <span id="htmlScoreResult" class="badge badge-danger">-</span>
+              Frames matched/sent: <span id="htmlScoreMatches">0</span>/<span id="htmlScoreFrames">0</span><br>
+              Result: <b id="htmlScoreResult">-</b>
             </p>
           </div>
         </div>
@@ -223,6 +223,15 @@
       console.log("Starting analyser")
       analyzer.start();
       sayDigit = 0 //array position to begin with in digitSet
+      if (mode == 'score') {
+        htmlScoreFrames = 0 //reset total frame counter 
+        htmlScoreMatches = 0 //reset score panel -'matched' frames counter
+        htmlScoreResult = 0 //reset score panel - result %
+        document.getElementById("htmlScoreFrames").innerHTML = 0
+        document.getElementById("htmlScoreMatches").innerHTML = 0
+        document.getElementById("htmlScoreResult").innerHTML = "-"
+
+      }
       showProgressDigits(false)
     });
 
