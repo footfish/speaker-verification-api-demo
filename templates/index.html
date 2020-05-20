@@ -18,13 +18,14 @@
     <p>This is a demonstration of <i>speaker verification</i> (aka <i>speaker authentication</i>) using a REST API.</p>
   </div>
   <div id="activate" style="display: block;" class="container mb-3"> <b>To begin: </b>
-    <button type="button" id="activateApi" class="btn btn-primary">Activate Mic. <i class="fa fa-microphone"
-        aria-hidden="true"></i> </button>
+    <button type="button" id="activateApi" class="btn btn-primary">Activate Mic. <i class="fa fa-microphone" aria-hidden="true"></i> </button>
   </div>
+
+  <div id="alertContainer"></div>
 
   <div id="main" style="display: none;" class="container mb-3">
     <div class="container mb-5 text-center">
-      <h5>Speak the digits as they are highlighted</h5>
+      <h5>Say the yellow digit out load</h5>
       <h3><span id="htmlDigitProgress"></span></h3>
       <p><button type="button" id="start" class="btn btn-success btn-sm">Click here to start recording</button></p>
     </div>
@@ -50,6 +51,9 @@
             <p class="card-text">
               Model (train data set) size: <span id="htmlTrainSize">-</span><br>
               Digit train time: <span id="htmlTrainTime">-</span>
+              <div class="progress">
+                <div id="htmlTrainProgress" class="progress-bar" style="width:0%">0%</div>
+              </div>
             </p>
           </div>
         </div>
@@ -68,6 +72,9 @@
             <p class="card-text">
               Test data set size: <span id="htmlTestSize">-</span><br>
               Score 'match' threshold: <span id="htmlTestThreshold">-</span>
+              <div class="progress">
+                <div id="htmlTestProgress" class="progress-bar" style="width:0%">0%</div>
+              </div>
             </p>
           </div>
         </div>
@@ -115,212 +122,231 @@
       </div>
     </div>
   </div>
+</div>
 
+<script>
+  var analyzer = Meyda;
+  var message = {}
+  message.mfcc = []
+  message.energy = []
 
-  <script>
-    var analyzer = Meyda;
-    var message = {}
-    message.mfcc = []
-    message.energy = []
+  var source
+  var stream
+  var mode = 'train'
+  var recording = false
+  var sayDigit = 0  //digit index to say for training/testing 
+  var digitSet = [0, 1, 3, 4] //digit set for training/testing
 
-    var source
-    var stream
-    var mode = 'train'
-    var recording = false
-    var sayDigit = 0  //digit index to say for training/testing 
-    var digitSet = [0, 1, 3, 4] //digit set for training/testing
+  const silenceWindowLength = 15 //number of frames to consider for silence. 
+  const silenceEnergyLevel = 0.1 //energy level to consider silence for triggering REST call 
+  const soundEnergyLevel = 1 //energy level to trigger buffering of message data  
+  const maxRestFrames = 200 //max array size to be sent in REST call (protection)
+  const minRestFrames = 10 //min array size to be sent in REST call 
 
-    const silenceWindowLength = 15 //number of frames to consider for silence. 
-    const silenceEnergyLevel = 0.1 //energy level to consider silence for triggering REST call 
-    const soundEnergyLevel = 1 //energy level to trigger buffering of message data  
-    const maxRestFrames = 200 //max array size to be sent in REST call (protection)
-    const minRestFrames = 10 //min array size to be sent in REST call 
+  var htmlScoreFrames = 0 //html score panel - total frame counter 
+  var htmlScoreMatches = 0 //html score panel -'matched' frames counter
+  var htmlScoreResult = 0 //html score panel - result %
 
-    var htmlScoreFrames = 0 //html score panel - total frame counter 
-    var htmlScoreMatches = 0 //html score panel -'matched' frames counter
-    var htmlScoreResult = 0 //html score panel - result %
+  window.onload = function () {
+    document.querySelector('#start').innerHTML = "Click here to start recording in " + mode + " mode"
+  }
 
-    window.onload = function () {
-      document.querySelector('#start').innerHTML = "Click here to start recording in " + mode + " mode"
-    }
+  document.querySelector('#activateApi').addEventListener('click', function () {
+    // Setup all nodes
+    const audioContext = new AudioContext();
+    console.log("connected audio")
+    if (navigator.mediaDevices) {
+      console.log('getUserMedia supported.');
+      navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+        .then(function (stream) {
+          document.querySelector('#activate').style.display = 'none'
+          document.querySelector('#main').style.display = 'block'
+          showProgressDigits(false)
+          source = audioContext.createMediaStreamSource(stream);
+          console.log("connected to mic")
+          analyzer = Meyda.createMeydaAnalyzer({
+            "audioContext": audioContext,
+            "source": source,
+            "bufferSize": 512,
+            "featureExtractors": ["energy", "mfcc"],
+            "numberOfMFCCCoefficients": 12,
+            "callback": features => {
+              if (features.energy > soundEnergyLevel || message.mfcc.length > 0) { //start buffering message data
+                //add mfcc array to buffer 
+                message.mfcc.push(features.mfcc.slice(0))
+                message.energy.push(features.energy)
 
-    document.querySelector('#activateApi').addEventListener('click', function () {
-      // Setup all nodes
-      const audioContext = new AudioContext();
-      console.log("connected audio")
-      if (navigator.mediaDevices) {
-        console.log('getUserMedia supported.');
-        navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-          .then(function (stream) {
-            document.querySelector('#activate').style.display = 'none'
-            document.querySelector('#main').style.display = 'block'
-            showProgressDigits(false)
-            source = audioContext.createMediaStreamSource(stream);
-            console.log("connected to mic")
-            analyzer = Meyda.createMeydaAnalyzer({
-              "audioContext": audioContext,
-              "source": source,
-              "bufferSize": 512,
-              "featureExtractors": ["energy", "mfcc"],
-              "numberOfMFCCCoefficients": 12,
-              "callback": features => {
-                if (features.energy > soundEnergyLevel || message.mfcc.length > 0) { //start buffering message data
-                  //add mfcc array to buffer 
-                  message.mfcc.push(features.mfcc.slice(0))
-                  message.energy.push(features.energy)
-
-                  //if you have period of silence send to REST API 
-                  if ((message.energy.slice(message.energy.length - silenceWindowLength, message.energy.length).reduce((a, b) => a + b) / silenceWindowLength <= silenceEnergyLevel && message.mfcc.length > silenceWindowLength) || message.mfcc.length >= maxRestFrames) {
-                    if (message.energy.slice(0).reduce((a, b) => a + b) / message.energy.length > silenceEnergyLevel) { //drop all frames if REST if average energy of frames is too low. 
-                      message.mfcc = message.mfcc.slice(0, message.mfcc.length - silenceWindowLength) //Drop trailing silence 
-                      message.energy = message.energy.slice(0, message.energy.length - silenceWindowLength) //Drop trailing silence 
-                      if (message.energy.length >= minRestFrames) {
-                        apiCall(mode, message)
-                      }
+                //if you have period of silence send to REST API 
+                if ((message.energy.slice(message.energy.length - silenceWindowLength, message.energy.length).reduce((a, b) => a + b) / silenceWindowLength <= silenceEnergyLevel && message.mfcc.length > silenceWindowLength) || message.mfcc.length >= maxRestFrames) {
+                  if (message.energy.slice(0).reduce((a, b) => a + b) / message.energy.length > silenceEnergyLevel) { //drop all frames if REST if average energy of frames is too low. 
+                    message.mfcc = message.mfcc.slice(0, message.mfcc.length - silenceWindowLength) //Drop trailing silence 
+                    message.energy = message.energy.slice(0, message.energy.length - silenceWindowLength) //Drop trailing silence 
+                    if (message.energy.length >= minRestFrames) {
+                      apiCall(mode, message)
                     }
-                    message.mfcc = []; //clear sent mfcc buffer
-                    message.energy = []; //clear sent energy buffer
                   }
+                  message.mfcc = []; //clear sent mfcc buffer
+                  message.energy = []; //clear sent energy buffer
                 }
               }
+            }
 
-            })
-          }).catch(function (err) {
-            console.log("ooops, something went wrong not connected to mic")
-          });
-      }
+          })
+        }).catch(function (err) {
+          document.querySelector('#alertContainer').innerHTML = `
+          <div class="alert alert-danger alert-dismissible fade show" >
+    <h4 class="alert-heading"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Oops can't connect to the mic!</h4>
+      <ul>
+      <li>Check the browser is not blocking (often there is a an icon on the browsers address bar indicating blocking).</li>
+      <li>Check your connected with https, some browsers will not work unless the session is secure.</li>
+      <li>Make sure you have a mic connected and it's working properly on your OS.</li>
+      <li>Make sure another application is not blocking access to the mic.</li>
+      </ul>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>`
 
-    });
-
-    //Nav tab switching events
-    $('.nav-tabs a').on('shown.bs.tab', function (event) {
-      mode = event.target.hash.slice(1) //change mode based on tab selected 
-      console.log("current mode: " + mode)
-      document.querySelector('#start').innerHTML = "Click here to start recording in " + mode + " mode"
-      stopRecording() //always turn off analyser if tab is switched. 
-    });
-
-
-    function stopRecording() {
-      recording = false //mark recording off 
-      sayDigit = 0 //reset to beginning of digit array 
-      document.querySelector('#start').disabled = false
-      /*         document.querySelector('#trainPanel').style.display = 'none'
-               document.querySelector('#testPanel').style.display = 'none' */
-      console.log("Stopping analyser")
-      analyzer.stop();
+          console.log("ooops, something went wrong not connected to mic")
+        });
     }
 
-    document.querySelector('#start').addEventListener('click', function () {
-      console.log("clicked start")
-      document.querySelector('#start').disabled = true
-      recording = true
-      //      document.querySelector('#trainPanel').style.display = 'none'
-      //      document.querySelector('#testPanel').style.display = 'none'
-      //      document.querySelector('#scorePanel').style.display = 'block'
-      console.log("Starting analyser")
-      analyzer.start();
-      sayDigit = 0 //array position to begin with in digitSet
-      if (mode == 'score') {
-        htmlScoreFrames = 0 //reset total frame counter 
-        htmlScoreMatches = 0 //reset score panel -'matched' frames counter
-        htmlScoreResult = 0 //reset score panel - result %
-        document.getElementById("htmlScoreFrames").innerHTML = 0
-        document.getElementById("htmlScoreMatches").innerHTML = 0
-        document.getElementById("htmlScoreResult").innerHTML = "-"
+  });
 
-      }
-      showProgressDigits(false)
-    });
+  //Nav tab switching events
+  $('.nav-tabs a').on('shown.bs.tab', function (event) {
+    mode = event.target.hash.slice(1) //change mode based on tab selected 
+    console.log("current mode: " + mode)
+    document.querySelector('#start').innerHTML = "Click here to start recording in " + mode + " mode"
+    stopRecording() //always turn off analyser if tab is switched. 
+    showProgressDigits(false) 
+  });
 
-    //Display array of digits on screen with progress indicator overlaid 
-    function showProgressDigits(waitState) {
-      var elementId = document.getElementById("htmlDigitProgress")
-      var digitsHTML = ""
-      digitSet.forEach((digit, n) => { //construct progress digits HTML
-        digitsHTML = (n != 0) ? digitsHTML + "-" : digitsHTML
-        if (n == sayDigit && recording) {
-          if (waitState) { //waiting for REST response, show spinner
-            digitsHTML += '<span class="spinner-grow text-danger" style="font-size: 75%; width: 2em"></span>'
-          } else {
-            digitsHTML += '<span class="badge badge-warning" style="font-size: 75%; width: 2em">' + digit + '</span>'
-          }
+
+  function stopRecording() {
+    recording = false //mark recording off 
+    sayDigit = 0 //reset to beginning of digit array 
+    document.querySelector('#start').disabled = false
+    /*         document.querySelector('#trainPanel').style.display = 'none'
+             document.querySelector('#testPanel').style.display = 'none' */
+    console.log("Stopping analyser")
+    analyzer.stop();
+  }
+
+  document.querySelector('#start').addEventListener('click', function () {
+    console.log("clicked start")
+    document.querySelector('#start').disabled = true
+    recording = true
+    //      document.querySelector('#trainPanel').style.display = 'none'
+    //      document.querySelector('#testPanel').style.display = 'none'
+    //      document.querySelector('#scorePanel').style.display = 'block'
+    console.log("Starting analyser")
+    analyzer.start();
+    sayDigit = 0 //array position to begin with in digitSet
+    if (mode == 'score') {
+      htmlScoreFrames = 0 //reset total frame counter 
+      htmlScoreMatches = 0 //reset score panel -'matched' frames counter
+      htmlScoreResult = 0 //reset score panel - result %
+      document.getElementById("htmlScoreFrames").innerHTML = 0
+      document.getElementById("htmlScoreMatches").innerHTML = 0
+      document.getElementById("htmlScoreResult").innerHTML = "-"
+
+    }
+    showProgressDigits(false)
+  });
+
+  //Display array of digits on screen with progress indicator overlaid 
+  function showProgressDigits(waitState) {
+    var elementId = document.getElementById("htmlDigitProgress")
+    var digitsHTML = ""
+    digitSet.forEach((digit, n) => { //construct progress digits HTML
+      digitsHTML = (n != 0) ? digitsHTML + "-" : digitsHTML
+      if (n == sayDigit && recording) {
+        if (waitState) { //waiting for REST response, show spinner
+          digitsHTML += '<span class="spinner-grow text-danger" style="font-size: 75%; width: 2em"></span>'
         } else {
-          digitsHTML += '<span class="badge badge-secondary" style="font-size: 75%; width: 2em">' + digit + '</span>'
-        }
-      });
-
-      elementId.innerHTML = digitsHTML
-      if (waitState) { //waiting for REST response 
-        if (sayDigit < digitSet.length - 1) {
-          sayDigit += 1
-          analyzer.stop(); //pause audio analyser while processing 
-          console.log("pausing recording .. waiting ")
-        } else {
-          stopRecording() //All digits progressed, end the recording session
-          console.log("finished recording - called stopRecording()")
+          digitsHTML += '<span class="badge badge-warning" style="font-size: 75%; width: 2em">' + digit + '</span>'
         }
       } else {
-        if (recording) {
-          analyzer.start(); //unpause audio analyser for next sample
-        }
+        digitsHTML += '<span class="badge badge-secondary" style="font-size: 75%; width: 2em">' + digit + '</span>'
+      }
+    });
+
+    elementId.innerHTML = digitsHTML
+    if (waitState) { //waiting for REST response 
+      if (sayDigit < digitSet.length - 1) {
+        sayDigit += 1
+        analyzer.stop(); //pause audio analyser while processing 
+        console.log("pausing recording .. waiting ")
+      } else {
+        stopRecording() //All digits progressed, end the recording session
+        console.log("finished recording - called stopRecording()")
+      }
+    } else {
+      if (recording) {
+        analyzer.start(); //unpause audio analyser for next sample
       }
     }
+  }
 
-    function apiCall(mode, message) {
-      const apiURL = '{{ url_for('index', _external=True) }}'
+  function apiCall(mode, message) {
+    const apiURL = '{{ url_for('index', _external=True) }}'
 
-      switch (mode) {
-        case 'train':
-          showProgressDigits(true)
-          fetch(apiURL + mode, {
-            headers: { "Content-Type": "application/json; charset=utf-8" },
-            method: 'PUT',
-            body: JSON.stringify(message)
+    switch (mode) {
+      case 'train':
+        showProgressDigits(true)
+        fetch(apiURL + mode, {
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          method: 'PUT',
+          body: JSON.stringify(message)
+        })
+          .then(response => response.json())
+          .then(data => {
+            showProgressDigits(false)
+            document.getElementById("htmlTrainSize").innerHTML = data.mfcc_train_store_length
+            document.getElementById("htmlTrainTime").innerHTML = data.training_time.toFixed(2) + " sec"
+            progress = (data.mfcc_train_store_length/10 < 100 ) ? (data.mfcc_train_store_length/10)+"%":100+"%"
+            document.getElementById("htmlTrainProgress").innerHTML = progress
+            document.getElementById("htmlTrainProgress").style.width = progress
+            console.log(data)
           })
-            .then(response => response.json())
-            .then(data => {
-              showProgressDigits(false)
-              document.getElementById("htmlTrainSize").innerHTML = data.mfcc_train_store_length
-              document.getElementById("htmlTrainTime").innerHTML = data.training_time.toFixed(2) + " sec"
-              console.log(data)
-            })
-          break
-        case 'test':
-          showProgressDigits(true)
-          fetch(apiURL + mode, {
-            headers: { "Content-Type": "application/json; charset=utf-8" },
-            method: 'PUT',
-            body: JSON.stringify(message)
+        break
+      case 'test':
+        showProgressDigits(true)
+        fetch(apiURL + mode, {
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          method: 'PUT',
+          body: JSON.stringify(message)
+        })
+          .then(response => response.json())
+          .then(data => {
+            showProgressDigits(false)
+            document.getElementById("htmlTestSize").innerHTML = data.mfcc_test_store_length
+            document.getElementById("htmlTestThreshold").innerHTML = data.score_threshold.toFixed(2)
+            progress = (data.mfcc_test_store_length/10 < 100 ) ? (data.mfcc_test_store_length/10)+"%":100+"%"
+            document.getElementById("htmlTestProgress").innerHTML = progress
+            document.getElementById("htmlTestProgress").style.width = progress
+            console.log(data)
           })
-            .then(response => response.json())
-            .then(data => {
-              showProgressDigits(false)
-              document.getElementById("htmlTestSize").innerHTML = data.mfcc_test_store_length
-              document.getElementById("htmlTestThreshold").innerHTML = data.score_threshold.toFixed(2)
-              console.log(data)
-            })
-          break
-        case 'score':
-          showProgressDigits(true)
-          fetch(apiURL + mode, {
-            headers: { "Content-Type": "application/json; charset=utf-8" },
-            method: 'PUT',
-            body: JSON.stringify(message)
+        break
+      case 'score':
+        showProgressDigits(true)
+        fetch(apiURL + mode, {
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          method: 'PUT',
+          body: JSON.stringify(message)
+        })
+          .then(response => response.json())
+          .then(data => {
+            showProgressDigits(false)
+            htmlScoreFrames += data.length
+            htmlScoreMatches += data.score
+            document.getElementById("htmlScoreFrames").innerHTML = htmlScoreFrames
+            document.getElementById("htmlScoreMatches").innerHTML = htmlScoreMatches
+            document.getElementById("htmlScoreResult").innerHTML = ((htmlScoreMatches / htmlScoreFrames) * 100).toFixed(2) + "%"
+            console.log(data)
           })
-            .then(response => response.json())
-            .then(data => {
-              showProgressDigits(false)
-              htmlScoreFrames += data.length
-              htmlScoreMatches += data.score
-              document.getElementById("htmlScoreFrames").innerHTML = htmlScoreFrames
-              document.getElementById("htmlScoreMatches").innerHTML = htmlScoreMatches
-              document.getElementById("htmlScoreResult").innerHTML = ((htmlScoreMatches / htmlScoreFrames) * 100).toFixed(2) + "%"
-              console.log(data)
-            })
-          break
-      }
+        break
     }
-  </script>
+  }
+</script>
 
 </html>
