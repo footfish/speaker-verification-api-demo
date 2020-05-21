@@ -24,13 +24,7 @@
   <div id="alertContainer"></div>
 
   <div id="main" style="display: none;" class="container mb-3">
-    <div class="container mb-5 text-center">
-      <button  data-toggle="modal" data-target="#resetModal" type="button" class="ml-2 mb-1 close" ><i class="fa fa-power-off" aria-hidden="true"></i></button>
-      <h3><span id="htmlDigitProgress"></span></h3>
-      <p><button type="button" id="start" class="btn btn-success btn-sm">Click here to start recording</button></p>
-    </div>
-
-        
+      
     <!-- Nav tabs -->
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -43,9 +37,13 @@
         <a class="nav-link" data-toggle="tab" href="#score">Score</a>
       </li>
     </ul>
-
+    <div class="container mt-3 text-center">
+      <button  data-toggle="modal" data-target="#resetModal" type="button" class="ml-2 mb-1 close" ><i class="fa fa-power-off" aria-hidden="true"></i></button>
+      <h3><span id="htmlDigitProgress"></span></h3>
+      <p><button type="button" id="start" class="btn btn-success btn-sm">Click here to start recording</button></p>
+    </div>
     <!-- Tab panes -->
-    <div class="tab-content p-3">
+    <div class="tab-content p-2">
       <div class="tab-pane container active" id="train">
         <div id="trainPanel" class="card mb-3" style="display: block;">
           <div class="card-body">
@@ -132,7 +130,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="resetModalLabel">Clear Everything</h5>
+        <h5 class="modal-title" id="resetModalLabel">Delete Everything</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
