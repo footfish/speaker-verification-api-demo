@@ -5,6 +5,7 @@ from flask_restful import reqparse,Resource, Api
 from sklearn import mixture
 import pickle #persistance of gmm model
 from os import path
+from os import remove
 from time import time
 
 app = Flask(__name__)
@@ -27,7 +28,41 @@ class ApiInfo(Resource):
 #            'usage': '/train /test /score'
 #            }
 
-# 1. Training - train model 
+# Status: Deletes test and train store & GMM pickle. 
+class Delete(Resource):
+    def get(self):
+        if path.exists(mfcc_train_store):
+            remove(mfcc_train_store)
+        if path.exists(mfcc_test_store):
+            remove(mfcc_test_store)
+        if path.exists(pickle_store):
+            remove(pickle_store)
+        reply = {
+        'deleted' : True,    
+        }
+        return reply, 200
+
+# Status: Returns length of test and train store. 
+class Status(Resource):
+    def get(self):
+        if path.exists(mfcc_train_store):
+            mfcc_train_len = len(np.loadtxt(mfcc_train_store, delimiter=','))
+        else:
+            mfcc_train_len = 0
+        
+        if path.exists(mfcc_test_store):
+            mfcc_test_len = len(np.loadtxt(mfcc_test_store, delimiter=','))
+        else:
+            mfcc_test_len = 0
+
+        reply = {
+        'mfcc_train_store_length' : mfcc_train_len,
+        'mfcc_test_store_length' : mfcc_test_len,
+        }
+        return reply, 200
+
+
+# Training - train model 
 class Train(Resource):
     def put(self):
         #read mfcc features from resource
@@ -87,6 +122,7 @@ class Test(Resource):
         'min' : np.min(testResult),
         'max' : np.max(testResult),
         'score_threshold': scoreThreshold, 
+        'result_reference' : round(100*len(testResult[testResult>scoreThreshold])/len(testResult)), # % of matched frames in test data set
         'mfcc_test_store_length' : len(mfcc),        
         }
         return reply, 200
@@ -99,27 +135,37 @@ class Score(Resource):
         #validate features 
         # ** todo **
         # load model
-        with open(pickle_store, 'rb') as f:
-            gmm = pickle.load(f)
-        #test score
-        if path.exists(mfcc_test_store):
-            mfccTest = np.loadtxt(mfcc_test_store, delimiter=',')
-        testResult = gmm.score_samples(mfccTest)
-        scoreThreshold=np.average(testResult)-np.std(testResult) #Average test score - Std dev. 
-        #scoreThreshold=np.average(testResult) #Average test score
-        #score 
-        result = gmm.score_samples(mfcc)
-        reply = {
-        'average': np.average(result), 
-        'deviation': np.std(result), 
-        'min' : np.min(result),
-        'max' : np.max(result),
-        'length' : len(result),
-        'score' : len(result[result>scoreThreshold])
+        if path.exists(pickle_store):
+            with open(pickle_store, 'rb') as f:
+                gmm = pickle.load(f)
+            #test score
+            if path.exists(mfcc_test_store):
+                mfccTest = np.loadtxt(mfcc_test_store, delimiter=',')
+            testResult = gmm.score_samples(mfccTest)
+            scoreThreshold=np.average(testResult)-np.std(testResult) #Average test score - Std dev. 
+            #scoreThreshold=np.average(testResult) #Average test score
+            #score 
+            result = gmm.score_samples(mfcc)
+            reply = {
+                'average': np.average(result), 
+                'deviation': np.std(result), 
+                'min' : np.min(result),
+                'max' : np.max(result),
+                'length' : len(result),
+                'score' : len(result[result>scoreThreshold]),
+                'result_reference' : round(100*len(testResult[testResult>scoreThreshold])/len(testResult)), # % of matched frames in test data set
+            }
+        else:            
+            reply = {
+            'average': 0, 
+            'deviation': 0, 
+            'min' : 0,
+            'max' : 0,
+            'length' : 0,
+            'score' : 0,
+            'result_reference' : 0,
         }
         return reply, 200
-
-
 
 @app.route('/') #serve static demo page 
 def index():
@@ -127,6 +173,8 @@ def index():
     return render_template('index.html')
 
 api.add_resource(ApiInfo, '/doc')
+api.add_resource(Status, '/status')
+api.add_resource(Delete, '/delete')
 api.add_resource(Train, '/train')
 api.add_resource(Test, '/test')
 api.add_resource(Score, '/score')

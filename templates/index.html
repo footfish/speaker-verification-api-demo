@@ -17,7 +17,7 @@
     <h2>Speaker Verification API demo</h2>
     <p>This is a demonstration of <i>speaker verification</i> (aka <i>speaker authentication</i>) using a REST API.</p>
   </div>
-  <div id="activate" style="display: block;" class="container mb-3"> <b>To begin: </b>
+  <div id="activate" style="display: block;" class="container mb-3"> <b>For the demo you'll need to click this -> </b>
     <button type="button" id="activateApi" class="btn btn-primary">Activate Mic. <i class="fa fa-microphone" aria-hidden="true"></i> </button>
   </div>
 
@@ -25,10 +25,12 @@
 
   <div id="main" style="display: none;" class="container mb-3">
     <div class="container mb-5 text-center">
-      <h5>Say the yellow digit out load</h5>
+      <button  data-toggle="modal" data-target="#resetModal" type="button" class="ml-2 mb-1 close" ><i class="fa fa-power-off" aria-hidden="true"></i></button>
       <h3><span id="htmlDigitProgress"></span></h3>
       <p><button type="button" id="start" class="btn btn-success btn-sm">Click here to start recording</button></p>
     </div>
+
+        
     <!-- Nav tabs -->
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -71,7 +73,8 @@
             <h5 class="card-title">Testing information</h5>
             <p class="card-text">
               Test data set size: <span id="htmlTestSize">-</span><br>
-              Score 'match' threshold: <span id="htmlTestThreshold">-</span>
+              Score 'match' threshold: <span id="htmlTestThreshold">-</span><br>
+              Reference result : <span id="htmlTestResultRef">-</span>
               <div class="progress">
                 <div id="htmlTestProgress" class="progress-bar" style="width:0%">0%</div>
               </div>
@@ -88,7 +91,8 @@
             <h5 class="card-title">Scoring information</h5>
             <p class="card-text">
               Frames matched/sent: <span id="htmlScoreMatches">0</span>/<span id="htmlScoreFrames">0</span><br>
-              Result: <b id="htmlScoreResult">-</b>
+              Result: <b id="htmlScoreResult">-</b><br>
+              Test reference result: <span id="htmlScoreResultRef">-</span>
             </p>
           </div>
         </div>
@@ -122,6 +126,28 @@
       </div>
     </div>
   </div>
+
+<!-- Reset Modal -->
+<div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="resetModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resetModalLabel">Clear Everything</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        This will put you back to square one. It will clear all the stored training and testing.. Are you happy with that ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button id="reset" type="button" class="btn btn-primary" data-dismiss="modal"> Yes, Delete Everything</button>
+      </div>
+    </div>
+  </div>
+</div>  
+
 </div>
 
 <script>
@@ -135,7 +161,7 @@
   var mode = 'train'
   var recording = false
   var sayDigit = 0  //digit index to say for training/testing 
-  var digitSet = [0, 1, 3, 4] //digit set for training/testing
+  var digitSet = [0, 1, 3, 4, 5, 9] //digit set for training/testing
 
   const silenceWindowLength = 15 //number of frames to consider for silence. 
   const silenceEnergyLevel = 0.1 //energy level to consider silence for triggering REST call 
@@ -148,9 +174,10 @@
   var htmlScoreResult = 0 //html score panel - result %
 
   window.onload = function () {
-    document.querySelector('#start').innerHTML = "Click here to start recording in " + mode + " mode"
+    document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
+    apiCall('status', '')
   }
-
+   
   document.querySelector('#activateApi').addEventListener('click', function () {
     // Setup all nodes
     const audioContext = new AudioContext();
@@ -215,7 +242,7 @@
   $('.nav-tabs a').on('shown.bs.tab', function (event) {
     mode = event.target.hash.slice(1) //change mode based on tab selected 
     console.log("current mode: " + mode)
-    document.querySelector('#start').innerHTML = "Click here to start recording in " + mode + " mode"
+    document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
     stopRecording() //always turn off analyser if tab is switched. 
     showProgressDigits(false) 
   });
@@ -225,19 +252,29 @@
     recording = false //mark recording off 
     sayDigit = 0 //reset to beginning of digit array 
     document.querySelector('#start').disabled = false
-    /*         document.querySelector('#trainPanel').style.display = 'none'
-             document.querySelector('#testPanel').style.display = 'none' */
+    document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
+    document.querySelector('#start').classList.remove('btn-outline-dark')
+    document.querySelector('#start').classList.add('btn-success')
     console.log("Stopping analyser")
     analyzer.stop();
   }
 
+
+
+  document.querySelector('#reset').addEventListener('click', function () {
+    console.log("clicked reset")
+    apiCall('delete', '')
+    apiCall('status', '')
+  });
+
+
   document.querySelector('#start').addEventListener('click', function () {
     console.log("clicked start")
     document.querySelector('#start').disabled = true
+    document.querySelector('#start').innerHTML = "Say the yellow digit out loud"
+    document.querySelector('#start').classList.remove('btn-success')
+    document.querySelector('#start').classList.add('btn-outline-dark')
     recording = true
-    //      document.querySelector('#trainPanel').style.display = 'none'
-    //      document.querySelector('#testPanel').style.display = 'none'
-    //      document.querySelector('#scorePanel').style.display = 'block'
     console.log("Starting analyser")
     analyzer.start();
     sayDigit = 0 //array position to begin with in digitSet
@@ -261,7 +298,7 @@
       digitsHTML = (n != 0) ? digitsHTML + "-" : digitsHTML
       if (n == sayDigit && recording) {
         if (waitState) { //waiting for REST response, show spinner
-          digitsHTML += '<span class="spinner-grow text-danger" style="font-size: 75%; width: 2em"></span>'
+          digitsHTML += '<span class="spinner-grow text-secondary" style="font-size: 75%; width: 2em"></span>'
         } else {
           digitsHTML += '<span class="badge badge-warning" style="font-size: 75%; width: 2em">' + digit + '</span>'
         }
@@ -287,13 +324,61 @@
     }
   }
 
-  function apiCall(mode, message) {
+  function apiCall(command, message) {
     const apiURL = '{{ url_for('index', _external=True) }}'
 
-    switch (mode) {
+    switch (command) {
+      case 'delete':
+        fetch(apiURL + command, {
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          method: 'GET',
+        })
+          .then(response => response.json())
+          .then(data => {
+            if(data.deleted)
+            {
+            document.getElementById("htmlTrainSize").innerHTML = 0
+            document.getElementById("htmlTrainProgress").innerHTML = 0
+            document.getElementById("htmlTrainProgress").style.width = 0
+            document.getElementById("htmlTrainTime").innerHTML = "-"
+            document.getElementById("htmlTestSize").innerHTML = 0
+            document.getElementById("htmlTestProgress").innerHTML = 0
+            document.getElementById("htmlTestProgress").style.width = 0
+            document.getElementById("htmlTestThreshold").innerHTML = "-"
+            document.getElementById("htmlTestResultRef").innerHTML = "-"
+            document.getElementById("htmlScoreFrames").innerHTML = 0
+            document.getElementById("htmlScoreMatches").innerHTML = 0
+            document.getElementById("htmlScoreResult").innerHTML = "-"
+            document.getElementById("htmlScoreResultRef").innerHTML = "-"
+            htmlScoreFrames = 0
+            htmlScoreMatches = 0
+            htmlScoreResult = 0
+            document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
+            stopRecording() //always turn off analyser if tab is switched. 
+            showProgressDigits(false) 
+            }
+          })
+        break
+        case 'status':
+        fetch(apiURL + command, {
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          method: 'GET',
+        })
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById("htmlTrainSize").innerHTML = data.mfcc_train_store_length
+            progress = (data.mfcc_train_store_length/10 < 100 ) ? (data.mfcc_train_store_length/10)+"%":100+"%"
+            document.getElementById("htmlTrainProgress").innerHTML = progress
+            document.getElementById("htmlTrainProgress").style.width = progress
+            document.getElementById("htmlTestSize").innerHTML = data.mfcc_test_store_length
+            progress = (data.mfcc_test_store_length/10 < 100 ) ? (data.mfcc_test_store_length/10)+"%":100+"%"
+            document.getElementById("htmlTestProgress").innerHTML = progress
+            document.getElementById("htmlTestProgress").style.width = progress
+          })
+        break
       case 'train':
         showProgressDigits(true)
-        fetch(apiURL + mode, {
+        fetch(apiURL + command, {
           headers: { "Content-Type": "application/json; charset=utf-8" },
           method: 'PUT',
           body: JSON.stringify(message)
@@ -311,7 +396,7 @@
         break
       case 'test':
         showProgressDigits(true)
-        fetch(apiURL + mode, {
+        fetch(apiURL + command, {
           headers: { "Content-Type": "application/json; charset=utf-8" },
           method: 'PUT',
           body: JSON.stringify(message)
@@ -321,6 +406,7 @@
             showProgressDigits(false)
             document.getElementById("htmlTestSize").innerHTML = data.mfcc_test_store_length
             document.getElementById("htmlTestThreshold").innerHTML = data.score_threshold.toFixed(2)
+            document.getElementById("htmlTestResultRef").innerHTML = data.result_reference+"%"
             progress = (data.mfcc_test_store_length/10 < 100 ) ? (data.mfcc_test_store_length/10)+"%":100+"%"
             document.getElementById("htmlTestProgress").innerHTML = progress
             document.getElementById("htmlTestProgress").style.width = progress
@@ -329,7 +415,7 @@
         break
       case 'score':
         showProgressDigits(true)
-        fetch(apiURL + mode, {
+        fetch(apiURL + command, {
           headers: { "Content-Type": "application/json; charset=utf-8" },
           method: 'PUT',
           body: JSON.stringify(message)
@@ -342,6 +428,7 @@
             document.getElementById("htmlScoreFrames").innerHTML = htmlScoreFrames
             document.getElementById("htmlScoreMatches").innerHTML = htmlScoreMatches
             document.getElementById("htmlScoreResult").innerHTML = ((htmlScoreMatches / htmlScoreFrames) * 100).toFixed(2) + "%"
+            document.getElementById("htmlScoreResultRef").innerHTML = data.result_reference+"%"            
             console.log(data)
           })
         break
