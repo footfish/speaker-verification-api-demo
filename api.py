@@ -135,7 +135,7 @@ class Score(Resource):
         #validate features 
         # ** todo **
         # load model
-        if path.exists(pickle_store):
+        if path.exists(pickle_store) & path.exists(mfcc_test_store):
             with open(pickle_store, 'rb') as f:
                 gmm = pickle.load(f)
             #test score
@@ -169,7 +169,6 @@ class Score(Resource):
 
 @app.route('/') #serve static demo page 
 def index():
-    api_url = "this"
     return render_template('index.html')
 
 api.add_resource(ApiInfo, '/doc')

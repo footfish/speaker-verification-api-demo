@@ -298,12 +298,12 @@
       digitsHTML = (n != 0) ? digitsHTML + "-" : digitsHTML
       if (n == sayDigit && recording) {
         if (waitState) { //waiting for REST response, show spinner
-          digitsHTML += '<span class="spinner-grow text-secondary" style="font-size: 75%; width: 2em"></span>'
+          digitsHTML += '<span class="spinner-grow text-secondary" style="font-size: 75%; width: 1.5em"></span>'
         } else {
-          digitsHTML += '<span class="badge badge-warning" style="font-size: 75%; width: 2em">' + digit + '</span>'
+          digitsHTML += '<span class="badge badge-warning" style="font-size: 75%; width: 1.5em">' + digit + '</span>'
         }
       } else {
-        digitsHTML += '<span class="badge badge-secondary" style="font-size: 75%; width: 2em">' + digit + '</span>'
+        digitsHTML += '<span class="badge badge-secondary" style="font-size: 75%; width: 1.5em">' + digit + '</span>'
       }
     });
 
@@ -427,7 +427,7 @@
             htmlScoreMatches += data.score
             document.getElementById("htmlScoreFrames").innerHTML = htmlScoreFrames
             document.getElementById("htmlScoreMatches").innerHTML = htmlScoreMatches
-            document.getElementById("htmlScoreResult").innerHTML = ((htmlScoreMatches / htmlScoreFrames) * 100).toFixed(2) + "%"
+            document.getElementById("htmlScoreResult").innerHTML = (htmlScoreFrames >0 ) ? ((htmlScoreMatches / htmlScoreFrames) * 100).toFixed(2) + "%" : "No training/testing performed"
             document.getElementById("htmlScoreResultRef").innerHTML = data.result_reference+"%"            
             console.log(data)
           })
