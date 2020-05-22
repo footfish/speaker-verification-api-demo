@@ -193,6 +193,7 @@
             "audioContext": audioContext,
             "source": source,
             "bufferSize": 512,
+            "windowingFunction": "hamming",
             "featureExtractors": ["energy", "mfcc"],
             "numberOfMFCCCoefficients": 12,
             "callback": features => {
