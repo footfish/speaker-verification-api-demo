@@ -2,16 +2,16 @@
 This is a demonstration of speaker verification (aka speaker authentication) using a REST API.
 
 ## Summary:
-Normally speaker verification (authentication) systems are centralised. This means audio is recorded, then sent to the centralised system for processing. That's inefficent Web applications. This demonstrates an alternative distributed approach. Speech 'features' are extracted in the browser, then sent via REST API for authentication. 
+Normally speaker verification (authentication) systems are centralised. Meaning audio is recorded, then sent to the centralised system for processing. That's inefficent Web applications. This demonstrates an alternative distributed approach. Speech 'features' are extracted in the browser, then sent via REST API for authentication. 
 
 **Note**: This is an academic exercise, not production code. 
 
 ## How to use it:
 You will need to perform the following steps; 
 
-1. Training - This 'trains' the model with your speech. 
-2. Testing - This sets a benchmark for your speech. 
-3. Score - This is the 'verification', the higher the score the more likely it's you (if it works!). Obviously you will need to have trained and tested the model before scoring will work. 
+1. ***Training*** - This 'trains' the model with your speech. 
+2. ***Testing*** - This sets a benchmark for your speech. 
+3. ***Scoring*** - This is the 'verification', the higher the score the more likely it's you (if it works!). Obviously you will need to have trained and tested the model before scoring will work. 
 
 ## How it works:
 Your browser will use the microphone to capture spoken digits, then process these to feature vectors ([MFCC's - mel frequency cepstral coefficients](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum)). The feature vectors are sent to a remote API for speaker verification. The browser uses [Web Audio API ](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) and [Meyda JS library](https://meyda.js.org/guides/online-web-audio) to capture the spoken data. The remote API uses a GMM ([Gaussian Mixture Model](https://en.wikipedia.org/wiki/Mixture_model)) machine learning method for speaker verification.
@@ -35,7 +35,18 @@ git clone https://github.com/footfish/speaker-verification-api-demo.git
 cd speaker-verification-api-demo
 ```
 
-### Install required libs 
+### (Optionally) Setup Python virtual env. 
+```
+#Linux/Mac
+python3 -m venv env
+source env/bin/activate
+
+#Windows
+py -m venv env
+.\env\Scripts\activate
+```
+
+### Install Required Libs 
 `pip install -r requirements.txt`
 
 ### Quick start 
