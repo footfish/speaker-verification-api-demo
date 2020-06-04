@@ -13,18 +13,23 @@
 </head>
 
 <div class="container pt-3">
+
   <div class="jumbotron p-4">
+    <button id="signOut" type="button" class="ml-2 mb-1 close"><i class="fa fa-sign-out-alt"
+        aria-hidden="true"></i></button>
     <h2>Speaker Verification API demo</h2>
     <p>This is a demonstration of <i>speaker verification</i> (aka <i>speaker authentication</i>) using a REST API.</p>
   </div>
   <div id="activate" style="display: block;" class="container mb-3"> <b>For the demo you'll need to click this -> </b>
-    <button type="button" id="activateApi" class="btn btn-primary">Activate Mic. <i class="fa fa-microphone" aria-hidden="true"></i> </button>
+    <button type="button" id="activateApi" class="btn btn-primary">Activate Mic. <i class="fa fa-microphone"
+        aria-hidden="true"></i> </button>
   </div>
 
   <div id="alertContainer"></div>
 
   <div id="main" style="display: none;" class="container mb-3">
-      
+
+
     <!-- Nav tabs -->
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -38,7 +43,8 @@
       </li>
     </ul>
     <div class="container mt-3 text-center">
-      <button  data-toggle="modal" data-target="#resetModal" type="button" class="ml-2 mb-1 close" ><i class="fa fa-power-off" aria-hidden="true"></i></button>
+      <button data-toggle="modal" data-target="#resetModal" type="button" class="ml-2 mb-1 close"><i
+          class="fa fa-power-off" aria-hidden="true"></i></button>
       <h3><span id="htmlDigitProgress"></span></h3>
       <p><button type="button" id="start" class="btn btn-success btn-sm">Click here to start recording</button></p>
     </div>
@@ -51,9 +57,9 @@
             <p class="card-text">
               Model (train data set) size: <span id="htmlTrainSize">-</span><br>
               Digit train time: <span id="htmlTrainTime">-</span>
-              <div class="progress">
-                <div id="htmlTrainProgress" class="progress-bar" style="width:0%">0%</div>
-              </div>
+            <div class="progress">
+              <div id="htmlTrainProgress" class="progress-bar" style="width:0%">0%</div>
+            </div>
             </p>
           </div>
         </div>
@@ -73,9 +79,9 @@
               Test data set size: <span id="htmlTestSize">-</span><br>
               Score 'match' threshold: <span id="htmlTestThreshold">-</span><br>
               Reference result : <span id="htmlTestResultRef">-</span>
-              <div class="progress">
-                <div id="htmlTestProgress" class="progress-bar" style="width:0%">0%</div>
-              </div>
+            <div class="progress">
+              <div id="htmlTestProgress" class="progress-bar" style="width:0%">0%</div>
+            </div>
             </p>
           </div>
         </div>
@@ -125,26 +131,51 @@
     </div>
   </div>
 
-<!-- Reset Modal -->
-<div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="resetModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="resetModalLabel">Delete Everything</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        This will put you back to square one. It will clear all the stored training and testing.. Are you happy with that ?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button id="reset" type="button" class="btn btn-primary" data-dismiss="modal"> Yes, Delete Everything</button>
+  <!-- Reset Modal -->
+  <div class="modal fade" id="resetModal" tabindex="-1" role="dialog" aria-labelledby="resetModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="resetModalLabel">Delete Everything</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          This will put you back to square one. It will clear all the stored training and testing.. Are you happy with
+          that ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button id="reset" type="button" class="btn btn-primary" data-dismiss="modal"> Yes, Delete Everything</button>
+        </div>
       </div>
     </div>
   </div>
-</div>  
+
+  <!-- user not found Modal -->
+  <div class="modal fade" id="nouserModal" tabindex="-1" role="dialog" aria-labelledby="nouserModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="nouserModalLabel">User not found</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Sorry that user session can't be found, check the email address used.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+          <button id="reset" type="button" class="btn btn-primary" data-dismiss="modal"> Yes, Delete Everything</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </div>
 
@@ -172,10 +203,15 @@
   var htmlScoreResult = 0 //html score panel - result %
 
   window.onload = function () {
+    console.log("Load with session: " + sessionStorage.token)
+    if (sessionStorage.getItem("token") === null) { //session JWT required
+      console.log("re-direct to session login")
+      window.location.href = "/session"
+    }
     document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
     apiCall('status', '')
   }
-   
+
   document.querySelector('#activateApi').addEventListener('click', function () {
     // Setup all nodes
     const audioContext = new AudioContext();
@@ -192,10 +228,13 @@
           analyzer = Meyda.createMeydaAnalyzer({
             "audioContext": audioContext,
             "source": source,
-            "bufferSize": 512,
+            //"bufferSize": 256, //(frame length) default 512 
+            //"sampleRate": 8000, //default 44100
+            //"hopSize": 120, //overlapp
+            "melBands": 23, //default 26
             "windowingFunction": "hamming",
             "featureExtractors": ["energy", "mfcc"],
-            "numberOfMFCCCoefficients": 12,
+            "numberOfMFCCCoefficients": 13,
             "callback": features => {
               if (features.energy > soundEnergyLevel || message.mfcc.length > 0) { //start buffering message data
                 //add mfcc array to buffer 
@@ -243,9 +282,8 @@
     console.log("current mode: " + mode)
     document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
     stopRecording() //always turn off analyser if tab is switched. 
-    showProgressDigits(false) 
+    showProgressDigits(false)
   });
-
 
   function stopRecording() {
     recording = false //mark recording off 
@@ -258,14 +296,13 @@
     analyzer.stop();
   }
 
-
-
   document.querySelector('#reset').addEventListener('click', function () {
     console.log("clicked reset")
     apiCall('delete', '')
     apiCall('status', '')
   });
 
+  document.querySelector('#signOut').addEventListener('click', signOut)
 
   document.querySelector('#start').addEventListener('click', function () {
     console.log("clicked start")
@@ -288,6 +325,11 @@
     }
     showProgressDigits(false)
   });
+
+  function signOut() {
+    sessionStorage.removeItem('token') //clear session
+    window.location.href = "/session"  //and re-direct 
+  }
 
   //Display array of digits on screen with progress indicator overlaid 
   function showProgressDigits(waitState) {
@@ -325,60 +367,72 @@
 
   function apiCall(command, message) {
     const apiURL = '{{ url_for('index', _external=True) }}'
+    const apiHeader = {
+      "Content-Type": "application/json; charset=utf-8",
+      "Authorization": "Bearer " + sessionStorage.token
+    }
 
     switch (command) {
       case 'delete':
         fetch(apiURL + command, {
-          headers: { "Content-Type": "application/json; charset=utf-8" },
+          headers: apiHeader,
           method: 'GET',
         })
           .then(response => response.json())
           .then(data => {
-            if(data.deleted)
-            {
-            document.getElementById("htmlTrainSize").innerHTML = 0
-            document.getElementById("htmlTrainProgress").innerHTML = 0
-            document.getElementById("htmlTrainProgress").style.width = 0
-            document.getElementById("htmlTrainTime").innerHTML = "-"
-            document.getElementById("htmlTestSize").innerHTML = 0
-            document.getElementById("htmlTestProgress").innerHTML = 0
-            document.getElementById("htmlTestProgress").style.width = 0
-            document.getElementById("htmlTestThreshold").innerHTML = "-"
-            document.getElementById("htmlTestResultRef").innerHTML = "-"
-            document.getElementById("htmlScoreFrames").innerHTML = 0
-            document.getElementById("htmlScoreMatches").innerHTML = 0
-            document.getElementById("htmlScoreResult").innerHTML = "-"
-            document.getElementById("htmlScoreResultRef").innerHTML = "-"
-            htmlScoreFrames = 0
-            htmlScoreMatches = 0
-            htmlScoreResult = 0
-            document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
-            stopRecording() //always turn off analyser if tab is switched. 
-            showProgressDigits(false) 
+            if (data.deleted) {
+              document.getElementById("htmlTrainSize").innerHTML = 0
+              document.getElementById("htmlTrainProgress").innerHTML = 0
+              document.getElementById("htmlTrainProgress").style.width = 0
+              document.getElementById("htmlTrainTime").innerHTML = "-"
+              document.getElementById("htmlTestSize").innerHTML = 0
+              document.getElementById("htmlTestProgress").innerHTML = 0
+              document.getElementById("htmlTestProgress").style.width = 0
+              document.getElementById("htmlTestThreshold").innerHTML = "-"
+              document.getElementById("htmlTestResultRef").innerHTML = "-"
+              document.getElementById("htmlScoreFrames").innerHTML = 0
+              document.getElementById("htmlScoreMatches").innerHTML = 0
+              document.getElementById("htmlScoreResult").innerHTML = "-"
+              document.getElementById("htmlScoreResultRef").innerHTML = "-"
+              htmlScoreFrames = 0
+              htmlScoreMatches = 0
+              htmlScoreResult = 0
+              document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
+              stopRecording() //always turn off analyser if tab is switched. 
+              showProgressDigits(false)
             }
           })
         break
-        case 'status':
+      case 'status':
         fetch(apiURL + command, {
-          headers: { "Content-Type": "application/json; charset=utf-8" },
+          headers: apiHeader,
           method: 'GET',
         })
           .then(response => response.json())
           .then(data => {
-            document.getElementById("htmlTrainSize").innerHTML = data.mfcc_train_store_length
-            progress = (data.mfcc_train_store_length/10 < 100 ) ? (data.mfcc_train_store_length/10)+"%":100+"%"
-            document.getElementById("htmlTrainProgress").innerHTML = progress
-            document.getElementById("htmlTrainProgress").style.width = progress
-            document.getElementById("htmlTestSize").innerHTML = data.mfcc_test_store_length
-            progress = (data.mfcc_test_store_length/10 < 100 ) ? (data.mfcc_test_store_length/10)+"%":100+"%"
-            document.getElementById("htmlTestProgress").innerHTML = progress
-            document.getElementById("htmlTestProgress").style.width = progress
+            if (data.hasOwnProperty("mfcc_train_store_length") && data.hasOwnProperty("mfcc_test_store_length")) {
+              document.getElementById("htmlTrainSize").innerHTML = data.mfcc_train_store_length
+              progress = (data.mfcc_train_store_length / 10 < 100) ? (data.mfcc_train_store_length / 10) + "%" : 100 + "%"
+              document.getElementById("htmlTrainProgress").innerHTML = progress
+              document.getElementById("htmlTrainProgress").style.width = progress
+              document.getElementById("htmlTestSize").innerHTML = data.mfcc_test_store_length
+              progress = (data.mfcc_test_store_length / 10 < 100) ? (data.mfcc_test_store_length / 10) + "%" : 100 + "%"
+              document.getElementById("htmlTestProgress").innerHTML = progress
+              document.getElementById("htmlTestProgress").style.width = progress
+            } else {
+              console.log("unexpected API response") //probably JWT timeout
+              console.log(data)
+              signOut()
+            }
+          })
+          .catch((error) => {
+            console.log(error)
           })
         break
       case 'train':
         showProgressDigits(true)
         fetch(apiURL + command, {
-          headers: { "Content-Type": "application/json; charset=utf-8" },
+          headers: apiHeader,
           method: 'PUT',
           body: JSON.stringify(message)
         })
@@ -387,7 +441,7 @@
             showProgressDigits(false)
             document.getElementById("htmlTrainSize").innerHTML = data.mfcc_train_store_length
             document.getElementById("htmlTrainTime").innerHTML = data.training_time.toFixed(2) + " sec"
-            progress = (data.mfcc_train_store_length/10 < 100 ) ? (data.mfcc_train_store_length/10)+"%":100+"%"
+            progress = (data.mfcc_train_store_length / 10 < 100) ? (data.mfcc_train_store_length / 10) + "%" : 100 + "%"
             document.getElementById("htmlTrainProgress").innerHTML = progress
             document.getElementById("htmlTrainProgress").style.width = progress
             console.log(data)
@@ -396,7 +450,7 @@
       case 'test':
         showProgressDigits(true)
         fetch(apiURL + command, {
-          headers: { "Content-Type": "application/json; charset=utf-8" },
+          headers: apiHeader,
           method: 'PUT',
           body: JSON.stringify(message)
         })
@@ -405,8 +459,8 @@
             showProgressDigits(false)
             document.getElementById("htmlTestSize").innerHTML = data.mfcc_test_store_length
             document.getElementById("htmlTestThreshold").innerHTML = data.score_threshold.toFixed(2)
-            document.getElementById("htmlTestResultRef").innerHTML = data.result_reference+"%"
-            progress = (data.mfcc_test_store_length/10 < 100 ) ? (data.mfcc_test_store_length/10)+"%":100+"%"
+            document.getElementById("htmlTestResultRef").innerHTML = data.result_reference + "%"
+            progress = (data.mfcc_test_store_length / 10 < 100) ? (data.mfcc_test_store_length / 10) + "%" : 100 + "%"
             document.getElementById("htmlTestProgress").innerHTML = progress
             document.getElementById("htmlTestProgress").style.width = progress
             console.log(data)
@@ -415,7 +469,7 @@
       case 'score':
         showProgressDigits(true)
         fetch(apiURL + command, {
-          headers: { "Content-Type": "application/json; charset=utf-8" },
+          headers: apiHeader,
           method: 'PUT',
           body: JSON.stringify(message)
         })
@@ -426,8 +480,8 @@
             htmlScoreMatches += data.score
             document.getElementById("htmlScoreFrames").innerHTML = htmlScoreFrames
             document.getElementById("htmlScoreMatches").innerHTML = htmlScoreMatches
-            document.getElementById("htmlScoreResult").innerHTML = (htmlScoreFrames >0 ) ? ((htmlScoreMatches / htmlScoreFrames) * 100).toFixed(2) + "%" : "No training/testing performed"
-            document.getElementById("htmlScoreResultRef").innerHTML = data.result_reference+"%"            
+            document.getElementById("htmlScoreResult").innerHTML = (htmlScoreFrames > 0) ? ((htmlScoreMatches / htmlScoreFrames) * 100).toFixed(2) + "%" : "No training/testing performed"
+            document.getElementById("htmlScoreResultRef").innerHTML = data.result_reference + "%"
             console.log(data)
           })
         break

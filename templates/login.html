@@ -1,0 +1,98 @@
+<html>
+
+<head>
+  <title>Speaker Verification API demo - Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+
+<div class="container pt-3">
+  
+  <div class="jumbotron p-4">
+    <h2>Speaker Verification API demo</h2>
+    <p>This is a demonstration of <i>speaker verification</i> (aka <i>speaker authentication</i>) using a REST API.</p>
+  </div>
+
+  <div id="sessionContainer">
+    <form class="form-inline">
+      <label for="email" class="mr-sm-2">To log your sessions </label>
+      <input type="email" class="form-control mb-2 mr-sm-2" placeholder="enter email address" id="email">
+      <button id="login" type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>
+  </div>
+
+  <!-- user not found Modal -->
+  <div class="modal fade" id="nouserModal" tabindex="-1" role="dialog" aria-labelledby="nouserModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="nouserModalLabel">User/password not found</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Sorry that user session can't be found, check the email address and password used.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<script>
+
+window.onload = function () {
+  console.log(sessionStorage.token)
+  if (sessionStorage.getItem("token") !== null) { //session already 
+        window.location.href = "/"
+    }
+  }
+
+  document.querySelector('#login').addEventListener('click', function (e) {
+    e.preventDefault()
+    console.log("clicked login")
+    console.log(document.getElementById("email").value)
+    apiCall('login', { username: document.getElementById("email").value })
+  });
+
+
+function apiCall(command, message) {
+    const apiURL = '{{ url_for('index', _external=True) }}'
+
+    switch (command) {
+      case 'login':
+        fetch(apiURL + command, {
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          method: 'POST',
+          body: JSON.stringify(message)
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.hasOwnProperty("token")) { 
+              console.log(data)
+              sessionStorage.token = data.token //success - store JWT
+              window.location.href = "/"        //re-direct to app 
+          } else {
+              $("#nouserModal").modal()
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+        break
+    }
+  }
+</script>
+
+</html>

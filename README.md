@@ -27,6 +27,7 @@ See [Live demo on Heroku](https://speaker-verification-api-demo.herokuapp.com/) 
 
 ## Installation:
 Install python from <https://www.python.org/>
+Install Mongodb locally <https://www.mongodb.com/> or use a hosted service like <https://www.mlab.com/> 
 
 ### Clone 
 
@@ -49,15 +50,30 @@ py -m venv env
 ### Install Required Libs 
 `pip install -r requirements.txt`
 
+### Set required config variables 
+```
+#Linux/Mac
+export JWT_SECRET_KEY='your-secret-here'
+export MONGODB_URI='mongodb://your-user:your-pass@your-host:your-port/your-dbname'
+
+#Windows
+set JWT_SECRET_KEY='your-secret-here'
+set MONGODB_URI='mongodb://your-user:your-pass@your-host:your-port/your-dbname'
+```
+
 ### Quick start 
 `python api.py`
 
 ## Heroku Deployment:
 The application can quickly be deployed to [Heroku](https://www.heroku.com/). 
 You will need a Heroku account and the [Heruku cli](https://devcenter.heroku.com/articles/heroku-cli) installed. 
+You will need a Heroku mongolab addon (or equivalent MongoDb service)
 
 ```
 heroku create
+#Env. variables (If using mongolab MONGODB_URI will be set up automatically)
+heroku config:set JWT_SECRET_KEY='your-secret-here'
+heroku config
 git push heroku master
 heroku open
 ```
@@ -100,6 +116,8 @@ You will find a good step-by-step example of Python speech processing code [here
 * [Meyda Features](https://meyda.js.org/audio-features)
 * [Yaafe core features — YAAFE - Yet Another Audio Feature Extractor](http://yaafe.sourceforge.net/features.html)
 * [sklearn.mixture.GaussianMixture](https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html)
+* [Flask-JWT-Extended’s Documentation](https://flask-jwt-extended.readthedocs.io/en/stable/)
+* [PyMongo Documentation](https://pymongo.readthedocs.io/en/stable/)
 
 
 #### Other, Python/Flask/Heroku
@@ -118,4 +136,6 @@ You will find a good step-by-step example of Python speech processing code [here
 * [Deploying with Git | Heroku Dev Center ](https://devcenter.heroku.com/articles/git)
 * [Creating Web APIs with Python and Flask | Programming Historian ](https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask)
 * [Quickstart — Flask-RESTful 0.3.8 documentation ](https://flask-restful.readthedocs.io/en/latest/quickstart.html)
+* [JWT authorization in Flask - codeburst](https://codeburst.io/jwt-authorization-in-flask-c63c1acf4eeb)
+
 
