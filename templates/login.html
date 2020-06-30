@@ -19,11 +19,29 @@
   </div>
 
   <div id="sessionContainer">
+    <h5 >Registered User</h5>
     <form class="form-inline">
       <label for="email" class="mr-sm-2">To log your sessions </label>
-      <input type="email" class="form-control mb-2 mr-sm-2" placeholder="enter email address" id="email">
+      <input type="email" class="form-control mb-2 mr-sm-2" placeholder="enter username/email" id="loginUser">
       <button id="login" type="submit" class="btn btn-primary mb-2">Submit</button>
     </form>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">New User</h5>
+        <p>If you're new to this, then you will need to register.</p><p>
+           Once registered the session data you create will be stored.
+            Because the collected 'speech features' are personal data, you'll need to give consent this.
+        </p>
+    <form class="form-inline">
+      <label for="email" class="mr-sm-2">To register </label>
+      <input type="email" class="form-control mb-2 mr-sm-2" placeholder="enter username/email" id="registerUser">
+      <label for="alias" class="mr-sm-2">and a </label>
+      <input type="alias" class="form-control mb-2 mr-sm-2" placeholder="public alias" id="registerAlias">
+      <button id="register" type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>
+      </div></div>
+
   </div>
 
   <!-- user not found Modal -->
@@ -62,16 +80,51 @@ window.onload = function () {
   document.querySelector('#login').addEventListener('click', function (e) {
     e.preventDefault()
     console.log("clicked login")
-    console.log(document.getElementById("email").value)
-    apiCall('login', { username: document.getElementById("email").value })
+    console.log(document.getElementById("loginUser").value)
+    clientInfo = { appCodeName: navigator.appCodeName, 
+                   appVersion: navigator.appVersion,
+                   platform: navigator.platform,
+                   userAgent: navigator.userAgent, 
+                   oscpu: navigator.oscpu
+                   }
+    console.log(clientInfo)
+    apiCall('session', { username: document.getElementById("loginUser").value, clientInfo: clientInfo })
   });
+
+  document.querySelector('#register').addEventListener('click', function (e) {
+    e.preventDefault()
+    console.log("clicked register")
+    console.log(document.getElementById("registerUser").value)
+    apiCall('user', { username: document.getElementById("registerUser").value, alias: document.getElementById("registerAlias").value })
+  });
+
 
 
 function apiCall(command, message) {
     const apiURL = '{{ url_for('index', _external=True) }}'
 
     switch (command) {
-      case 'login':
+      case 'session':
+        fetch(apiURL + command, {
+          headers: { "Content-Type": "application/json; charset=utf-8" },
+          method: 'POST',
+          body: JSON.stringify(message)
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.hasOwnProperty("token")) { 
+              console.log(data)
+              sessionStorage.token = data.token //success - store JWT
+              window.location.href = "/"        //re-direct to app 
+          } else {
+              $("#nouserModal").modal()
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+        break
+        case 'user':
         fetch(apiURL + command, {
           headers: { "Content-Type": "application/json; charset=utf-8" },
           method: 'POST',

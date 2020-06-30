@@ -36,15 +36,13 @@
         <a class="nav-link active" data-toggle="tab" href="#train">Train</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#test">Test</a>
+        <a id="scoreTab" class="nav-link" data-toggle="tab" href="#score">Score</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#score">Score</a>
+        <a class="nav-link" data-toggle="tab" href="#benchmark">Benchmark</a>
       </li>
     </ul>
     <div class="container mt-3 text-center">
-      <button data-toggle="modal" data-target="#resetModal" type="button" class="ml-2 mb-1 close"><i
-          class="fa fa-power-off" aria-hidden="true"></i></button>
       <h3><span id="htmlDigitProgress"></span></h3>
       <p><button type="button" id="start" class="btn btn-success btn-sm">Click here to start recording</button></p>
     </div>
@@ -53,10 +51,15 @@
       <div class="tab-pane container active" id="train">
         <div id="trainPanel" class="card mb-3" style="display: block;">
           <div class="card-body">
+            <button data-toggle="modal" data-target="#resetModal" type="button" class="ml-2 mb-1 close"><i
+              class="fa fa-power-off" aria-hidden="true"></i></button>
             <h5 class="card-title">Training information</h5>
             <p class="card-text">
               Model (train data set) size: <span id="htmlTrainSize">-</span><br>
-              Digit train time: <span id="htmlTrainTime">-</span>
+              Test data set size: <span id="htmlTestSize">-</span><br>              
+              Digit train time: <span id="htmlTrainTime">-</span><br>              
+              Score 'match' threshold: <span id="htmlTestThreshold">-</span><br>
+              Reference result : <span id="htmlTestResultRef">-</span>
             <div class="progress">
               <div id="htmlTrainProgress" class="progress-bar" style="width:0%">0%</div>
             </div>
@@ -70,24 +73,6 @@
           the evenings for example)
         </p>
 
-      </div>
-      <div class="tab-pane container fade" id="test">
-        <div id="testPanel" class="card mb-3" style="display: block;">
-          <div class="card-body">
-            <h5 class="card-title">Testing information</h5>
-            <p class="card-text">
-              Test data set size: <span id="htmlTestSize">-</span><br>
-              Score 'match' threshold: <span id="htmlTestThreshold">-</span><br>
-              Reference result : <span id="htmlTestResultRef">-</span>
-            <div class="progress">
-              <div id="htmlTestProgress" class="progress-bar" style="width:0%">0%</div>
-            </div>
-            </p>
-          </div>
-        </div>
-        <p> <b>Testing Mode</b> benchmarks the trained model to provide accurate scoring by working out threshold to
-          determine a speaker 'match'.
-          Every time you record a training session you should record some testing.</p>
       </div>
       <div class="tab-pane container fade" id="score">
         <div id="scorePanel" class="card mb-3" style="display: block;">
@@ -143,8 +128,7 @@
           </button>
         </div>
         <div class="modal-body">
-          This will put you back to square one. It will clear all the stored training and testing.. Are you happy with
-          that ?
+          This will put you back to square one. It will clear all the stored training.. Are you happy with that ?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -184,14 +168,15 @@
   var message = {}
   message.mfcc = []
   message.energy = []
-
+  
   var source
   var stream
   var mode = 'train'
   var recording = false
   var sayDigit = 0  //digit index to say for training/testing 
-  var digitSet = [0, 1, 3, 4, 5, 9] //digit set for training/testing
-
+  const trainDigitSet = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] //digit set for training
+  const scoreDigitSet = [0, 1, 3, 4, 5, 9] //digit set for scoring
+  var digitSet = trainDigitSet //active digit set
   const silenceWindowLength = 15 //number of frames to consider for silence. 
   const silenceEnergyLevel = 0.1 //energy level to consider silence for triggering REST call 
   const soundEnergyLevel = 1 //energy level to trigger buffering of message data  
@@ -206,8 +191,9 @@
     console.log("Load with session: " + sessionStorage.token)
     if (sessionStorage.getItem("token") === null) { //session JWT required
       console.log("re-direct to session login")
-      window.location.href = "/session"
+      window.location.href = "/login"
     }
+    
     document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
     apiCall('status', '')
   }
@@ -247,6 +233,7 @@
                     message.mfcc = message.mfcc.slice(0, message.mfcc.length - silenceWindowLength) //Drop trailing silence 
                     message.energy = message.energy.slice(0, message.energy.length - silenceWindowLength) //Drop trailing silence 
                     if (message.energy.length >= minRestFrames) {
+                      message.digit = digitSet[sayDigit]
                       apiCall(mode, message)
                     }
                   }
@@ -280,6 +267,7 @@
   $('.nav-tabs a').on('shown.bs.tab', function (event) {
     mode = event.target.hash.slice(1) //change mode based on tab selected 
     console.log("current mode: " + mode)
+    digitSet = (mode == 'score') ? scoreDigitSet : trainDigitSet
     document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
     stopRecording() //always turn off analyser if tab is switched. 
     showProgressDigits(false)
@@ -328,7 +316,7 @@
 
   function signOut() {
     sessionStorage.removeItem('token') //clear session
-    window.location.href = "/session"  //and re-direct 
+    window.location.href = "/login"  //and re-direct 
   }
 
   //Display array of digits on screen with progress indicator overlaid 
@@ -410,15 +398,17 @@
         })
           .then(response => response.json())
           .then(data => {
-            if (data.hasOwnProperty("mfcc_train_store_length") && data.hasOwnProperty("mfcc_test_store_length")) {
-              document.getElementById("htmlTrainSize").innerHTML = data.mfcc_train_store_length
-              progress = (data.mfcc_train_store_length / 10 < 100) ? (data.mfcc_train_store_length / 10) + "%" : 100 + "%"
+            if (data.hasOwnProperty("train_data_length") && data.hasOwnProperty("test_data_length")) {
+              document.getElementById("htmlTrainSize").innerHTML = data.train_data_length
+              progress = (data.training_progress < 100) ? data.training_progress + "%" : 100 + "%"
               document.getElementById("htmlTrainProgress").innerHTML = progress
               document.getElementById("htmlTrainProgress").style.width = progress
-              document.getElementById("htmlTestSize").innerHTML = data.mfcc_test_store_length
-              progress = (data.mfcc_test_store_length / 10 < 100) ? (data.mfcc_test_store_length / 10) + "%" : 100 + "%"
-              document.getElementById("htmlTestProgress").innerHTML = progress
-              document.getElementById("htmlTestProgress").style.width = progress
+              document.getElementById("htmlTestSize").innerHTML = data.test_data_length
+              if(data.training_progress < 100)
+                document.querySelector('#scoreTab').classList.add('disabled')
+              else 
+                document.querySelector('#scoreTab').classList.remove('disabled')
+
             } else {
               console.log("unexpected API response") //probably JWT timeout
               console.log(data)
@@ -439,30 +429,18 @@
           .then(response => response.json())
           .then(data => {
             showProgressDigits(false)
-            document.getElementById("htmlTrainSize").innerHTML = data.mfcc_train_store_length
+            document.getElementById("htmlTrainSize").innerHTML = data.train_data_length
+            document.getElementById("htmlTestSize").innerHTML = data.test_data_length
             document.getElementById("htmlTrainTime").innerHTML = data.training_time.toFixed(2) + " sec"
-            progress = (data.mfcc_train_store_length / 10 < 100) ? (data.mfcc_train_store_length / 10) + "%" : 100 + "%"
+            progress = (data.training_progress < 100) ? data.training_progress + "%" : 100 + "%"
             document.getElementById("htmlTrainProgress").innerHTML = progress
             document.getElementById("htmlTrainProgress").style.width = progress
-            console.log(data)
-          })
-        break
-      case 'test':
-        showProgressDigits(true)
-        fetch(apiURL + command, {
-          headers: apiHeader,
-          method: 'PUT',
-          body: JSON.stringify(message)
-        })
-          .then(response => response.json())
-          .then(data => {
-            showProgressDigits(false)
-            document.getElementById("htmlTestSize").innerHTML = data.mfcc_test_store_length
             document.getElementById("htmlTestThreshold").innerHTML = data.score_threshold.toFixed(2)
             document.getElementById("htmlTestResultRef").innerHTML = data.result_reference + "%"
-            progress = (data.mfcc_test_store_length / 10 < 100) ? (data.mfcc_test_store_length / 10) + "%" : 100 + "%"
-            document.getElementById("htmlTestProgress").innerHTML = progress
-            document.getElementById("htmlTestProgress").style.width = progress
+            if(data.training_progress < 100)
+              document.querySelector('#scoreTab').classList.add('disabled')
+            else 
+              document.querySelector('#scoreTab').classList.remove('disabled')
             console.log(data)
           })
         break

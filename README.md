@@ -37,14 +37,17 @@ cd speaker-verification-api-demo
 ```
 
 ### (Optionally) Setup Python virtual env. 
+Python 3.3 or newer, the venv module is included in the Python standard library and requires no additional installation
 ```
-#Linux/Mac
+#Linux/Mac 
 python3 -m venv env
 source env/bin/activate
+which python #verify using virtual env
 
 #Windows
 py -m venv env
-.\env\Scripts\activate
+.\env\Scripts\activate #bash users try 'source env/Scripts/activate'
+where python #verify using virtual env
 ```
 
 ### Install Required Libs 
