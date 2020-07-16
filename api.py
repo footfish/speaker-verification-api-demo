@@ -20,8 +20,9 @@ api = Api(app)
 app.config['JWT_SECRET_KEY'] = cfg.JWT_SECRET_KEY
 jwt = JWTManager(app) #initialise JWT 
 
-n_gmmcomponents=5
-discard_mfcc0=True #choose to discard first cepstral coefficient 
+N_GMMCOMPONENTS=5
+DISCARD_MFCC0=True #choose to discard first cepstral coefficient 
+TRAINLOGSIZE=60 #the maximum number of digits held in the training log (circular log)
 
 parser = reqparse.RequestParser()
 parser.add_argument('mfcc', type=list, location='json')
@@ -33,7 +34,7 @@ parser.add_argument('alias')
 class ApiInfo(Resource):
     def get(self):
         return {'version': '0.1',
-                'usage': '/doc /user /login /status /train /test /score /delete'
+                'usage': '/doc /user /login /status /train /benchmark /score /delete'
                 }
 
 # 'Login user' and return JWT
@@ -68,7 +69,7 @@ class Register(Resource):
         return {'error': 'Already exists'}, 403
 
 
-# Status: Deletes trainLog store & GMM pickle & resets stats. 
+# Delete: Deletes trainLog store & GMM pickle & resets stats. 
 class Delete(Resource):
     @jwt_required        
     def get(self):
@@ -81,12 +82,12 @@ class Delete(Resource):
         }
         return reply, 200
 
-# Status: Returns length of test and train store. 
+# Status: Returns training status
 class Status(Resource):
     @jwt_required        
     def get(self):
         JWT_userId = get_jwt_identity()
-        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0,'trainDataLength':1,'testDataLength':1, 'trainProgress':1 })
+        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0,'trainDataLength':1,'testDataLength':1, 'trainProgress':1 , 'trainLog':1, 'resultReference': 1,'scoreThreshold': 1 })
         if db_result != None: 
             if 'trainDataLength' in db_result:
                 train_len=db_result['trainDataLength']
@@ -100,10 +101,29 @@ class Status(Resource):
                 train_prog=db_result['trainProgress']
             else:
                 train_prog = 0
+            if 'scoreThreshold' in  db_result:
+                scoreThreshold=db_result['scoreThreshold'] 
+            else: 
+                scoreThreshold=0
+            if 'resultReference' in  db_result:
+                resultReference=db_result['resultReference'] 
+            else: 
+                resultReference=0
+            api_log_list = []
+            if 'trainLog' in db_result:
+                #build summary trainlog returned in api 
+                api_log_entry = {}
+                for log_entry in db_result['trainLog']:
+                    api_log_entry['datetime'] = str(datetime.datetime.fromtimestamp(log_entry['timestamp']).isoformat())
+                    api_log_entry['digit']= log_entry['data']['digit']
+                    api_log_list.append(api_log_entry.copy())
             reply = {
             'train_data_length' : train_len,
             'test_data_length' : test_len,
             'training_progress' : train_prog,
+            'training_log' : api_log_list,      
+            'score_threshold': scoreThreshold, 
+            'result_reference' : resultReference
             }
             return reply, 200
         else:
@@ -127,91 +147,143 @@ class Train(Resource):
         if db_result == None: 
             return {'error': 'this is unexpected, can not find user data'}, 500
 
+
         #log request to trainLog
-        trainLog = { 'timestamp': time(), 'session':JWT_token['jti'], 'data': request.json }
-        userData.update_one({'userId':JWT_userId},{'$push': {'trainLog': trainLog}})
+        train_log_item = { 'timestamp': time(), 'session':JWT_token['jti'], 'data': request.json }
+        userData.update_one({'userId':JWT_userId},{'$push': {'trainLog': train_log_item}})
 
         #retrieve full trainLog
         db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0, "trainLog": 1})
+        train_log = db_result['trainLog']
 
-        #The trainLog contains a store of all training 'feature vectors'along with a 'label' of the digit spoken. 
-        #The GMM model is to be re-built using the trainLog store split 50/50 for 'test data'/'train data'. 
-
-        
-        #Build list of mfcc arrays per spoken digit(0-9) from trainLog 
-        digit_mfcc_list = [[],[],[],[],[],[],[],[],[],[]]
-        for log_entry in db_result['trainLog']:
-            digit_mfcc_list[log_entry['data']['digit']].append(log_entry['data']['mfcc'])
-
-        #Split odd/even indices for 'train data'/'test data' (per digit)
-        train_mfcc_list = []
-        test_mfcc_list =  []
-        for digit_mfcc in digit_mfcc_list: 
-            for idx, specific_digit in enumerate(digit_mfcc):
-                if idx % 2:
-                    #even - train 
-                    if len(test_mfcc_list):
-                        test_mfcc_list=np.append(test_mfcc_list,specific_digit,axis=0) 
-                    else:
-                        test_mfcc_list=np.array(specific_digit)
-                else:
-                    #odd - test
-                    if len(train_mfcc_list):
-                        train_mfcc_list=np.append(train_mfcc_list,specific_digit,axis=0) 
-                    else:
-                        train_mfcc_list=np.array(specific_digit)
+        #trim if log too big 
+        if len(train_log) > TRAINLOGSIZE:
+            print(len(train_log))
+            
+        feature_data =  extract_features(train_log) 
 
         #calculate training progress 
-        api_training_progress = int(100*len(db_result['trainLog'])/60)  #expect 60 digits to be recorded. 
+        api_training_progress = int(100*len(train_log)/40)  #expect 40 digits to be recorded. 
 
         #build summary trainlog returned in api 
         api_log_list = []
         api_log_entry = {}
-        for log_entry in db_result['trainLog']:
+        for log_entry in train_log:
             api_log_entry['datetime'] = str(datetime.datetime.fromtimestamp(log_entry['timestamp']).isoformat())
             api_log_entry['digit']= log_entry['data']['digit']
             api_log_list.append(api_log_entry.copy())
 
-        if (discard_mfcc0):
-            if len(train_mfcc_list):
-                train_mfcc_list = np.delete(train_mfcc_list, 0, axis=1) #delete the 1st mfcc coeffecient 
-            if len(test_mfcc_list):
-                test_mfcc_list = np.delete(test_mfcc_list, 0, axis=1) #delete the 1st mfcc coeffecient 
-
         # create model
-        gmm = mixture.GaussianMixture(n_gmmcomponents, covariance_type='full')
+        gmm = mixture.GaussianMixture(N_GMMCOMPONENTS, covariance_type='full')
 
         # TODO/check 
         #prune mfcc file if too large         
         #fit (warm start may help)
 
         tTime=time()
-        gmm.fit(train_mfcc_list)
+        gmm.fit(feature_data['train_data'])
         tTime=time()-tTime
 
         #score 
-        if len(test_mfcc_list):
-            testResult = gmm.score_samples(test_mfcc_list)
+        if len(feature_data['test_data']):
+            testResult = gmm.score_samples(feature_data['test_data'])
             scoreThreshold=np.average(testResult)-np.std(testResult)
             resultReference=round(100*len(testResult[testResult>scoreThreshold])/len(testResult)) # % of matched frames in test data set
         else:
             scoreThreshold=0
             resultReference=0
             
-
         #Update db - gmm pickle / cache stats 
-        userData.update_one({'userId':JWT_userId},{'$set': {'gmmPickleStore': Binary(pickle.dumps(gmm)), 'resultReference': resultReference,'scoreThreshold': scoreThreshold,'trainDataLength': len(train_mfcc_list), 'testDataLength': len(test_mfcc_list), 'trainProgress': api_training_progress}})
+        userData.update_one({'userId':JWT_userId},{'$set': {'gmmPickleStore': Binary(pickle.dumps(gmm)), 'resultReference': resultReference,'scoreThreshold': scoreThreshold,'trainDataLength': len(feature_data['train_data']), 'testDataLength': len(feature_data['test_data']), 'trainProgress': api_training_progress}})
 
         reply = {
         'training_progress' : api_training_progress,
-        'train_data_length' : len(train_mfcc_list),
-        'test_data_length' : len(test_mfcc_list),
+        'train_data_length' : len(feature_data['train_data']),
+        'test_data_length' : len(feature_data['test_data']),
         'training_time' : tTime,
         'training_log' : api_log_list,
         'score_threshold': scoreThreshold, 
         'result_reference' : resultReference
         }
         return reply, 200
+
+class Benchmark(Resource):
+    @jwt_required        
+    def get(self):
+        JWT_userId = get_jwt_identity()  
+
+        #retrieve full trainLog
+        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0, "trainLog": 1, 'gmmPickleStore':1})
+        if db_result == None or 'trainLog' not in db_result: 
+            return {'error': 'this is unexpected, can not find user data'}, 500
+
+        user_train_data =  extract_features(db_result['trainLog'])['train_data'] 
+        user_gmm=pickle.loads(db_result['gmmPickleStore'])
+
+        #get other user models 
+        results = []
+        for db_result in userData.find({'userId': {'$ne': JWT_userId}},{ '_id': 0, 'gmmPickleStore':1, 'scoreThreshold': 1, 'resultReference': 1, 'alias': 1, "trainLog": 1}, limit=10): 
+            result={}            
+            result["alias"]=db_result['alias']
+            if 'gmmPickleStore' in db_result: #score user train data against alias model 
+                alias_gmm=pickle.loads(db_result['gmmPickleStore'])
+                score_array= alias_gmm.score_samples(user_train_data)
+                result["result_alias_model"]=round(100*len(score_array[score_array>db_result['scoreThreshold']])/len(score_array))
+            else: 
+                result["result_alias_model"]=0
+            if 'trainLog' in db_result:
+                alias_train_data =  extract_features(db_result['trainLog'])['train_data']
+                score_array= user_gmm.score_samples(alias_train_data)
+                result["result_user_model"]=round(100*len(score_array[score_array>db_result['scoreThreshold']])/len(score_array))
+            else:
+                result["result_user_model"]=0
+            results.append(result)
+        reply = {
+        'results' : results,
+        }
+        return reply, 200
+
+class IntrusionTest(Resource):
+    @jwt_required        
+    def get(self):
+        JWT_userId = get_jwt_identity()  
+
+        #retrieve full trainLog
+        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0, "trainLog": 1, 'gmmPickleStore':1, 'alias': 1, 'scoreThreshold': 1})
+        if db_result == None or 'trainLog' not in db_result: 
+            return {'error': 'this is unexpected, can not find user data'}, 500
+
+        user_gmm=pickle.loads(db_result['gmmPickleStore'])
+
+        results = []
+        #First result is reference result (for own model)
+        result={}            
+        result["alias"]=db_result['alias']+"(reference)"
+        test_data =  extract_features(db_result['trainLog'])['test_data']
+        score_array= user_gmm.score_samples(test_data)
+        user_score_threshold=db_result['scoreThreshold']
+        result["test_data_length"]=len(score_array)
+        result["result"]=round(100*len(score_array[score_array>db_result['scoreThreshold']])/len(score_array))
+        results.append(result)
+        #get other user models 
+        for db_result in userData.find({'userId': {'$ne': JWT_userId}},{ '_id': 0, 'alias': 1, "trainLog": 1}, limit=10): 
+            result={}            
+            result["alias"]=db_result['alias']
+            if 'trainLog' in db_result:
+                test_data =  extract_features(db_result['trainLog'])['test_data']
+                score_array= user_gmm.score_samples(test_data)
+                result["test_data_length"]=len(score_array)                
+                result["result"]=round(100*len(score_array[score_array>user_score_threshold])/len(score_array))
+            else:
+                result["result"]=0
+                result["test_data_length"]=0
+            results.append(result)
+        reply = {
+        'results' : results,
+        }
+        return reply, 200
+
+
 
 
 class Score(Resource):
@@ -229,7 +301,7 @@ class Score(Resource):
         if db_result == None: 
             return {'error': 'this is unexpected, can not find user data'}, 500
 
-        if (discard_mfcc0):
+        if (DISCARD_MFCC0):
             mfcc = np.delete(mfcc, 0, axis=1) #delete the 1st mfcc coeffecient 
 
         #log 
@@ -266,6 +338,42 @@ class Score(Resource):
         else:
             return {'error': 'this is unexpected, can not find user data'}, 500
 
+def extract_features(trainLog):
+    #The trainLog contains a store of all training 'feature vectors' along with a 'label' of the digit spoken. 
+    #The GMM model is to be re-built using the trainLog store split 50/50 for 'test data'/'train data'. 
+        
+    #Build list of mfcc arrays per spoken digit(0-9) from trainLog 
+    digit_mfcc_list = [[],[],[],[],[],[],[],[],[],[]]
+    for log_entry in trainLog:
+        digit_mfcc_list[log_entry['data']['digit']].append(log_entry['data']['mfcc'])
+
+    #Split odd/even indices for 'train data'/'test data' (per digit)
+    train_mfcc_list = []
+    test_mfcc_list =  []
+    for digit_mfcc in digit_mfcc_list: 
+        for idx, specific_digit in enumerate(digit_mfcc):
+            if idx % 2:
+                #even - train 
+                if len(test_mfcc_list):
+                    test_mfcc_list=np.append(test_mfcc_list,specific_digit,axis=0) 
+                else:
+                    test_mfcc_list=np.array(specific_digit)
+            else:
+                #odd - test
+                if len(train_mfcc_list):
+                    train_mfcc_list=np.append(train_mfcc_list,specific_digit,axis=0) 
+                else:
+                    train_mfcc_list=np.array(specific_digit)
+
+    if (DISCARD_MFCC0):
+        if len(train_mfcc_list):
+            train_mfcc_list = np.delete(train_mfcc_list, 0, axis=1) #delete the 1st mfcc coeffecient 
+        if len(test_mfcc_list):
+            test_mfcc_list = np.delete(test_mfcc_list, 0, axis=1) #delete the 1st mfcc coeffecient 
+
+    return { 'train_data': train_mfcc_list, 'test_data': test_mfcc_list}
+
+
 #serve static html templates
 @app.route('/') 
 def index():
@@ -279,6 +387,8 @@ api.add_resource(ApiInfo, '/doc')
 api.add_resource(Status, '/status')
 api.add_resource(Delete, '/delete')
 api.add_resource(Train, '/train')
+api.add_resource(Benchmark, '/benchmark')
+api.add_resource(IntrusionTest, '/intrusionTest')
 api.add_resource(Score, '/score')
 api.add_resource(Login, '/session')
 api.add_resource(Register, '/user')

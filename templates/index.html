@@ -7,7 +7,7 @@
   <script src="https://cdn.jsdelivr.net/npm/meyda@5.0.1/dist/web/meyda.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
     integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
@@ -15,19 +15,15 @@
 <div class="container pt-3">
 
   <div class="jumbotron p-4">
-    <button id="signOut" type="button" class="ml-2 mb-1 close"><i class="fa fa-sign-out-alt"
-        aria-hidden="true"></i></button>
+    <button data-toggle="tooltip" title="Sign yourself out" id="signOut" type="button" class="ml-2 mb-1 close"><i
+        class="fa fa-sign-out-alt" aria-hidden="true"></i></button>
     <h2>Speaker Verification API demo</h2>
     <p>This is a demonstration of <i>speaker verification</i> (aka <i>speaker authentication</i>) using a REST API.</p>
-  </div>
-  <div id="activate" style="display: block;" class="container mb-3"> <b>For the demo you'll need to click this -> </b>
-    <button type="button" id="activateApi" class="btn btn-primary">Activate Mic. <i class="fa fa-microphone"
-        aria-hidden="true"></i> </button>
   </div>
 
   <div id="alertContainer"></div>
 
-  <div id="main" style="display: none;" class="container mb-3">
+  <div id="main" style="display: block;" class="container mb-3">
 
 
     <!-- Nav tabs -->
@@ -38,13 +34,18 @@
       <li class="nav-item">
         <a id="scoreTab" class="nav-link" data-toggle="tab" href="#score">Score</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#benchmark">Benchmark</a>
-      </li>
     </ul>
     <div class="container mt-3 text-center">
-      <h3><span id="htmlDigitProgress"></span></h3>
-      <p><button type="button" id="start" class="btn btn-success btn-sm">Click here to start recording</button></p>
+      <h3><span style="display: none;" id="htmlDigitProgress"></span></h3>
+      <div id="startButton" style="display: none;"><button type="button" id="start"
+          class="btn btn-success btn text-capitalize" data-toggle="tooltip"
+          title="Click this when you're ready to speak to the Speaker Verification API."><i class="fa fa-microphone"
+            aria-hidden="true"></i>Start</button>
+      </div>
+      <div id="activateButton" style="display: block;"><button type="button" id="activateApi"
+          class="btn btn-danger text-capitalize" data-toggle="tooltip"
+          title="Activates your browsers Web Audio API so microphone can be used. Go ahead and click it!"><i
+            class="fa fa-microphone" aria-hidden="true"></i> Activate Mic. </button></div>
     </div>
     <!-- Tab panes -->
     <div class="tab-content p-2">
@@ -52,36 +53,71 @@
         <div id="trainPanel" class="card mb-3" style="display: block;">
           <div class="card-body">
             <button data-toggle="modal" data-target="#resetModal" type="button" class="ml-2 mb-1 close"><i
-              class="fa fa-power-off" aria-hidden="true"></i></button>
-            <h5 class="card-title">Training information</h5>
+                class="fa fa-power-off" aria-hidden="true" data-toggle="tooltip" title="Deletes your trained model (start again from scratch)"></i></button>
+            <h5 class="card-title  text-secondary">Training Progress</h5>
             <p class="card-text">
-              Model (train data set) size: <span id="htmlTrainSize">-</span><br>
-              Test data set size: <span id="htmlTestSize">-</span><br>              
-              Digit train time: <span id="htmlTrainTime">-</span><br>              
-              Score 'match' threshold: <span id="htmlTestThreshold">-</span><br>
-              Reference result : <span id="htmlTestResultRef">-</span>
             <div class="progress">
               <div id="htmlTrainProgress" class="progress-bar" style="width:0%">0%</div>
+            </div><br>
+
+            <table class="table table-borderless">
+              <thead>
+                <tr class="border-bottom">
+                  <th scope="col" data-toggle="tooltip" title="Latest time it took to train the model. Every time you add a new digit the model is retrained with complete training set">Last train time</th>
+                  <th scope="col" data-toggle="tooltip" title="The number of 'feature vector' frames in the test and train data sets">Data Size (train/test)</th>
+                  <th scope="col" data-toggle="tooltip" title="The value threshold which decides a 'feature vector' frame is a 'match', determined by training data (closer to zero is better)">Match threshold</th>
+                  <th scope="col" data-toggle="tooltip" title="The percentage of matched vectors in the test set. Used as a reference for verification.">Ref. result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span id="htmlTrainTime">-</span></td>
+                  <td><span id="htmlTrainSize">-</span>/<span id="htmlTestSize">-</span></td>
+                  <td><span id="htmlTestThreshold">-</span></td>
+                  <td><span id="htmlTestResultRef">-</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="height:150px; overflow-y: scroll;" class="card card-body mb-3">
+              <span id="htmlTrainLog">Training Log:</span>
             </div>
+            <p>
+              <button type="button" id="intrusionTest" class="btn btn-success btn-sm" data-toggle="tooltip"
+                title="Click this to score other users test data against your own trained model">Intrusion Test</button>
             </p>
+            <p id="htmlIntrusionTest"></p>
+
           </div>
         </div>
-        <p> <b>Training Mode</b> builds the remote speaker verification model.
-          Every time you record new digits it expands the model, ie. the more training, the better the model should
+        <p> <b>Training Mode</b> builds the remote speaker verification model and test data set.
+          Every time you record new digits it expands the model or the test data set (alternates). Generally the more training, the better the model should
           perform.
           It's best to train over time to allow for variance (Your voice may sound 'fresh' in daytime, but 'tired' in
-          the evenings for example)
+          the evenings for example). The 'test data set' is used to benchmark your models performance.
         </p>
 
       </div>
       <div class="tab-pane container fade" id="score">
         <div id="scorePanel" class="card mb-3" style="display: block;">
           <div class="card-body">
-            <h5 class="card-title">Scoring information</h5>
+            <h5 class="card-title text-secondary">Scoring information</h5>
             <p class="card-text">
-              Frames matched/sent: <span id="htmlScoreMatches">0</span>/<span id="htmlScoreFrames">0</span><br>
-              Result: <b id="htmlScoreResult">-</b><br>
-              Test reference result: <span id="htmlScoreResultRef">-</span>
+            <table class="table table-borderless">
+              <thead>
+                <tr class="border-bottom">
+                  <th scope="col">Frames (matched/sent)</th>
+                  <th scope="col">Result</th>
+                  <th scope="col">Ref. result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span id="htmlScoreMatches">0</span>/<span id="htmlScoreFrames">0</span></td>
+                  <td><b id="htmlScoreResult">-</b></td>
+                  <td><span id="htmlScoreResultRef">-</span></td>
+                </tr>
+              </tbody>
+            </table>
             </p>
           </div>
         </div>
@@ -131,7 +167,7 @@
           This will put you back to square one. It will clear all the stored training.. Are you happy with that ?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel Delete</button>
           <button id="reset" type="button" class="btn btn-primary" data-dismiss="modal"> Yes, Delete Everything</button>
         </div>
       </div>
@@ -168,7 +204,7 @@
   var message = {}
   message.mfcc = []
   message.energy = []
-  
+
   var source
   var stream
   var mode = 'train'
@@ -187,16 +223,25 @@
   var htmlScoreMatches = 0 //html score panel -'matched' frames counter
   var htmlScoreResult = 0 //html score panel - result %
 
+
+
+  $(function () { //activate bootstrap tooltips 
+    $('[data-toggle="tooltip"]').tooltip({ delay: 400 })
+
+  })
+
   window.onload = function () {
     console.log("Load with session: " + sessionStorage.token)
     if (sessionStorage.getItem("token") === null) { //session JWT required
       console.log("re-direct to session login")
       window.location.href = "/login"
     }
-    
-    document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
+
+    document.querySelector('#start').innerHTML = '<i class="fa fa-microphone" aria-hidden="true"></i> ' + mode
     apiCall('status', '')
+    showProgressDigits(false)
   }
+
 
   document.querySelector('#activateApi').addEventListener('click', function () {
     // Setup all nodes
@@ -206,9 +251,9 @@
       console.log('getUserMedia supported.');
       navigator.mediaDevices.getUserMedia({ audio: true, video: false })
         .then(function (stream) {
-          document.querySelector('#activate').style.display = 'none'
-          document.querySelector('#main').style.display = 'block'
-          showProgressDigits(false)
+          document.querySelector('#startButton').style.display = 'block'
+          document.querySelector('#htmlDigitProgress').style.display = 'block'
+          document.querySelector('#activateApi').style.display = 'none'
           source = audioContext.createMediaStreamSource(stream);
           console.log("connected to mic")
           analyzer = Meyda.createMeydaAnalyzer({
@@ -268,16 +313,18 @@
     mode = event.target.hash.slice(1) //change mode based on tab selected 
     console.log("current mode: " + mode)
     digitSet = (mode == 'score') ? scoreDigitSet : trainDigitSet
-    document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
-    stopRecording() //always turn off analyser if tab is switched. 
+    document.querySelector('#start').innerHTML = '<i class="fa fa-microphone" aria-hidden="true"></i> ' + mode
+    if(source != null)
+      stopRecording() //always turn off analyser if tab is switched. 
     showProgressDigits(false)
+    
   });
 
   function stopRecording() {
     recording = false //mark recording off 
     sayDigit = 0 //reset to beginning of digit array 
     document.querySelector('#start').disabled = false
-    document.querySelector('#start').innerHTML = "Click here to start in " + mode + " mode"
+    document.querySelector('#start').innerHTML = '<i class="fa fa-microphone" aria-hidden="true"></i> ' + mode
     document.querySelector('#start').classList.remove('btn-outline-dark')
     document.querySelector('#start').classList.add('btn-success')
     console.log("Stopping analyser")
@@ -290,12 +337,20 @@
     apiCall('status', '')
   });
 
+  document.querySelector('#intrusionTest').addEventListener('click', function () {
+    console.log("clicked IntrusionTest")
+    document.getElementById("htmlIntrusionTest").innerHTML = '<div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div>'
+    apiCall('intrusionTest', '')
+  });
+
+
   document.querySelector('#signOut').addEventListener('click', signOut)
 
   document.querySelector('#start').addEventListener('click', function () {
     console.log("clicked start")
+    $('[data-toggle="tooltip"]').tooltip('hide')
     document.querySelector('#start').disabled = true
-    document.querySelector('#start').innerHTML = "Say the yellow digit out loud"
+    document.querySelector('#start').innerHTML = '<i class="fa fa-microphone" aria-hidden="true"></i> Say the yellow digit out loud'
     document.querySelector('#start').classList.remove('btn-success')
     document.querySelector('#start').classList.add('btn-outline-dark')
     recording = true
@@ -373,9 +428,8 @@
               document.getElementById("htmlTrainProgress").innerHTML = 0
               document.getElementById("htmlTrainProgress").style.width = 0
               document.getElementById("htmlTrainTime").innerHTML = "-"
+              document.getElementById("htmlTrainLog").innerHTML = "Training Log:"
               document.getElementById("htmlTestSize").innerHTML = 0
-              document.getElementById("htmlTestProgress").innerHTML = 0
-              document.getElementById("htmlTestProgress").style.width = 0
               document.getElementById("htmlTestThreshold").innerHTML = "-"
               document.getElementById("htmlTestResultRef").innerHTML = "-"
               document.getElementById("htmlScoreFrames").innerHTML = 0
@@ -391,6 +445,32 @@
             }
           })
         break
+      case 'intrusionTest':
+        fetch(apiURL + command, {
+          headers: apiHeader,
+          method: 'GET',
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.hasOwnProperty("results")) {
+              console.log(data.results)
+              htmlResultsTable = '<table class="table"><thead><tr><th scope="col">Intruder</th><th scope="col">Result</th><th scope="col">Data Size</th></tr></thead><tbody>'
+              data.results.forEach(function (i) {
+                htmlResultsTable += '<tr><td>' + i.alias + '</td><td>' + i.result + '%</td><td>' + i.test_data_length + '</td></tr>'
+              })
+              htmlResultsTable += '</tbody></table>'
+              document.getElementById("htmlIntrusionTest").innerHTML = htmlResultsTable
+
+            } else {
+              console.log("unexpected API response") //probably JWT timeout
+              console.log(data)
+              signOut()
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+        break
       case 'status':
         fetch(apiURL + command, {
           headers: apiHeader,
@@ -404,11 +484,22 @@
               document.getElementById("htmlTrainProgress").innerHTML = progress
               document.getElementById("htmlTrainProgress").style.width = progress
               document.getElementById("htmlTestSize").innerHTML = data.test_data_length
-              if(data.training_progress < 100)
-                document.querySelector('#scoreTab').classList.add('disabled')
-              else 
-                document.querySelector('#scoreTab').classList.remove('disabled')
+              document.getElementById("htmlTestThreshold").innerHTML = data.score_threshold.toFixed(2)
+              document.getElementById("htmlTestResultRef").innerHTML = data.result_reference + "%"
+              document.getElementById("htmlScoreResultRef").innerHTML = data.result_reference + "%"
+              document.getElementById("htmlTrainLog").innerHTML = "Training Log:<br>"
+              data.training_log.forEach(function (i) {
+                document.getElementById("htmlTrainLog").insertAdjacentHTML('beforeend', '&nbsp;' + i.datetime.split("T")[0] + ' ' + i.datetime.split("T")[1].split(".")[0] + ', Digit:' + i.digit + '<br>')
+              })
 
+              if (data.training_progress < 100) {
+                document.querySelector('#scoreTab').classList.add('disabled')
+                document.querySelector('#intrusionTest').style.display = 'none'
+              }
+              else {
+                document.querySelector('#scoreTab').classList.remove('disabled')
+                document.querySelector('#intrusionTest').style.display = 'block'
+              }
             } else {
               console.log("unexpected API response") //probably JWT timeout
               console.log(data)
@@ -435,12 +526,24 @@
             progress = (data.training_progress < 100) ? data.training_progress + "%" : 100 + "%"
             document.getElementById("htmlTrainProgress").innerHTML = progress
             document.getElementById("htmlTrainProgress").style.width = progress
+            document.getElementById("htmlTrainLog").innerHTML = "Training Log:<br>"
+            data.training_log.forEach(function (i) {
+              document.getElementById("htmlTrainLog").insertAdjacentHTML('beforeend', '&nbsp;' + i.datetime.split("T")[0] + ' ' + i.datetime.split("T")[1].split(".")[0] + ', Digit:' + i.digit + '<br>')
+            })
             document.getElementById("htmlTestThreshold").innerHTML = data.score_threshold.toFixed(2)
             document.getElementById("htmlTestResultRef").innerHTML = data.result_reference + "%"
-            if(data.training_progress < 100)
-              document.querySelector('#scoreTab').classList.add('disabled')
-            else 
+            document.getElementById("htmlScoreResultRef").innerHTML = data.result_reference + "%"
+            if (data.training_progress < 100)
+              {
+                document.querySelector('#scoreTab').classList.add('disabled')
+                document.querySelector('#intrusionTest').style.display = 'none'
+              }
+            else
+              {
               document.querySelector('#scoreTab').classList.remove('disabled')
+              document.querySelector('#intrusionTest').style.display = 'block'
+              }
+
             console.log(data)
           })
         break
@@ -459,7 +562,6 @@
             document.getElementById("htmlScoreFrames").innerHTML = htmlScoreFrames
             document.getElementById("htmlScoreMatches").innerHTML = htmlScoreMatches
             document.getElementById("htmlScoreResult").innerHTML = (htmlScoreFrames > 0) ? ((htmlScoreMatches / htmlScoreFrames) * 100).toFixed(2) + "%" : "No training/testing performed"
-            document.getElementById("htmlScoreResultRef").innerHTML = data.result_reference + "%"
             console.log(data)
           })
         break
