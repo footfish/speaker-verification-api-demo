@@ -23,6 +23,8 @@ jwt = JWTManager(app) #initialise JWT
 N_GMMCOMPONENTS=5
 DISCARD_MFCC0=True #choose to discard first cepstral coefficient 
 TRAINLOGSIZE=60 #the maximum number of digits held in the training log (circular log)
+SCORELOGSIZE=60 #the maximum number of digits held in the scoring log (circular log)
+TRAINEDSIZE=40 #the number of digits in the training log considered 100% trained 
 
 parser = reqparse.RequestParser()
 parser.add_argument('mfcc', type=list, location='json')
@@ -76,6 +78,7 @@ class Delete(Resource):
         JWT_userId = get_jwt_identity()
         userData.update_one({'userId':JWT_userId},{'$unset': {'gmmPickleStore': ""}})
         userData.update_one({'userId':JWT_userId},{'$unset': {'trainLog': ""}})
+        userData.update_one({'userId':JWT_userId},{'$unset': {'scoreLog': ""}})
         userData.update_one({'userId':JWT_userId},{'$set': {'trainDataLength': 0, 'testDataLength': 0, 'trainProgress': 0}})
         reply = {
         'deleted' : True,    
@@ -87,7 +90,7 @@ class Status(Resource):
     @jwt_required        
     def get(self):
         JWT_userId = get_jwt_identity()
-        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0,'trainDataLength':1,'testDataLength':1, 'trainProgress':1 , 'trainLog':1, 'resultReference': 1,'scoreThreshold': 1 })
+        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0,'trainDataLength':1,'testDataLength':1, 'trainProgress':1 , 'trainLog':1, 'scoreLog':1, 'resultReference': 1,'scoreThreshold': 1 })
         if db_result != None: 
             if 'trainDataLength' in db_result:
                 train_len=db_result['trainDataLength']
@@ -109,19 +112,29 @@ class Status(Resource):
                 resultReference=db_result['resultReference'] 
             else: 
                 resultReference=0
-            api_log_list = []
+            train_log_summary = []
             if 'trainLog' in db_result:
                 #build summary trainlog returned in api 
-                api_log_entry = {}
+                train_log_summary_item = {}
                 for log_entry in db_result['trainLog']:
-                    api_log_entry['datetime'] = str(datetime.datetime.fromtimestamp(log_entry['timestamp']).isoformat())
-                    api_log_entry['digit']= log_entry['data']['digit']
-                    api_log_list.append(api_log_entry.copy())
+                    train_log_summary_item['datetime'] = str(datetime.datetime.fromtimestamp(log_entry['timestamp']).isoformat())
+                    train_log_summary_item['digit']= log_entry['data']['digit']
+                    train_log_summary.append(train_log_summary_item.copy())
+            score_log_summary = []
+            if 'scoreLog' in db_result:
+                #build summary scorelog returned in api 
+                score_log_summary_item = {}
+                for log_entry in db_result['scoreLog']:
+                    score_log_summary_item['datetime'] = str(datetime.datetime.fromtimestamp(log_entry['timestamp']).isoformat())
+                    score_log_summary_item['digit']= log_entry['data']['digit']
+                    score_log_summary_item['result']= log_entry['result']                    
+                    score_log_summary.append(score_log_summary_item.copy())
             reply = {
             'train_data_length' : train_len,
             'test_data_length' : test_len,
             'training_progress' : train_prog,
-            'training_log' : api_log_list,      
+            'training_log' : train_log_summary[::-1],      
+            'scoring_log' : score_log_summary[::-1],                  
             'score_threshold': scoreThreshold, 
             'result_reference' : resultReference
             }
@@ -138,40 +151,38 @@ class Train(Resource):
         JWT_token = get_raw_jwt()
         #read mfcc features from resource
         args = parser.parse_args()
-        mfcc = np.array(args['mfcc'])     
+        #mfcc = np.array(args['mfcc'])     
         #basic sanity check 
         if len(args['mfcc']) < 1 or len(args['energy']) < 1 or len(args['mfcc']) != len(args['energy']): 
             return {'error': 'data malformed - check the API specification'}, 400
 
-        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 1})
+        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 1, "trainLog": 1})
         if db_result == None: 
             return {'error': 'this is unexpected, can not find user data'}, 500
 
-
-        #log request to trainLog
+        #get trainLog and add new data 
+        if 'trainLog' in db_result:
+            train_log = db_result['trainLog']
+        else:
+            train_log=[]        
         train_log_item = { 'timestamp': time(), 'session':JWT_token['jti'], 'data': request.json }
-        userData.update_one({'userId':JWT_userId},{'$push': {'trainLog': train_log_item}})
-
-        #retrieve full trainLog
-        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0, "trainLog": 1})
-        train_log = db_result['trainLog']
-
+        train_log.append(train_log_item.copy())
         #trim if log too big 
         if len(train_log) > TRAINLOGSIZE:
-            print(len(train_log))
+            train_log.pop(0)
             
         feature_data =  extract_features(train_log) 
 
         #calculate training progress 
-        api_training_progress = int(100*len(train_log)/40)  #expect 40 digits to be recorded. 
+        api_training_progress = int(100*len(train_log)/TRAINEDSIZE)  #fully traind when TRAINEDSIZE digits recorded. 
 
         #build summary trainlog returned in api 
-        api_log_list = []
-        api_log_entry = {}
+        train_log_summary = []
+        train_log_summary_item = {}
         for log_entry in train_log:
-            api_log_entry['datetime'] = str(datetime.datetime.fromtimestamp(log_entry['timestamp']).isoformat())
-            api_log_entry['digit']= log_entry['data']['digit']
-            api_log_list.append(api_log_entry.copy())
+            train_log_summary_item['datetime'] = str(datetime.datetime.fromtimestamp(log_entry['timestamp']).isoformat())
+            train_log_summary_item['digit']= log_entry['data']['digit']
+            train_log_summary.append(train_log_summary_item.copy())
 
         # create model
         gmm = mixture.GaussianMixture(N_GMMCOMPONENTS, covariance_type='full')
@@ -193,15 +204,15 @@ class Train(Resource):
             scoreThreshold=0
             resultReference=0
             
-        #Update db - gmm pickle / cache stats 
-        userData.update_one({'userId':JWT_userId},{'$set': {'gmmPickleStore': Binary(pickle.dumps(gmm)), 'resultReference': resultReference,'scoreThreshold': scoreThreshold,'trainDataLength': len(feature_data['train_data']), 'testDataLength': len(feature_data['test_data']), 'trainProgress': api_training_progress}})
+        #Update db - gmm pickle / cache stats / train_log
+        userData.update_one({'userId':JWT_userId},{'$set': {'gmmPickleStore': Binary(pickle.dumps(gmm)), 'resultReference': resultReference,'scoreThreshold': scoreThreshold,'trainDataLength': len(feature_data['train_data']), 'testDataLength': len(feature_data['test_data']), 'trainProgress': api_training_progress, 'trainLog': train_log}})
 
         reply = {
         'training_progress' : api_training_progress,
         'train_data_length' : len(feature_data['train_data']),
         'test_data_length' : len(feature_data['test_data']),
         'training_time' : tTime,
-        'training_log' : api_log_list,
+        'training_log' : train_log_summary[::-1],
         'score_threshold': scoreThreshold, 
         'result_reference' : resultReference
         }
@@ -290,7 +301,7 @@ class Score(Resource):
     @jwt_required        
     def put(self):
         JWT_userId = get_jwt_identity()  
-        #JWT_token = get_raw_jwt()
+        JWT_token = get_raw_jwt()
         #read mfcc features from resource
         args = parser.parse_args()
         mfcc = np.array(args['mfcc'])        
@@ -304,17 +315,36 @@ class Score(Resource):
         if (DISCARD_MFCC0):
             mfcc = np.delete(mfcc, 0, axis=1) #delete the 1st mfcc coeffecient 
 
-        #log 
-#        scoreLog = { 'timestamp': time(), 'session':JWT_token['jti'], 'data': request.json }
-#        userData.update_one({'userId':JWT_userId},{'$push': {'scoreLog': scoreLog}})
+        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0, 'gmmPickleStore':1, 'scoreThreshold': 1, 'resultReference': 1, 'scoreLog': 1})
+        userData.update_one({'userId':JWT_userId},{'$unset': {'scoreLog': ""}})
 
-        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0, 'gmmPickleStore':1, 'scoreThreshold': 1, 'resultReference': 1})
         if db_result != None: 
+            score_log_summary = [] #summary for API reply
+
             # load GMM model
             if 'gmmPickleStore' in db_result:
                 gmm=pickle.loads(db_result['gmmPickleStore'])
-                #score 
+                #score
                 result = gmm.score_samples(mfcc)
+
+                #get scoreLog and add new data 
+                if 'scoreLog' in db_result:
+                    score_log=db_result['scoreLog']
+                else:
+                    score_log=[]
+                score_log_item = { 'timestamp': time(), 'session':JWT_token['jti'], 'data': request.json, 'result': round(100*len(result[result>db_result['scoreThreshold']])/len(result)) }
+                score_log.append(score_log_item.copy())
+                #trim if log too big 
+                if len(score_log) > SCORELOGSIZE:
+                    score_log.pop(0)
+
+                score_log_summary_item = {}
+                for log_entry in score_log:
+                    score_log_summary_item['datetime'] = str(datetime.datetime.fromtimestamp(log_entry['timestamp']).isoformat())
+                    score_log_summary_item['digit']= log_entry['data']['digit']
+                    score_log_summary_item['result']= log_entry['result']
+                    score_log_summary.append(score_log_summary_item.copy())
+
                 reply = {
                     'average': np.average(result), 
                     'deviation': np.std(result), 
@@ -322,8 +352,12 @@ class Score(Resource):
                     'max' : np.max(result),
                     'length' : len(result),
                     'score' : len(result[result>db_result['scoreThreshold']]),
+                    'scoring_log' : score_log_summary[::-1],
                     'result_reference' : db_result['resultReference'] # % of matched frames in test data set
                 }
+                #update log
+                userData.update_one({'userId':JWT_userId},{'$set': {'scoreLog': score_log}})
+
             else: #no model trained 
                 reply = {
                 'average': 0, 
@@ -332,6 +366,7 @@ class Score(Resource):
                 'max' : 0,
                 'length' : 0,
                 'score' : 0,
+                'scoring_log' : score_log_summary,
                 'result_reference' : 0,
             }
             return reply, 200

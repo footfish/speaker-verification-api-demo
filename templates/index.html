@@ -53,7 +53,8 @@
         <div id="trainPanel" class="card mb-3" style="display: block;">
           <div class="card-body">
             <button data-toggle="modal" data-target="#resetModal" type="button" class="ml-2 mb-1 close"><i
-                class="fa fa-power-off" aria-hidden="true" data-toggle="tooltip" title="Deletes your trained model (start again from scratch)"></i></button>
+                class="fa fa-power-off" aria-hidden="true" data-toggle="tooltip"
+                title="Deletes your trained model (start again from scratch)"></i></button>
             <h5 class="card-title  text-secondary">Training Progress</h5>
             <p class="card-text">
             <div class="progress">
@@ -63,10 +64,18 @@
             <table class="table table-borderless">
               <thead>
                 <tr class="border-bottom">
-                  <th scope="col" data-toggle="tooltip" title="Latest time it took to train the model. Every time you add a new digit the model is retrained with complete training set">Last train time</th>
-                  <th scope="col" data-toggle="tooltip" title="The number of 'feature vector' frames in the test and train data sets">Data Size (train/test)</th>
-                  <th scope="col" data-toggle="tooltip" title="The value threshold which decides a 'feature vector' frame is a 'match', determined by training data (closer to zero is better)">Match threshold</th>
-                  <th scope="col" data-toggle="tooltip" title="The percentage of matched vectors in the test set. Used as a reference for verification.">Ref. result</th>
+                  <th scope="col">Train Time <span data-toggle="tooltip"
+                      title="Latest time it took to train the model. Every time you add a new digit the model is retrained with the complete training set"
+                      class="badge badge-secondary">?</span> </th>
+                  <th scope="col">Data Size (train/test) <span data-toggle="tooltip"
+                      title="The number of 'feature vector' frames in the test and train data sets"
+                      class="badge badge-secondary">?</span> </th>
+                  <th scope="col">Match threshold <span data-toggle="tooltip"
+                      title="The 'score' threshold which decides a 'feature vector' frame is a 'match'. The value is estimated using test data (closer to zero is better)"
+                      class="badge badge-secondary">?</span> </th>
+                  <th scope="col">Match Ref.<span data-toggle="tooltip"
+                      title="The percentage of matched vectors in the test set. Used as a reference for verification."
+                      class="badge badge-secondary">?</span> </th>
                 </tr>
               </thead>
               <tbody>
@@ -90,7 +99,8 @@
           </div>
         </div>
         <p> <b>Training Mode</b> builds the remote speaker verification model and test data set.
-          Every time you record new digits it expands the model or the test data set (alternates). Generally the more training, the better the model should
+          Every time you record new digits it expands the model or the test data set (alternates). Generally the more
+          training, the better the model should
           perform.
           It's best to train over time to allow for variance (Your voice may sound 'fresh' in daytime, but 'tired' in
           the evenings for example). The 'test data set' is used to benchmark your models performance.
@@ -105,19 +115,28 @@
             <table class="table table-borderless">
               <thead>
                 <tr class="border-bottom">
-                  <th scope="col">Frames (matched/sent)</th>
-                  <th scope="col">Result</th>
-                  <th scope="col">Ref. result</th>
+                  <th scope="col">Frames (matched/sent)
+                    <span data-toggle="tooltip"
+                      title="The accumulated number of feature vector frames that 'matched' / and total sent"
+                      class="badge badge-secondary">?</span> 
+                  </th>
+                  <th scope="col">Match (ref <span id="htmlScoreResultRef">-</span>)
+                    <span data-toggle="tooltip"
+                      title="The aggregate percentage of frames which matched against the model. The 'ref' is determined from the test data set."
+                      class="badge badge-secondary">?</span> 
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><span id="htmlScoreMatches">0</span>/<span id="htmlScoreFrames">0</span></td>
                   <td><b id="htmlScoreResult">-</b></td>
-                  <td><span id="htmlScoreResultRef">-</span></td>
                 </tr>
               </tbody>
             </table>
+            <div style="height:150px; overflow-y: scroll;" class="card card-body mb-3">
+              <span id="htmlScoreLog">Scoring Log:</span>
+            </div>
             </p>
           </div>
         </div>
@@ -210,9 +229,9 @@
   var mode = 'train'
   var recording = false
   var sayDigit = 0  //digit index to say for training/testing 
-  const trainDigitSet = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] //digit set for training
-  const scoreDigitSet = [0, 1, 3, 4, 5, 9] //digit set for scoring
-  var digitSet = trainDigitSet //active digit set
+  const digitSet = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] //digit set (full for training, subset for scoring)
+  const scoreDigitCount = 5 //number of digits used for scoring (subset taken from digitSet)
+  var activeDigitSet = digitSet //active digit set
   const silenceWindowLength = 15 //number of frames to consider for silence. 
   const silenceEnergyLevel = 0.1 //energy level to consider silence for triggering REST call 
   const soundEnergyLevel = 1 //energy level to trigger buffering of message data  
@@ -236,7 +255,7 @@
       console.log("re-direct to session login")
       window.location.href = "/login"
     }
-
+    activeDigitSet = shuffle(activeDigitSet)
     document.querySelector('#start').innerHTML = '<i class="fa fa-microphone" aria-hidden="true"></i> ' + mode
     apiCall('status', '')
     showProgressDigits(false)
@@ -278,7 +297,7 @@
                     message.mfcc = message.mfcc.slice(0, message.mfcc.length - silenceWindowLength) //Drop trailing silence 
                     message.energy = message.energy.slice(0, message.energy.length - silenceWindowLength) //Drop trailing silence 
                     if (message.energy.length >= minRestFrames) {
-                      message.digit = digitSet[sayDigit]
+                      message.digit = activeDigitSet[sayDigit]
                       apiCall(mode, message)
                     }
                   }
@@ -312,12 +331,12 @@
   $('.nav-tabs a').on('shown.bs.tab', function (event) {
     mode = event.target.hash.slice(1) //change mode based on tab selected 
     console.log("current mode: " + mode)
-    digitSet = (mode == 'score') ? scoreDigitSet : trainDigitSet
+    activeDigitSet = (mode == 'score') ? shuffle(digitSet.slice(0,scoreDigitCount)) : shuffle(digitSet)
     document.querySelector('#start').innerHTML = '<i class="fa fa-microphone" aria-hidden="true"></i> ' + mode
-    if(source != null)
+    if (source != null)
       stopRecording() //always turn off analyser if tab is switched. 
     showProgressDigits(false)
-    
+
   });
 
   function stopRecording() {
@@ -356,7 +375,7 @@
     recording = true
     console.log("Starting analyser")
     analyzer.start();
-    sayDigit = 0 //array position to begin with in digitSet
+    sayDigit = 0 //array position to begin with in activeDigitSet
     if (mode == 'score') {
       htmlScoreFrames = 0 //reset total frame counter 
       htmlScoreMatches = 0 //reset score panel -'matched' frames counter
@@ -374,11 +393,24 @@
     window.location.href = "/login"  //and re-direct 
   }
 
+  function shuffle(array) { // Fisher–Yates shuffle
+  var m = array.length, t, i;
+
+  while (m) {
+    i = Math.floor(Math.random() * m--);
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+}
+
   //Display array of digits on screen with progress indicator overlaid 
   function showProgressDigits(waitState) {
     var elementId = document.getElementById("htmlDigitProgress")
     var digitsHTML = ""
-    digitSet.forEach((digit, n) => { //construct progress digits HTML
+    activeDigitSet.forEach((digit, n) => { //construct progress digits HTML
       digitsHTML = (n != 0) ? digitsHTML + "-" : digitsHTML
       if (n == sayDigit && recording) {
         if (waitState) { //waiting for REST response, show spinner
@@ -393,12 +425,13 @@
 
     elementId.innerHTML = digitsHTML
     if (waitState) { //waiting for REST response 
-      if (sayDigit < digitSet.length - 1) {
+      if (sayDigit < activeDigitSet.length - 1) {
         sayDigit += 1
         analyzer.stop(); //pause audio analyser while processing 
         console.log("pausing recording .. waiting ")
       } else {
         stopRecording() //All digits progressed, end the recording session
+        activeDigitSet = shuffle(activeDigitSet)
         console.log("finished recording - called stopRecording()")
       }
     } else {
@@ -436,6 +469,7 @@
               document.getElementById("htmlScoreMatches").innerHTML = 0
               document.getElementById("htmlScoreResult").innerHTML = "-"
               document.getElementById("htmlScoreResultRef").innerHTML = "-"
+              document.getElementById("htmlScoreLog").innerHTML = "Scoring Log:"
               htmlScoreFrames = 0
               htmlScoreMatches = 0
               htmlScoreResult = 0
@@ -454,7 +488,7 @@
           .then(data => {
             if (data.hasOwnProperty("results")) {
               console.log(data.results)
-              htmlResultsTable = '<table class="table"><thead><tr><th scope="col">Intruder</th><th scope="col">Result</th><th scope="col">Data Size</th></tr></thead><tbody>'
+              htmlResultsTable = '<table class="table"><thead><tr><th scope="col">Intruder</th><th scope="col">Match</th><th scope="col">Data Size</th></tr></thead><tbody>'
               data.results.forEach(function (i) {
                 htmlResultsTable += '<tr><td>' + i.alias + '</td><td>' + i.result + '%</td><td>' + i.test_data_length + '</td></tr>'
               })
@@ -491,6 +525,11 @@
               data.training_log.forEach(function (i) {
                 document.getElementById("htmlTrainLog").insertAdjacentHTML('beforeend', '&nbsp;' + i.datetime.split("T")[0] + ' ' + i.datetime.split("T")[1].split(".")[0] + ', Digit:' + i.digit + '<br>')
               })
+              document.getElementById("htmlScoreLog").innerHTML = "Scoring Log:<br>"
+              data.scoring_log.forEach(function (i) {
+                document.getElementById("htmlScoreLog").insertAdjacentHTML('beforeend', '&nbsp;' + i.datetime.split("T")[0] + ' ' + i.datetime.split("T")[1].split(".")[0] + ', Digit:' + i.digit + ', Match:' + i.result + '%<br>')
+              })
+
 
               if (data.training_progress < 100) {
                 document.querySelector('#scoreTab').classList.add('disabled')
@@ -533,16 +572,14 @@
             document.getElementById("htmlTestThreshold").innerHTML = data.score_threshold.toFixed(2)
             document.getElementById("htmlTestResultRef").innerHTML = data.result_reference + "%"
             document.getElementById("htmlScoreResultRef").innerHTML = data.result_reference + "%"
-            if (data.training_progress < 100)
-              {
-                document.querySelector('#scoreTab').classList.add('disabled')
-                document.querySelector('#intrusionTest').style.display = 'none'
-              }
-            else
-              {
+            if (data.training_progress < 100) {
+              document.querySelector('#scoreTab').classList.add('disabled')
+              document.querySelector('#intrusionTest').style.display = 'none'
+            }
+            else {
               document.querySelector('#scoreTab').classList.remove('disabled')
               document.querySelector('#intrusionTest').style.display = 'block'
-              }
+            }
 
             console.log(data)
           })
@@ -562,6 +599,10 @@
             document.getElementById("htmlScoreFrames").innerHTML = htmlScoreFrames
             document.getElementById("htmlScoreMatches").innerHTML = htmlScoreMatches
             document.getElementById("htmlScoreResult").innerHTML = (htmlScoreFrames > 0) ? ((htmlScoreMatches / htmlScoreFrames) * 100).toFixed(2) + "%" : "No training/testing performed"
+            document.getElementById("htmlScoreLog").innerHTML = "Scoring Log:<br>"
+            data.scoring_log.forEach(function (i) {
+              document.getElementById("htmlScoreLog").insertAdjacentHTML('beforeend', '&nbsp;' + i.datetime.split("T")[0] + ' ' + i.datetime.split("T")[1].split(".")[0] + ', Digit:' + i.digit + ', Result:' + i.result + '%<br>')
+            })
             console.log(data)
           })
         break
