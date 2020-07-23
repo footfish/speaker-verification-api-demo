@@ -251,10 +251,25 @@
 
   window.onload = function () {
     console.log("Load with session: " + sessionStorage.token)
+    
+
     if (sessionStorage.getItem("token") === null) { //session JWT required
       console.log("re-direct to session login")
       window.location.href = "/login"
     }
+
+    if(document.location.protocol === 'http:') {
+      document.querySelector('#alertContainer').innerHTML = `
+          <div class="alert alert-danger alert-dismissible fade show" >
+    <h4 class="alert-heading"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Warning - Session not secure!</h4>
+      <ul>
+      <li> Some browsers will not allow the mic. to work unless the session is secure.</li>
+      <li> Try <a href='https://`+document.location.host+`'>https://`+document.location.host+`</a> instead. </li>
+      </ul>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+</div>`
+    }
+
     activeDigitSet = shuffle(activeDigitSet)
     document.querySelector('#start').innerHTML = '<i class="fa fa-microphone" aria-hidden="true"></i> ' + mode
     apiCall('status', '')
