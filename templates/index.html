@@ -15,7 +15,8 @@
 <div class="container pt-3">
 
   <div class="jumbotron p-4">
-    <button data-toggle="tooltip" title="Sign yourself out" id="signOut" type="button" class="ml-2 mb-1 close"><i
+    <button data-toggle="tooltip" title="Sign yourself out" id="signOut" type="button" class="btn btn-sm btn-light float-right ml-2 mb-1">
+      <span id="htmlUser"></span> <i
         class="fa fa-sign-out-alt" aria-hidden="true"></i></button>
     <h2>Speaker Verification API demo</h2>
     <p>This is a demonstration of <i>speaker verification</i> (aka <i>speaker authentication</i>) using a REST API.</p>
@@ -528,6 +529,7 @@
           .then(response => response.json())
           .then(data => {
             if (data.hasOwnProperty("train_data_length") && data.hasOwnProperty("test_data_length")) {
+              document.getElementById("htmlUser").innerHTML = data.alias
               document.getElementById("htmlTrainSize").innerHTML = data.train_data_length
               progress = (data.training_progress < 100) ? data.training_progress + "%" : 100 + "%"
               document.getElementById("htmlTrainProgress").innerHTML = progress

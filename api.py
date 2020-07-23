@@ -90,7 +90,7 @@ class Status(Resource):
     @jwt_required        
     def get(self):
         JWT_userId = get_jwt_identity()
-        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0,'trainDataLength':1,'testDataLength':1, 'trainProgress':1 , 'trainLog':1, 'scoreLog':1, 'resultReference': 1,'scoreThreshold': 1 })
+        db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0, 'alias':1, 'trainDataLength':1,'testDataLength':1, 'trainProgress':1 , 'trainLog':1, 'scoreLog':1, 'resultReference': 1,'scoreThreshold': 1 })
         if db_result != None: 
             if 'trainDataLength' in db_result:
                 train_len=db_result['trainDataLength']
@@ -130,6 +130,7 @@ class Status(Resource):
                     score_log_summary_item['result']= log_entry['result']                    
                     score_log_summary.append(score_log_summary_item.copy())
             reply = {
+            'alias': db_result['alias'],
             'train_data_length' : train_len,
             'test_data_length' : test_len,
             'training_progress' : train_prog,
