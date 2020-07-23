@@ -91,6 +91,7 @@ class Status(Resource):
     def get(self):
         JWT_userId = get_jwt_identity()
         db_result = userData.find_one({'userId':JWT_userId},{ "_id": 0,'trainDataLength':1,'testDataLength':1, 'trainProgress':1 , 'trainLog':1, 'scoreLog':1, 'resultReference': 1,'scoreThreshold': 1 })
+        print(request.headers)
         if db_result != None: 
             if 'trainDataLength' in db_result:
                 train_len=db_result['trainDataLength']
