@@ -12,35 +12,89 @@
 </head>
 
 <div class="container pt-3">
-  
+
   <div class="jumbotron p-4">
     <h2>Speaker Verification API demo</h2>
     <p>This is a demonstration of <i>speaker verification</i> (aka <i>speaker authentication</i>) using a REST API.</p>
   </div>
 
   <div id="sessionContainer">
-    <h5 >Registered User</h5>
-    <form class="form-inline">
-      <label for="email" class="mr-sm-2">To log your sessions </label>
-      <input type="email" class="form-control mb-2 mr-sm-2" placeholder="enter username/email" id="loginUser">
+    <h5>Existing User</h5>
+    <form id="loginForm" class="form-inline" novalidate>
+      <label for="email" class="mr-sm-2">To access your session:</label>
+      <input type="email" class="form-control mb-2 mr-sm-2" placeholder="enter email address" id="loginUser" required>
       <button id="login" type="submit" class="btn btn-primary mb-2">Submit</button>
     </form>
 
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">New User</h5>
-        <p>If you're new to this, then you will need to register.</p><p>
-           Once registered the session data you create will be stored.
-            Because the collected 'speech features' are personal data, you'll need to give consent this.
+        <p>Please register to use this application. The session data you create will be stored (read 'Data usage and
+          privacy statement').
         </p>
-    <form class="form-inline">
-      <label for="email" class="mr-sm-2">To register </label>
-      <input type="email" class="form-control mb-2 mr-sm-2" placeholder="enter username/email" id="registerUser">
-      <label for="alias" class="mr-sm-2">and a </label>
-      <input type="alias" class="form-control mb-2 mr-sm-2" placeholder="public alias" id="registerAlias">
-      <button id="register" type="submit" class="btn btn-primary mb-2">Submit</button>
-    </form>
-      </div></div>
+        <form id="registerForm" novalidate>
+          <h6>User Registration Details</h6>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input type="email" class="form-control" placeholder="Email" id="registerUser" required>
+              <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+            <div class="form-group col-md-6">
+              <input type="text" class="form-control" placeholder="Public alias" id="registerAlias" minlength="5"
+                maxlength="20" required>
+              <div class="invalid-feedback">Please enter a public alias (5-20 chars).</div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-3">
+              <select class="form-control" id="registerAge" required>
+                <option selected disabled hidden value="">Age group...</option>
+                <option>16-19</option>
+                <option>20-29</option>
+                <option>30-39</option>
+                <option>40-49</option>
+                <option>50-59</option>
+                <option>60-69</option>
+                <option>70-79</option>
+                <option>80-89</option>
+                <option>90+</option>
+                <option>Prefer Not to say </option>
+              </select>
+              <div class="invalid-feedback">Please select</div>
+            </div>
+            <div class="col-sm-3">
+              <select class="form-control" id="registerGender" required>
+                <option selected disabled hidden value="">Gender...</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+                <option>Prefer Not to say </option>
+              </select>
+              <div class="invalid-feedback">Please select</div>
+            </div>
+            <div class="form-group col-md-6">
+              <input type="text" class="form-control" placeholder="Accent description (Country, region, etc)"
+                id="registerAccent" required>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label>Data usage and privacy statement:</label>
+            <textarea class="form-control disabled" id="DataPrivacy" rows="10">{{ GDPR_TEXT }}</textarea>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="dataPrivacyCheck" required>
+            <label class="form-check-label" for="dataPrivacyCheck">I have read and accept data usage and privacy
+              statement</label>
+            <div class="invalid-feedback">
+              You must agree before submitting.
+            </div>
+          </div>
+          <button id="register" type="submit" class="btn btn-primary mt-2">Register</button>
+        </form>
+      </div>
+    </div>
 
   </div>
 
@@ -70,37 +124,46 @@
 
 <script>
 
-window.onload = function () {
-  console.log(sessionStorage.token)
-  if (sessionStorage.getItem("token") !== null) { //session already 
-        window.location.href = "/"
+  window.onload = function () {
+    console.log(sessionStorage.token)
+    if (sessionStorage.getItem("token") !== null) { //session already 
+      window.location.href = "/"
     }
   }
 
   document.querySelector('#login').addEventListener('click', function (e) {
     e.preventDefault()
-    console.log("clicked login")
-    console.log(document.getElementById("loginUser").value)
-    clientInfo = { appCodeName: navigator.appCodeName, 
-                   appVersion: navigator.appVersion,
-                   platform: navigator.platform,
-                   userAgent: navigator.userAgent, 
-                   oscpu: navigator.oscpu
-                   }
-    console.log(clientInfo)
-    apiCall('session', { username: document.getElementById("loginUser").value, clientInfo: clientInfo })
+    if (document.querySelector('#loginForm').checkValidity() === false) {
+      document.querySelector('#loginForm').classList.add('was-validated');
+    } else {
+      console.log("Logging in:" + document.getElementById("loginUser").value)
+      clientInfo = {
+        appCodeName: navigator.appCodeName,
+        appVersion: navigator.appVersion,
+        platform: navigator.platform,
+        userAgent: navigator.userAgent,
+        oscpu: navigator.oscpu
+      }
+      console.log(clientInfo)
+      apiCall('session', { username: document.getElementById("loginUser").value, clientInfo: clientInfo })
+    }
   });
 
   document.querySelector('#register').addEventListener('click', function (e) {
     e.preventDefault()
-    console.log("clicked register")
-    console.log(document.getElementById("registerUser").value)
-    apiCall('user', { username: document.getElementById("registerUser").value, alias: document.getElementById("registerAlias").value })
+    console.log("Registering")
+    if (document.querySelector('#registerForm').checkValidity() === false) {
+      console.log("Oops invalid form")
+      document.querySelector('#registerForm').classList.add('was-validated');
+    } else {
+      console.log(document.getElementById("registerUser").value)
+      apiCall('user', { username: document.getElementById("registerUser").value, alias: document.getElementById("registerAlias").value })
+    }
   });
 
 
 
-function apiCall(command, message) {
+  function apiCall(command, message) {
     const apiURL = '{{ url_for('index', _external=True) }}'
 
     switch (command) {
@@ -112,11 +175,11 @@ function apiCall(command, message) {
         })
           .then(response => response.json())
           .then(data => {
-            if (data.hasOwnProperty("token")) { 
+            if (data.hasOwnProperty("token")) {
               console.log(data)
               sessionStorage.token = data.token //success - store JWT
               window.location.href = "/"        //re-direct to app 
-          } else {
+            } else {
               $("#nouserModal").modal()
             }
           })
@@ -124,7 +187,7 @@ function apiCall(command, message) {
             console.log(error)
           })
         break
-        case 'user':
+      case 'user':
         fetch(apiURL + command, {
           headers: { "Content-Type": "application/json; charset=utf-8" },
           method: 'POST',
@@ -132,11 +195,11 @@ function apiCall(command, message) {
         })
           .then(response => response.json())
           .then(data => {
-            if (data.hasOwnProperty("token")) { 
+            if (data.hasOwnProperty("token")) {
               console.log(data)
               sessionStorage.token = data.token //success - store JWT
               window.location.href = "/"        //re-direct to app 
-          } else {
+            } else {
               $("#nouserModal").modal()
             }
           })

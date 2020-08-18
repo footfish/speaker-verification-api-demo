@@ -409,6 +409,10 @@ def extract_features(trainLog):
 
     return { 'train_data': train_mfcc_list, 'test_data': test_mfcc_list}
 
+#push data to templates 
+@app.context_processor
+def inject_user():
+    return dict(GDPR_TEXT=cfg.GDPR_TEXT)
 
 #serve static html templates
 @app.route('/') 

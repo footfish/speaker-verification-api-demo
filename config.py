@@ -2,6 +2,36 @@ import os
 
 JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY")
 MONGODB_URI = os.environ.get("MONGODB_URI")
+GDPR_TEXT = '''
+Please read the data and privacy statement in full:
+-------------------------------------------------------
+This web application has been created for research purposes. You must be aged 16 or over to register and contribute. 
+By registering with this application and checking the consent boxes below you are acknowledging that all data collected and stored is contributed as open data, with the exception of user credentials (email/username). 
+
+All data collected (with the exception of user credentials) is contributed with a Creative Commons Attribution (CC-BY) Licence - https://creativecommons.org/licenses/by/4.0/legalcode 
+
+The following user data is collected and stored: 
+- 'User credential' data (email/username) * NOTE: This is private, never shared 
+- 'Speech feature vector' data. ** NOTE: This is classified as personal biometric data, as such it may possibly be used to identify you. 
+- 'Form meta' data collected during registration (alias, gender, age group, etc..)
+- 'Performance log' data collected and calculated during speech training and scoring. 
+
+Why data is collected and stored: 
+- 'User credential' data (email/username) is used to group and log your sessions only. 
+- 'Speech feature vector' data, 'Form meta' data, and 'Performance log' data is contributed as open data for research purposes.  
+
+Where data is stored: 
+  With the exception of user credentials, all other data may be archived and made publicly available and stored anywhere under the Creative Commons Attribution (CC-BY) Licence. 
+  Live application user data is stored in a MongoDB hosted in an mlab sandbox - https://www.mlab.com/
+  Mlab sandbox is utilising Amazon Web Services hosting location US East (N. Virginia)
+  mLab has implemented the necessary practices and documentation to address the requirements of GDPR
+  Full details of this can be found here https://docs.mlab.com/eu-data-protection/
+  
+How long will it will be stored for: 
+- 'User credential' data will be deleted on or before November 10, 2020.
+- Data deleted by the user in the application on or before November 10, 2020 will be permenantly deleted (ie. not contributed to a public repository).
+- 'Other' data may be stored indefinitely. 
+'''
 
 if not JWT_SECRET_KEY:
     raise ValueError("No JWT_SECRET_KEY set for application")

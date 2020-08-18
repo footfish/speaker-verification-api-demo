@@ -244,20 +244,15 @@
   var htmlScoreResult = 0 //html score panel - result %
 
 
-
-  $(function () { //activate bootstrap tooltips 
-    $('[data-toggle="tooltip"]').tooltip({ delay: 400 })
-
-  })
-
+  
   window.onload = function () {
     console.log("Load with session: " + sessionStorage.token)
-    
-
     if (sessionStorage.getItem("token") === null) { //session JWT required
       console.log("re-direct to session login")
       window.location.href = "/login"
     }
+
+    $('[data-toggle="tooltip"]').tooltip({ delay: 400 })//activate bootstrap tooltips 
 
     if(document.location.protocol === 'http:') {
       document.querySelector('#alertContainer').innerHTML = `
