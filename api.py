@@ -2,7 +2,7 @@ import config as cfg
 import numpy as np
 from flask import Flask, abort, render_template, request
 from flask_restful import reqparse,Resource, Api
-from flask_jwt_extended import create_access_token,JWTManager,jwt_required, get_jwt_identity, get_raw_jwt, get_jti
+from flask_jwt_extended import create_access_token,JWTManager,jwt_required, get_jwt_identity, get_raw_jwt, get_jti, decode_token
 import datetime
 from sklearn import mixture
 import pickle #persistance of gmm model
@@ -32,6 +32,7 @@ parser.add_argument('energy', type=list, location='json')
 parser.add_argument('username')
 parser.add_argument('alias')
 parser.add_argument('demographic')
+parser.add_argument('clientInfo')
 
 # Provide api information
 class ApiInfo(Resource):
@@ -49,6 +50,8 @@ class Login(Resource):
         print(args['username'] + ' logged in')
         expires = datetime.timedelta(days=7)
         access_token = create_access_token(identity=user['userId'], expires_delta=expires)
+        session_log_item = { 'timestamp': time(), 'session': decode_token(access_token)['jti'], 'clientInfo': args['clientInfo'] }
+        userData.update_one({'userId':user['userId']},{'$push': {'sessionLog':  session_log_item}})
         return {'token': access_token}, 200
     else:
         return {'error': 'Email invalid'}, 401
