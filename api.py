@@ -31,6 +31,7 @@ parser.add_argument('mfcc', type=list, location='json')
 parser.add_argument('energy', type=list, location='json')
 parser.add_argument('username')
 parser.add_argument('alias')
+parser.add_argument('demographic')
 
 # Provide api information
 class ApiInfo(Resource):
@@ -39,7 +40,7 @@ class ApiInfo(Resource):
                 'usage': '/doc /user /login /status /train /benchmark /score /delete'
                 }
 
-# 'Login user' and return JWT
+# ' user' and return JWT
 class Login(Resource):
   def post(self):
     args = parser.parse_args()
@@ -56,13 +57,16 @@ class Login(Resource):
 class Register(Resource):
   def post(self):
     args = parser.parse_args()
-    # TODO validate 
+    #validate 
+    if args['username'] == "":
+        return {'error': 'Email invalid'}, 401
+
 
     print(args['username'] + ' registering')
     user = userData.find_one({"email": args['username']})
 
     if user == None:
-        userData.insert_one({ "email": args['username'], "userId":hash(args['username']), "alias": args['alias'] })
+        userData.insert_one({ "email": args['username'], "userId":hash(args['username']), "alias": args['alias'], "demographic": args['demographic'] })
         print(args['username'] + ' registered')
         expires = datetime.timedelta(days=7)
         access_token = create_access_token(identity=hash(args['username']), expires_delta=expires)

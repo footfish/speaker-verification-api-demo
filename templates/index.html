@@ -51,6 +51,15 @@
     <!-- Tab panes -->
     <div class="tab-content p-2">
       <div class="tab-pane container active" id="train">
+        <div class="alert alert-secondary alert-dismissible fade show" >
+          <b>Training Mode</b> builds the remote speaker verification model and test data set.
+            Every time you record new digits it expands the model or the test data set. Generally the more
+            training, the better the model should perform.
+            It's best to train over time to allow for variance (Your voice may sound 'fresh' in daytime, but 'tired' in
+            the evenings for example). The 'test data set' is used to benchmark your models performance.
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
+
         <div id="trainPanel" class="card mb-3" style="display: block;">
           <div class="card-body">
             <button data-toggle="modal" data-target="#resetModal" type="button" class="ml-2 mb-1 close"><i
@@ -99,16 +108,15 @@
 
           </div>
         </div>
-        <p> <b>Training Mode</b> builds the remote speaker verification model and test data set.
-          Every time you record new digits it expands the model or the test data set (alternates). Generally the more
-          training, the better the model should
-          perform.
-          It's best to train over time to allow for variance (Your voice may sound 'fresh' in daytime, but 'tired' in
-          the evenings for example). The 'test data set' is used to benchmark your models performance.
-        </p>
-
       </div>
       <div class="tab-pane container fade" id="score">
+        <div class="alert alert-secondary alert-dismissible fade show" >
+          <b>Scoring Mode</b> provides an accumulated <i>verification result</i> as you speak the highlighted digits
+            above.
+            The result indicates the percentage of matched speech frames, the higher result score the better the speaker
+            matches the remote model.
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+      </div>
         <div id="scorePanel" class="card mb-3" style="display: block;">
           <div class="card-body">
             <h5 class="card-title text-secondary">Scoring information</h5>
@@ -141,10 +149,6 @@
             </p>
           </div>
         </div>
-        <p> <b>Scoring Mode</b> provides an accumulated <i>verification result</i> as you speak the highlighted digits
-          above.
-          The result indicates the percentage of matched speech frames, the higher result score the better the speaker
-          matches the remote model.</p>
       </div>
     </div>
   </div>

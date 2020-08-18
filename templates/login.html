@@ -72,10 +72,6 @@
               </select>
               <div class="invalid-feedback">Please select</div>
             </div>
-            <div class="form-group col-md-6">
-              <input type="text" class="form-control" placeholder="Accent description (Country, region, etc)"
-                id="registerAccent" required>
-            </div>
 
           </div>
           <div class="form-group">
@@ -157,7 +153,7 @@
       document.querySelector('#registerForm').classList.add('was-validated');
     } else {
       console.log(document.getElementById("registerUser").value)
-      apiCall('user', { username: document.getElementById("registerUser").value, alias: document.getElementById("registerAlias").value })
+      apiCall('user', { username: document.getElementById("registerUser").value, alias: document.getElementById("registerAlias").value, demographic: {  gender: document.getElementById("registerGender").value,  age: document.getElementById("registerAge").value } })
     }
   });
 

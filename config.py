@@ -12,13 +12,16 @@ All data collected (with the exception of user credentials) is contributed with 
 
 The following user data is collected and stored: 
 - 'User credential' data (email/username) * NOTE: This is private, never shared 
+- 'Alias' data collected during registration. 
 - 'Speech feature vector' data. ** NOTE: This is classified as personal biometric data, as such it may possibly be used to identify you. 
-- 'Form meta' data collected during registration (alias, gender, age group, etc..)
+- 'Demographic' data collected on the form during registration (gender, age group)
 - 'Performance log' data collected and calculated during speech training and scoring. 
+- 'Browser information' data collected from browser headers during session login. 
 
 Why data is collected and stored: 
 - 'User credential' data (email/username) is used to group and log your sessions only. 
-- 'Speech feature vector' data, 'Form meta' data, and 'Performance log' data is contributed as open data for research purposes.  
+- 'Alias' is data publicly shared to identify your performance logs. 
+- 'Speech feature vector', 'Demographic', 'Browser information', and 'Performance log' data is contributed as open data for research purposes.  
 
 Where data is stored: 
   With the exception of user credentials, all other data may be archived and made publicly available and stored anywhere under the Creative Commons Attribution (CC-BY) Licence. 
