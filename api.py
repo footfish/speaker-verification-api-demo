@@ -241,7 +241,7 @@ class Benchmark(Resource):
 
         #get other user models 
         results = []
-        for db_result in userData.find({'userId': {'$ne': JWT_userId}},{ '_id': 0, 'gmmPickleStore':1, 'scoreThreshold': 1, 'resultReference': 1, 'alias': 1, "trainLog": 1}, limit=10): 
+        for db_result in userData.find({'userId': {'$ne': JWT_userId}, 'trainProgress': {'$eq': 100}},{ '_id': 0, 'gmmPickleStore':1, 'scoreThreshold': 1, 'resultReference': 1, 'alias': 1, "trainLog": 1}, limit=10): 
             result={}            
             result["alias"]=db_result['alias']
             if 'gmmPickleStore' in db_result: #score user train data against alias model 
@@ -277,7 +277,7 @@ class IntrusionTest(Resource):
         results = []
         #First result is reference result (for own model)
         result={}            
-        result["alias"]=db_result['alias']+"(reference)"
+        result["alias"]=db_result['alias']+"(you!)"
         test_data =  extract_features(db_result['trainLog'])['test_data']
         score_array= user_gmm.score_samples(test_data)
         user_score_threshold=db_result['scoreThreshold']
@@ -285,7 +285,7 @@ class IntrusionTest(Resource):
         result["result"]=round(100*len(score_array[score_array>db_result['scoreThreshold']])/len(score_array))
         results.append(result)
         #get other user models 
-        for db_result in userData.find({'userId': {'$ne': JWT_userId}},{ '_id': 0, 'alias': 1, "trainLog": 1}, limit=10): 
+        for db_result in userData.find({'userId': {'$ne': JWT_userId},'trainProgress': {'$eq': 100}},{ '_id': 0, 'alias': 1, "trainLog": 1}, limit=10): 
             result={}            
             result["alias"]=db_result['alias']
             if 'trainLog' in db_result:
