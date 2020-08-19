@@ -74,7 +74,7 @@
             <table class="table table-borderless">
               <thead>
                 <tr class="border-bottom">
-                  <th scope="col">Train Time <span data-toggle="tooltip"
+                  <th scope="col">Train Time <span data-toggle="tooltip" 
                       title="Latest time it took to train the model. Every time you add a new digit the model is retrained with the complete training set"
                       class="badge badge-secondary">?</span> </th>
                   <th scope="col">Data Size (train/test) <span data-toggle="tooltip"
@@ -257,7 +257,7 @@
       window.location.href = "/login"
     }
 
-    $('[data-toggle="tooltip"]').tooltip({ delay: 400 })//activate bootstrap tooltips 
+    $('[data-toggle="tooltip"]').tooltip({ delay: 400, boundary: 'window' })//activate bootstrap tooltips 
 
     if(document.location.protocol === 'http:') {
       document.querySelector('#alertContainer').innerHTML = `
