@@ -280,7 +280,7 @@
 
   document.querySelector('#activateApi').addEventListener('click', function () {
     // Setup all nodes
-    const audioContext = new AudioContext();
+    const audioContext = new AudioContext() || new webkitAudioContext() 
     console.log("connected audio")
     if (navigator.mediaDevices) {
       console.log('getUserMedia supported.');
