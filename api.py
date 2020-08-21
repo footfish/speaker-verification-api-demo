@@ -24,14 +24,14 @@ N_GMMCOMPONENTS=5
 DISCARD_MFCC0=True #choose to discard first cepstral coefficient 
 TRAINLOGSIZE=60 #the maximum number of digits held in the training log (circular log)
 SCORELOGSIZE=60 #the maximum number of digits held in the scoring log (circular log)
-TRAINEDSIZE=40 #the number of digits in the training log considered 100% trained 
+TRAINEDSIZE=60 #the number of digits in the training log considered 100% trained 
 
 parser = reqparse.RequestParser()
 parser.add_argument('mfcc', type=list, location='json')
 parser.add_argument('energy', type=list, location='json')
 parser.add_argument('username')
 parser.add_argument('alias')
-parser.add_argument('demographic')
+parser.add_argument('demographic', type=dict, location='json')
 parser.add_argument('clientInfo')
 
 # Provide api information
