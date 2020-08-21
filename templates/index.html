@@ -280,7 +280,8 @@
 
   document.querySelector('#activateApi').addEventListener('click', function () {
     // Setup all nodes
-    const audioContext = new AudioContext() || new webkitAudioContext() 
+    var AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext() 
     console.log("connected audio")
     if (navigator.mediaDevices) {
       console.log('getUserMedia supported.');
@@ -289,10 +290,10 @@
           document.querySelector('#startButton').style.display = 'block'
           document.querySelector('#htmlDigitProgress').style.display = 'block'
           document.querySelector('#activateApi').style.display = 'none'
-          source = audioContext.createMediaStreamSource(stream);
+          source = audioCtx.createMediaStreamSource(stream);
           console.log("connected to mic")
           analyzer = Meyda.createMeydaAnalyzer({
-            "audioContext": audioContext,
+            "audioContext": audioCtx,
             "source": source,
             //"bufferSize": 256, //(frame length) default 512 
             //"sampleRate": 8000, //default 44100
