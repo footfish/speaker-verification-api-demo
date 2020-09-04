@@ -21,9 +21,9 @@ Training the model:
 ![Training screenshot](./screenshots/training.png)
 
 ## Demonstration 
-See a [youtube video](https://youtu.be/Hd9TVjA0NCE)
+See a (very boring) [youtube video](https://youtu.be/Hd9TVjA0NCE)
 
-See [Live demo on Heroku](https://speaker-verification-api-demo.herokuapp.com/) (running on a free dyno, might be a slow to start)
+See [Live demo on Heroku](https://speaker-verification-api-demo.herokuapp.com/) (running on a free dyno, might be a slow to start. You will need to fill in registeration form to use it)
 
 
 ## Installation:
@@ -81,20 +81,6 @@ heroku config
 git push heroku master
 heroku open
 ```
-
-## Command Line:
-### curl REST testing from the cli 
-
-**Train:** Train the model 
-
-`curl -XPUT --header "Content-Type: application/json" --data @mfcc_train.json http://127.0.0.1:5000/train`
-
-**Test:** Test the model with a simi
-`curl -XPUT --header "Content-Type: application/json" --data @mfcc_test.json http://127.0.0.1:5000/test`
-
-**Score:**
-`curl -XPUT --header "Content-Type: application/json" --data @mfcc_train.json http://127.0.0.1:5000/score`
-
 
 ### Background 
 You will find a good step-by-step example of Python speech processing code [here](https://github.com/footfish/python-speechprocessing-example) 
