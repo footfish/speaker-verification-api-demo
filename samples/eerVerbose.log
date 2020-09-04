@@ -1,0 +1,1569 @@
+Number of valid users:35
+Digit set size: 3
+-----------------------------
+User: 'wavedavey' digits recorded: 70
+Usr: wavedavey Digits:[2, 8, 6] avg:-33.5 match:100.0%
+Imp: Robert Digits:[6, 9, 1] avg:-49.11 match:71.43%
+Usr: wavedavey Digits:[9, 5, 1] avg:-33.04 match:100.0%
+Imp: TerryD Digits:[4, 6, 0] avg:-90.09 match:0.0%
+Usr: wavedavey Digits:[0, 3, 7] avg:-33.74 match:92.31%
+Imp: TerryD Digits:[3, 7, 9] avg:-115.03 match:2.86%
+Usr: wavedavey Digits:[4, 9, 1] avg:-27.77 match:100.0%
+Imp: Fri123 Digits:[2, 7, 7] avg:-75.1 match:0.0%
+Usr: wavedavey Digits:[6, 8, 4] avg:-30.38 match:100.0%
+Imp: TheMaster Digits:[4, 0, 6] avg:-109.01 match:0.0%
+Usr: wavedavey Digits:[2, 0, 7] avg:-32.01 match:100.0%
+Imp: Maria Digits:[7, 9, 9] avg:-261.3 match:8.0%
+Usr: wavedavey Digits:[5, 3, 5] avg:-31.57 match:100.0%
+Imp: Fintan Digits:[0, 7, 6] avg:-59.16 match:41.38%
+Usr: wavedavey Digits:[0, 4, 1] avg:-38.39 match:87.88%
+Imp: Robert Digits:[4, 7, 1] avg:-104.53 match:0.0%
+Usr: wavedavey Digits:[7, 8, 2] avg:-33.37 match:100.0%
+Imp: BenOS Digits:[2, 6, 5] avg:-122.41 match:0.0%
+Usr: wavedavey Digits:[6, 9, 3] avg:-31.85 match:100.0%
+Imp: j_mcg Digits:[6, 5, 6] avg:-73.49 match:33.33%
+Usr: wavedavey Digits:[8, 6, 0] avg:-54.63 match:47.83%
+Imp: TheMaster Digits:[2, 4, 9] avg:-103.04 match:7.69%
+Usr: wavedavey Digits:[4, 1, 4] avg:-30.69 match:95.0%
+Imp: Maria Digits:[3, 9, 1] avg:-273.83 match:0.0%
+Usr: wavedavey Digits:[6, 8, 1] avg:-34.38 match:94.29%
+Imp: BenOS Digits:[0, 5, 9] avg:-106.58 match:0.0%
+Usr: wavedavey Digits:[0, 1, 0] avg:-38.99 match:87.5%
+Imp: Trer_71 Digits:[0, 7, 8] avg:-49.7 match:47.83%
+Usr: wavedavey Digits:[4, 8, 6] avg:-24.64 match:100.0%
+Imp: TerryD Digits:[4, 7, 1] avg:-90.09 match:0.0%
+Usr: wavedavey Digits:[4, 0, 6] avg:-35.62 match:81.82%
+Imp: Robert Digits:[6, 7, 4] avg:-49.11 match:71.43%
+Usr: wavedavey Digits:[8, 1, 1] avg:-32.26 match:100.0%
+Imp: fergie Digits:[6, 0, 0] avg:-78.84 match:33.33%
+Usr: wavedavey Digits:[0, 4, 6] avg:-38.45 match:88.89%
+Imp: Hilts Digits:[4, 6, 2] avg:-60.25 match:31.82%
+Usr: wavedavey Digits:[8, 4, 6] avg:-34.28 match:95.65%
+Imp: Michael Digits:[1, 6, 1] avg:-107.9 match:0.0%
+Usr: wavedavey Digits:[8, 1, 0] avg:-46.09 match:66.67%
+Imp: mrangry Digits:[8, 4, 2] avg:-196.23 match:0.0%
+Usr: wavedavey Digits:[8, 4, 6] avg:-35.2 match:90.91%
+Imp: mrangry Digits:[8, 0, 5] avg:-90.62 match:4.17%
+Usr: wavedavey Digits:[1, 0, 8] avg:-35.91 match:90.91%
+Imp: Duncan Digits:[0, 5, 3] avg:-54.36 match:8.0%
+Usr: wavedavey Digits:[1, 0, 6] avg:-33.1 match:100.0%
+Imp: 12345 Digits:[7, 1, 9] avg:-83.08 match:3.7%
+False Accept Rate (FAR):4.35% False Reject Rate (FRR):4.35% Match Threshold:71.3%
+-----------------------------
+User: 'Hilts' digits recorded: 80
+Usr: Hilts Digits:[1, 7, 8] avg:-29.33 match:95.0%
+Imp: Denis Digits:[9, 6, 0] avg:-44.26 match:41.18%
+Usr: Hilts Digits:[0, 3, 2] avg:-26.09 match:100.0%
+Imp: Fri123 Digits:[8, 0, 5] avg:-159.52 match:5.0%
+Usr: Hilts Digits:[6, 4, 9] avg:-30.75 match:100.0%
+Imp: wavedavey Digits:[0, 7, 0] avg:-63.65 match:31.58%
+Usr: Hilts Digits:[5, 4, 1] avg:-26.85 match:100.0%
+Imp: MikeK Digits:[5, 6, 3] avg:-271.06 match:0.0%
+Usr: Hilts Digits:[8, 9, 3] avg:-55.72 match:42.86%
+Imp: Robert Digits:[3, 9, 0] avg:-35.23 match:66.67%
+Usr: Hilts Digits:[7, 5, 2] avg:-22.87 match:100.0%
+Imp: David Digits:[1, 4, 3] avg:-63.31 match:31.58%
+Usr: Hilts Digits:[6, 0, 2] avg:-29.54 match:100.0%
+Imp: Sean1 Digits:[9, 5, 5] avg:-30.81 match:84.21%
+Usr: Hilts Digits:[4, 5, 0] avg:-29.2 match:92.86%
+Imp: Nola_07 Digits:[5, 2, 1] avg:-54.55 match:27.03%
+Usr: Hilts Digits:[7, 7, 0] avg:-42.22 match:63.64%
+Imp: Sean1 Digits:[9, 8, 3] avg:-33.93 match:75.86%
+Usr: Hilts Digits:[5, 2, 4] avg:-35.64 match:84.0%
+Imp: IDoNotCare Digits:[7, 5, 4] avg:-93.6 match:26.32%
+*SKIPPED* Usr: Hilts Digits:[7, 2, 5] avg:-79.37 match:20.83%
+Usr: Hilts Digits:[4, 0, 2] avg:-34.77 match:78.26%
+Imp: Fri123 Digits:[6, 3, 2] avg:-296.73 match:0.0%
+Usr: Hilts Digits:[0, 7, 5] avg:-49.98 match:66.67%
+Imp: JakeM Digits:[4, 7, 0] avg:-27.26 match:94.12%
+Usr: Hilts Digits:[4, 2, 5] avg:-31.29 match:90.91%
+Imp: Duncan Digits:[2, 9, 3] avg:-39.43 match:66.67%
+Usr: Hilts Digits:[7, 4, 0] avg:-40.1 match:65.0%
+Imp: IDoNotCare Digits:[9, 1, 6] avg:-64.13 match:21.62%
+Usr: Hilts Digits:[2, 7, 4] avg:-32.85 match:83.33%
+Imp: Djfdemo Digits:[8, 9, 4] avg:-73.98 match:0.0%
+Usr: Hilts Digits:[0, 5, 7] avg:-42.63 match:74.07%
+Imp: Denis Digits:[9, 6, 4] avg:-44.26 match:41.18%
+Usr: Hilts Digits:[2, 5, 0] avg:-46.43 match:60.87%
+Imp: MikeK Digits:[0, 7, 1] avg:-415.55 match:0.0%
+Usr: Hilts Digits:[4, 4, 0] avg:-33.79 match:90.0%
+Imp: Fri123 Digits:[6, 6, 1] avg:-296.73 match:0.0%
+Usr: Hilts Digits:[2, 7, 5] avg:-62.78 match:45.45%
+Imp: JakeM Digits:[1, 0, 8] avg:-32.18 match:81.25%
+Usr: Hilts Digits:[0, 4, 7] avg:-40.61 match:76.92%
+Imp: Sean1 Digits:[6, 3, 3] avg:-60.8 match:0.0%
+Usr: Hilts Digits:[5, 2, 7] avg:-61.84 match:46.15%
+Imp: Seven Whistler Digits:[6, 4, 1] avg:-145.42 match:0.0%
+Usr: Hilts Digits:[2, 5, 4] avg:-73.85 match:48.0%
+Imp: Djfdemo Digits:[8, 5, 9] avg:-73.98 match:0.0%
+Usr: Hilts Digits:[0, 5, 0] avg:-33.52 match:76.0%
+Imp: TerryD Digits:[2, 3, 8] avg:-112.65 match:35.0%
+Usr: Hilts Digits:[4, 7, 2] avg:-33.59 match:80.77%
+Imp: BenOS Digits:[4, 5, 3] avg:-1404.39 match:71.88%
+Usr: Hilts Digits:[4, 2, 0] avg:-42.51 match:51.85%
+Imp: TerryD Digits:[3, 3, 6] avg:-147.38 match:31.43%
+False Accept Rate (FAR):14.0% False Reject Rate (FRR):14.0% Match Threshold:64.8%
+-----------------------------
+User: 'Nola_07' digits recorded: 20
+Usr: Nola_07 Digits:[8, 6, 0] avg:-37.92 match:84.21%
+Imp: wavedavey Digits:[6, 5, 2] avg:-209103.52 match:0.0%
+Usr: Nola_07 Digits:[7, 5, 2] avg:-20.1 match:100.0%
+Imp: Hilts Digits:[7, 1, 0] avg:-96.78 match:27.27%
+Usr: Nola_07 Digits:[3, 9, 4] avg:-19.11 match:100.0%
+Imp: David Digits:[9, 1, 5] avg:-136.92 match:14.29%
+Usr: Nola_07 Digits:[1, 1, 2] avg:-14.36 match:100.0%
+Imp: PaulMcC Digits:[4, 6, 4] avg:-38.57 match:92.0%
+Usr: Nola_07 Digits:[3, 6, 8] avg:-17.31 match:100.0%
+Imp: Avinash Digits:[4, 3, 7] avg:-19.16 match:100.0%
+Usr: Nola_07 Digits:[5, 9, 7] avg:-17.39 match:97.3%
+Imp: gwenreil Digits:[8, 3, 9] avg:-697236.95 match:0.0%
+False Accept Rate (FAR):8.33% False Reject Rate (FRR):8.33% Match Threshold:97.1%
+-----------------------------
+User: 'TheMaster' digits recorded: 80
+Usr: TheMaster Digits:[4, 9, 2] avg:-17.39 match:100.0%
+Imp: Elizabeth W. Digits:[9, 7, 5] avg:-44.83 match:48.39%
+Usr: TheMaster Digits:[0, 1, 8] avg:-27.89 match:75.0%
+Imp: JakeM Digits:[0, 6, 3] avg:-28.0 match:58.33%
+Usr: TheMaster Digits:[7, 3, 6] avg:-24.32 match:82.61%
+Imp: wavedavey Digits:[2, 6, 8] avg:-63.15 match:0.0%
+Usr: TheMaster Digits:[5, 9, 3] avg:-25.63 match:96.15%
+Imp: PaulMcC Digits:[3, 9, 5] avg:-40.12 match:28.57%
+Usr: TheMaster Digits:[2, 6, 1] avg:-26.3 match:80.77%
+Imp: Avinash Digits:[6, 3, 3] avg:-156.64 match:0.0%
+Usr: TheMaster Digits:[4, 5, 0] avg:-16.57 match:100.0%
+Imp: TeriP Digits:[3, 8, 4] avg:-41.9 match:6.25%
+Usr: TheMaster Digits:[7, 8, 2] avg:-21.76 match:93.33%
+Imp: MikeK Digits:[1, 6, 3] avg:-83.3 match:2.56%
+Usr: TheMaster Digits:[5, 8, 4] avg:-38.89 match:73.08%
+Imp: Denis Digits:[8, 8, 9] avg:-71.86 match:28.57%
+Usr: TheMaster Digits:[2, 6, 6] avg:-21.53 match:92.31%
+Imp: Macwfd Digits:[5, 1, 4] avg:-38.92 match:43.75%
+Usr: TheMaster Digits:[4, 5, 8] avg:-43.65 match:82.76%
+Imp: Ronan B Digits:[7, 4, 0] avg:-32.0 match:66.67%
+Usr: TheMaster Digits:[2, 5, 6] avg:-33.95 match:44.0%
+Imp: Seven Whistler Digits:[8, 6, 1] avg:-74.64 match:0.0%
+Usr: TheMaster Digits:[4, 2, 8] avg:-24.17 match:87.5%
+Imp: Fintan Digits:[4, 9, 6] avg:-50.43 match:5.26%
+Usr: TheMaster Digits:[8, 2, 4] avg:-29.01 match:83.33%
+Imp: 12345 Digits:[2, 1, 4] avg:-31.99 match:65.0%
+Usr: TheMaster Digits:[5, 6, 5] avg:-26.16 match:96.97%
+Imp: TeriP Digits:[0, 1, 2] avg:-53.01 match:0.0%
+Usr: TheMaster Digits:[6, 4, 8] avg:-30.53 match:75.86%
+Imp: Macwfd Digits:[4, 3, 2] avg:-29.86 match:68.18%
+Usr: TheMaster Digits:[2, 3, 5] avg:-25.26 match:100.0%
+Imp: j_mcg Digits:[2, 0, 7] avg:-411.89 match:70.0%
+Usr: TheMaster Digits:[9, 4, 0] avg:-26.85 match:87.5%
+Imp: mrangry Digits:[8, 9, 6] avg:-76.43 match:12.5%
+Usr: TheMaster Digits:[1, 4, 6] avg:-27.16 match:85.71%
+Imp: Duncan Digits:[2, 4, 6] avg:-36.34 match:12.5%
+Usr: TheMaster Digits:[5, 9, 0] avg:-28.76 match:85.19%
+Imp: Maria Digits:[1, 2, 6] avg:-57.62 match:42.86%
+*SKIPPED* Usr: TheMaster Digits:[3, 9, 4] avg:-49.98 match:0.0%
+*SKIPPED* Usr: TheMaster Digits:[9, 0, 5] avg:-62.1 match:27.66%
+*SKIPPED* Usr: TheMaster Digits:[2, 3, 5] avg:-40.59 match:7.14%
+*SKIPPED* Usr: TheMaster Digits:[2, 9, 3] avg:-44.09 match:0.0%
+*SKIPPED* Usr: TheMaster Digits:[0, 9, 3] avg:-46.75 match:5.26%
+*SKIPPED* Usr: TheMaster Digits:[5, 2, 0] avg:-51.76 match:0.0%
+*SKIPPED* Usr: TheMaster Digits:[2, 5, 6] avg:-59.7 match:30.0%
+False Accept Rate (FAR):2.63% False Reject Rate (FRR):2.63% Match Threshold:69.8%
+-----------------------------
+User: 'MikeK' digits recorded: 45
+Usr: MikeK Digits:[3, 9, 5] avg:-28.31 match:100.0%
+Imp: j_mcg Digits:[9, 9, 4] avg:-46.21 match:36.0%
+Usr: MikeK Digits:[1, 7, 0] avg:-25.3 match:93.75%
+Imp: Michael Digits:[2, 9, 5] avg:-53.6 match:14.29%
+Usr: MikeK Digits:[6, 4, 8] avg:-37.9 match:69.05%
+Imp: Ronan B Digits:[5, 7, 5] avg:-38.97 match:38.46%
+Usr: MikeK Digits:[2, 9, 6] avg:-29.69 match:72.22%
+Imp: mrangry Digits:[9, 1, 8] avg:-32.52 match:81.25%
+Usr: MikeK Digits:[4, 3, 8] avg:-19.51 match:100.0%
+Imp: fergie Digits:[3, 7, 6] avg:-34.81 match:76.47%
+Usr: MikeK Digits:[7, 5, 1] avg:-30.31 match:77.78%
+Imp: fergie Digits:[7, 7, 2] avg:-44.66 match:23.08%
+Usr: MikeK Digits:[0, 2, 8] avg:-26.54 match:76.47%
+Imp: Michael Digits:[2, 5, 8] avg:-53.6 match:14.29%
+Usr: MikeK Digits:[4, 3, 7] avg:-24.67 match:100.0%
+Imp: TeriP Digits:[1, 9, 7] avg:-82.74 match:5.56%
+Usr: MikeK Digits:[2, 1, 0] avg:-22.95 match:100.0%
+Imp: Maria Digits:[6, 0, 0] avg:-114.06 match:0.0%
+Usr: MikeK Digits:[6, 9, 5] avg:-33.81 match:84.62%
+Imp: Nola_07 Digits:[0, 3, 3] avg:-40.57 match:23.81%
+Usr: MikeK Digits:[0, 1, 8] avg:-33.58 match:60.0%
+Imp: Fri123 Digits:[5, 3, 7] avg:-185.1 match:12.5%
+Usr: MikeK Digits:[7, 4, 1] avg:-26.79 match:85.71%
+Imp: Nola_07 Digits:[2, 3, 4] avg:-37.34 match:40.74%
+Usr: MikeK Digits:[8, 0, 4] avg:-32.34 match:88.24%
+Imp: Nola_07 Digits:[9, 4, 8] avg:-56.35 match:6.9%
+Usr: MikeK Digits:[7, 7, 1] avg:-29.93 match:70.83%
+Imp: Duncan Digits:[1, 5, 2] avg:-26.0 match:93.33%
+Usr: MikeK Digits:[0, 8, 4] avg:-27.53 match:73.33%
+Imp: FinoH Digits:[7, 9, 6] avg:-26.15 match:84.62%
+False Accept Rate (FAR):13.33% False Reject Rate (FRR):13.33% Match Threshold:73.2%
+-----------------------------
+User: 'BenOS' digits recorded: 55
+Usr: BenOS Digits:[7, 5, 9] avg:-33.52 match:82.05%
+Imp: mrangry Digits:[9, 2, 3] avg:-36.18 match:63.41%
+Usr: BenOS Digits:[1, 8, 2] avg:-22.92 match:94.59%
+Imp: wavedavey Digits:[7, 7, 4] avg:-47.13 match:11.76%
+Usr: BenOS Digits:[0, 6, 4] avg:-27.23 match:78.0%
+Imp: Robert Digits:[9, 6, 5] avg:-37.53 match:63.64%
+Usr: BenOS Digits:[3, 6, 7] avg:-30.19 match:76.19%
+Imp: MayaB Digits:[9, 9, 4] avg:-35.63 match:63.41%
+Usr: BenOS Digits:[8, 1, 0] avg:-38.2 match:85.19%
+Imp: TerryD Digits:[2, 7, 7] avg:-60.73 match:32.5%
+Usr: BenOS Digits:[4, 9, 3] avg:-24.2 match:90.62%
+Imp: 12345 Digits:[4, 5, 4] avg:-24.51 match:100.0%
+Usr: BenOS Digits:[5, 2, 1] avg:-30.62 match:94.87%
+Imp: PaulMcC Digits:[7, 5, 2] avg:-40.98 match:55.0%
+Usr: BenOS Digits:[4, 8, 0] avg:-17.71 match:100.0%
+Imp: David Digits:[5, 9, 6] avg:-82.43 match:0.0%
+Usr: BenOS Digits:[7, 2, 5] avg:-20.77 match:92.86%
+Imp: Robert Digits:[1, 1, 0] avg:-29.06 match:66.67%
+Usr: BenOS Digits:[9, 3, 6] avg:-28.39 match:89.19%
+Imp: MayaB Digits:[7, 4, 6] avg:-42.73 match:48.28%
+Usr: BenOS Digits:[8, 4, 6] avg:-35.68 match:88.0%
+Imp: MikeK Digits:[0, 2, 9] avg:-56.0 match:30.0%
+Usr: BenOS Digits:[1, 9, 1] avg:-25.6 match:100.0%
+Imp: Fri123 Digits:[8, 7, 8] avg:-68.39 match:0.0%
+Usr: BenOS Digits:[6, 4, 9] avg:-38.65 match:96.67%
+Imp: wavedavey Digits:[1, 3, 3] avg:-48.82 match:30.77%
+Usr: BenOS Digits:[8, 8, 1] avg:-35.23 match:85.0%
+Imp: mrangry Digits:[9, 3, 8] avg:-32.2 match:77.08%
+Usr: BenOS Digits:[6, 4, 9] avg:-37.44 match:100.0%
+Imp: Denis Digits:[9, 3, 1] avg:-38.69 match:34.62%
+Usr: BenOS Digits:[1, 8, 4] avg:-27.14 match:100.0%
+Imp: FinoH Digits:[6, 9, 2] avg:-58.43 match:15.38%
+Usr: BenOS Digits:[6, 9, 4] avg:-37.11 match:100.0%
+Imp: Michael Digits:[4, 5, 4] avg:-49.87 match:10.53%
+Usr: BenOS Digits:[9, 6, 8] avg:-23.93 match:100.0%
+Imp: JakeM Digits:[6, 8, 1] avg:-39.72 match:47.37%
+False Accept Rate (FAR):2.78% False Reject Rate (FRR):2.78% Match Threshold:77.8%
+-----------------------------
+User: 'Michael' digits recorded: 90
+Usr: Michael Digits:[9, 0, 2] avg:-28.66 match:90.48%
+Imp: Robert Digits:[4, 1, 9] avg:-31.75 match:90.91%
+Usr: Michael Digits:[4, 7, 3] avg:-27.18 match:92.86%
+Imp: Elizabeth W. Digits:[8, 0, 8] avg:-38.26 match:70.0%
+Usr: Michael Digits:[6, 1, 8] avg:-27.56 match:100.0%
+Imp: Ronan B Digits:[2, 9, 5] avg:-24.31 match:91.3%
+Usr: Michael Digits:[5, 1, 8] avg:-32.59 match:81.82%
+Imp: ThumbsUp Digits:[3, 9, 6] avg:-39.97 match:55.17%
+Usr: Michael Digits:[3, 6, 5] avg:-30.7 match:100.0%
+Imp: TheMaster Digits:[4, 0, 4] avg:-25.07 match:100.0%
+Usr: Michael Digits:[0, 2, 4] avg:-30.76 match:91.3%
+Imp: fergie Digits:[9, 8, 6] avg:-60.02 match:39.39%
+Usr: Michael Digits:[9, 7, 0] avg:-33.36 match:86.67%
+Imp: Denis Digits:[4, 3, 0] avg:-27.92 match:94.74%
+Usr: Michael Digits:[4, 8, 3] avg:-29.16 match:94.74%
+Imp: FinoH Digits:[3, 7, 9] avg:-30.58 match:100.0%
+Usr: Michael Digits:[2, 9, 5] avg:-27.59 match:100.0%
+Imp: Djfdemo Digits:[6, 1, 4] avg:-31.59 match:100.0%
+Usr: Michael Digits:[6, 1, 7] avg:-30.66 match:100.0%
+Imp: Duncan Digits:[2, 2, 3] avg:-26.7 match:100.0%
+Usr: Michael Digits:[9, 8, 3] avg:-42.34 match:68.18%
+Imp: Djfdemo Digits:[3, 2, 1] avg:-45.06 match:53.85%
+Usr: Michael Digits:[1, 0, 3] avg:-31.38 match:76.92%
+Imp: FinoH Digits:[9, 1, 5] avg:-41.59 match:46.51%
+Usr: Michael Digits:[8, 9, 0] avg:-31.58 match:93.33%
+Imp: Nola_07 Digits:[4, 2, 5] avg:-34.64 match:69.23%
+Usr: Michael Digits:[1, 8, 0] avg:-34.26 match:58.33%
+Imp: mrangry Digits:[7, 0, 5] avg:-1305.8 match:41.67%
+Usr: Michael Digits:[3, 9, 1] avg:-26.91 match:100.0%
+Imp: Nola_07 Digits:[3, 5, 8] avg:-31.75 match:80.0%
+Usr: Michael Digits:[1, 9, 0] avg:-23.12 match:100.0%
+Imp: BenOS Digits:[0, 1, 2] avg:-1676.67 match:62.0%
+Usr: Michael Digits:[3, 8, 1] avg:-27.19 match:100.0%
+Imp: Robert Digits:[5, 0, 0] avg:-37.22 match:63.64%
+Usr: Michael Digits:[9, 3, 8] avg:-29.35 match:94.12%
+Imp: Djfdemo Digits:[1, 9, 0] avg:-34.37 match:66.67%
+Usr: Michael Digits:[0, 4, 2] avg:-26.81 match:100.0%
+Imp: Ronan B Digits:[1, 0, 2] avg:-23.46 match:96.43%
+Usr: Michael Digits:[1, 6, 3] avg:-38.74 match:68.75%
+Imp: JakeM Digits:[9, 1, 7] avg:-41.96 match:37.5%
+Usr: Michael Digits:[3, 1, 2] avg:-29.36 match:100.0%
+Imp: FinoH Digits:[8, 1, 1] avg:-37.13 match:64.29%
+Usr: Michael Digits:[4, 6, 6] avg:-22.41 match:100.0%
+Imp: BenOS Digits:[3, 2, 5] avg:-915.21 match:71.43%
+Usr: Michael Digits:[2, 4, 3] avg:-24.86 match:100.0%
+Imp: David Digits:[9, 6, 2] avg:-66.72 match:7.14%
+Usr: Michael Digits:[1, 7, 8] avg:-24.75 match:100.0%
+Imp: Fintan Digits:[8, 7, 2] avg:-60.27 match:5.0%
+Usr: Michael Digits:[5, 3, 2] avg:-29.36 match:100.0%
+Imp: David Digits:[3, 0, 2] avg:-50.54 match:34.78%
+Usr: Michael Digits:[5, 2, 7] avg:-32.13 match:94.74%
+Imp: Duncan Digits:[8, 1, 2] avg:-27.24 match:100.0%
+Usr: Michael Digits:[8, 3, 4] avg:-34.88 match:93.33%
+Imp: Djfdemo Digits:[2, 1, 5] avg:-29.75 match:86.67%
+Usr: Michael Digits:[7, 8, 9] avg:-27.13 match:89.47%
+Imp: Robert Digits:[6, 9, 5] avg:-30.7 match:100.0%
+Usr: Michael Digits:[5, 4, 2] avg:-30.47 match:92.31%
+Imp: Denis Digits:[8, 9, 3] avg:-52.31 match:50.0%
+Usr: Michael Digits:[5, 1, 9] avg:-34.26 match:80.77%
+Imp: Hilts Digits:[9, 8, 3] avg:-95.35 match:7.69%
+False Accept Rate (FAR):15.0% False Reject Rate (FRR):15.0% Match Threshold:91.1%
+-----------------------------
+User: 'JakeM' digits recorded: 90
+Usr: JakeM Digits:[0, 5, 4] avg:-18.74 match:95.83%
+Imp: Hilts Digits:[4, 6, 2] avg:-503.58 match:7.41%
+Usr: JakeM Digits:[2, 3, 6] avg:-18.18 match:100.0%
+Imp: mrangry Digits:[9, 9, 2] avg:-1001.59 match:27.08%
+Usr: JakeM Digits:[1, 8, 7] avg:-22.59 match:90.0%
+Imp: Michael Digits:[3, 3, 0] avg:-144.87 match:0.0%
+Usr: JakeM Digits:[9, 8, 6] avg:-20.24 match:100.0%
+Imp: Fintan Digits:[1, 9, 0] avg:-100.48 match:0.0%
+Usr: JakeM Digits:[1, 4, 3] avg:-24.36 match:92.86%
+Imp: Robert Digits:[4, 0, 6] avg:-120.71 match:0.0%
+Usr: JakeM Digits:[2, 7, 5] avg:-21.54 match:100.0%
+Imp: Trer_71 Digits:[6, 8, 7] avg:-103.43 match:22.22%
+Usr: JakeM Digits:[9, 0, 9] avg:-22.09 match:93.75%
+Imp: Ronan B Digits:[8, 2, 5] avg:-46.54 match:40.0%
+Usr: JakeM Digits:[7, 2, 0] avg:-28.01 match:85.19%
+Imp: mrangry Digits:[3, 2, 0] avg:-1508.69 match:0.0%
+Usr: JakeM Digits:[5, 1, 3] avg:-19.84 match:100.0%
+Imp: Fri123 Digits:[7, 8, 9] avg:-98.52 match:30.0%
+Usr: JakeM Digits:[6, 8, 4] avg:-36.65 match:58.82%
+Imp: MikeK Digits:[1, 9, 1] avg:-3184.85 match:0.0%
+Usr: JakeM Digits:[1, 8, 7] avg:-27.06 match:82.35%
+Imp: Seven Whistler Digits:[3, 3, 8] avg:-1143.71 match:10.0%
+Usr: JakeM Digits:[2, 5, 5] avg:-22.3 match:89.47%
+Imp: Seven Whistler Digits:[8, 6, 4] avg:-252.91 match:0.0%
+Usr: JakeM Digits:[7, 2, 1] avg:-28.65 match:75.0%
+Imp: MikeK Digits:[7, 2, 2] avg:-38215.43 match:0.0%
+Usr: JakeM Digits:[8, 2, 1] avg:-23.34 match:100.0%
+Imp: TheMaster Digits:[9, 3, 6] avg:-364.28 match:25.64%
+Usr: JakeM Digits:[8, 5, 7] avg:-24.99 match:94.12%
+Imp: Fintan Digits:[2, 6, 6] avg:-6022.67 match:0.0%
+Usr: JakeM Digits:[5, 2, 1] avg:-20.7 match:92.0%
+Imp: j_mcg Digits:[1, 8, 7] avg:-358.22 match:55.56%
+Usr: JakeM Digits:[8, 7, 2] avg:-36.82 match:66.67%
+Imp: j_mcg Digits:[2, 9, 3] avg:-530232.55 match:5.56%
+Usr: JakeM Digits:[7, 1, 8] avg:-21.15 match:89.66%
+Imp: FinoH Digits:[6, 5, 4] avg:-352.77 match:0.0%
+Usr: JakeM Digits:[5, 8, 2] avg:-17.15 match:100.0%
+Imp: Djfdemo Digits:[3, 1, 2] avg:-65.3 match:0.0%
+Usr: JakeM Digits:[5, 7, 1] avg:-19.66 match:91.3%
+Imp: TheMaster Digits:[1, 1, 5] avg:-42.11 match:42.86%
+Usr: JakeM Digits:[5, 7, 2] avg:-19.01 match:94.74%
+Imp: gwenreil Digits:[6, 4, 2] avg:-1260839.08 match:0.0%
+Usr: JakeM Digits:[8, 1, 2] avg:-24.31 match:87.5%
+Imp: Duncan Digits:[6, 5, 3] avg:-101.09 match:0.0%
+Usr: JakeM Digits:[1, 7, 8] avg:-19.49 match:93.33%
+Imp: j_mcg Digits:[7, 5, 3] avg:-476707.47 match:39.13%
+Usr: JakeM Digits:[5, 8, 5] avg:-18.65 match:100.0%
+Imp: ThumbsUp Digits:[8, 1, 1] avg:-71.34 match:16.67%
+Usr: JakeM Digits:[2, 1, 7] avg:-22.41 match:100.0%
+Imp: Fintan Digits:[2, 5, 9] avg:-6022.67 match:0.0%
+Usr: JakeM Digits:[1, 7, 8] avg:-25.17 match:93.33%
+Imp: fergie Digits:[7, 7, 2] avg:-2381.07 match:13.33%
+Usr: JakeM Digits:[5, 2, 1] avg:-16.23 match:100.0%
+Imp: TeriP Digits:[1, 2, 4] avg:-3475.1 match:0.0%
+Usr: JakeM Digits:[2, 7, 5] avg:-23.96 match:83.33%
+Imp: Elizabeth W. Digits:[0, 8, 7] avg:-123.37 match:36.84%
+Usr: JakeM Digits:[8, 7, 1] avg:-22.66 match:100.0%
+Imp: Ronan B Digits:[5, 3, 4] avg:-30.41 match:69.23%
+Usr: JakeM Digits:[2, 8, 5] avg:-23.07 match:93.75%
+Imp: Fri123 Digits:[3, 5, 7] avg:-100.87 match:0.0%
+False Accept Rate (FAR):1.67% False Reject Rate (FRR):1.67% Match Threshold:66.5%
+-----------------------------
+User: 'Trer_71' digits recorded: 45
+Usr: Trer_71 Digits:[5, 8, 1] avg:-26.43 match:88.24%
+Imp: Duncan Digits:[3, 6, 6] avg:-30.01 match:68.42%
+Usr: Trer_71 Digits:[3, 0, 6] avg:-25.3 match:90.91%
+Imp: David Digits:[2, 7, 7] avg:-128.17 match:4.0%
+Usr: Trer_71 Digits:[7, 2, 4] avg:-19.41 match:100.0%
+Imp: TheMaster Digits:[1, 6, 6] avg:-23.51 match:82.14%
+Usr: Trer_71 Digits:[9, 8, 7] avg:-31.18 match:50.0%
+Imp: PaulMcC Digits:[4, 3, 1] avg:-29.53 match:61.54%
+Usr: Trer_71 Digits:[3, 9, 4] avg:-20.25 match:100.0%
+Imp: JakeM Digits:[3, 2, 5] avg:-29.91 match:87.5%
+Usr: Trer_71 Digits:[2, 1, 5] avg:-22.53 match:81.82%
+Imp: FinoH Digits:[1, 1, 0] avg:-31.86 match:46.88%
+Usr: Trer_71 Digits:[6, 0, 7] avg:-31.16 match:77.78%
+Imp: TeriP Digits:[4, 4, 0] avg:-245.94 match:0.0%
+Usr: Trer_71 Digits:[8, 1, 4] avg:-33.2 match:73.68%
+Imp: Avinash Digits:[7, 9, 3] avg:-194.65 match:40.74%
+Usr: Trer_71 Digits:[6, 2, 5] avg:-29.55 match:77.78%
+Imp: Fri123 Digits:[0, 1, 9] avg:-49.3 match:36.0%
+Usr: Trer_71 Digits:[0, 3, 9] avg:-15.06 match:100.0%
+Imp: Hilts Digits:[0, 9, 3] avg:-55.01 match:17.86%
+Usr: Trer_71 Digits:[5, 3, 1] avg:-18.25 match:100.0%
+Imp: Djfdemo Digits:[9, 0, 9] avg:-155.94 match:11.11%
+Usr: Trer_71 Digits:[9, 2, 5] avg:-21.37 match:93.75%
+Imp: Fri123 Digits:[4, 7, 2] avg:-55.71 match:17.24%
+Usr: Trer_71 Digits:[1, 2, 9] avg:-12.51 match:100.0%
+Imp: Sean1 Digits:[1, 8, 5] avg:-22.92 match:96.0%
+Usr: Trer_71 Digits:[3, 5, 2] avg:-18.22 match:100.0%
+Imp: Ronan B Digits:[2, 7, 0] avg:-68.34 match:37.5%
+Usr: Trer_71 Digits:[3, 1, 9] avg:-21.97 match:93.33%
+Imp: JakeM Digits:[4, 2, 5] avg:-16.24 match:100.0%
+False Accept Rate (FAR):13.33% False Reject Rate (FRR):13.33% Match Threshold:81.7%
+-----------------------------
+User: 'Avinash' digits recorded: 90
+Usr: Avinash Digits:[9, 2, 8] avg:-30.59 match:83.33%
+Imp: gwenreil Digits:[9, 6, 4] avg:-32.08 match:56.6%
+Usr: Avinash Digits:[6, 1, 3] avg:-37.14 match:84.21%
+Imp: fergie Digits:[9, 3, 6] avg:-32.38 match:75.76%
+Usr: Avinash Digits:[4, 5, 7] avg:-18.69 match:100.0%
+Imp: Ronan B Digits:[5, 3, 5] avg:-30.89 match:96.15%
+Usr: Avinash Digits:[0, 8, 5] avg:-23.42 match:100.0%
+Imp: Fintan Digits:[7, 0, 3] avg:-59.98 match:0.0%
+Usr: Avinash Digits:[6, 2, 3] avg:-36.87 match:85.71%
+Imp: Seven Whistler Digits:[5, 3, 0] avg:-38.71 match:50.0%
+Usr: Avinash Digits:[0, 1, 9] avg:-29.47 match:76.92%
+Imp: ThumbsUp Digits:[3, 0, 7] avg:-37.1 match:48.28%
+Usr: Avinash Digits:[4, 7, 3] avg:-19.17 match:94.44%
+Imp: Seven Whistler Digits:[2, 0, 0] avg:-40.64 match:33.33%
+Usr: Avinash Digits:[4, 7, 8] avg:-24.98 match:95.45%
+Imp: Fintan Digits:[3, 7, 4] avg:-62.93 match:0.0%
+Usr: Avinash Digits:[2, 5, 9] avg:-33.6 match:66.67%
+Imp: 12345 Digits:[9, 8, 5] avg:-35.09 match:73.08%
+Usr: Avinash Digits:[6, 0, 1] avg:-35.69 match:50.0%
+Imp: David Digits:[3, 4, 6] avg:-48.92 match:29.63%
+Usr: Avinash Digits:[2, 5, 7] avg:-25.71 match:100.0%
+Imp: 12345 Digits:[1, 2, 2] avg:-23.29 match:100.0%
+Usr: Avinash Digits:[4, 8, 2] avg:-18.75 match:100.0%
+Imp: MayaB Digits:[3, 5, 0] avg:-40.5 match:27.27%
+Usr: Avinash Digits:[8, 4, 7] avg:-47.18 match:33.33%
+Imp: TerryD Digits:[9, 9, 1] avg:-41.07 match:42.55%
+Usr: Avinash Digits:[5, 2, 5] avg:-36.33 match:70.59%
+Imp: Fri123 Digits:[7, 7, 6] avg:-44.05 match:45.0%
+Usr: Avinash Digits:[7, 4, 8] avg:-33.1 match:83.33%
+Imp: TheMaster Digits:[2, 0, 6] avg:-39.71 match:52.0%
+Usr: Avinash Digits:[2, 7, 5] avg:-33.41 match:75.0%
+Imp: 12345 Digits:[0, 7, 9] avg:-30.99 match:88.0%
+Usr: Avinash Digits:[4, 8, 4] avg:-29.23 match:72.0%
+Imp: MikeK Digits:[6, 0, 2] avg:-50.69 match:0.0%
+Usr: Avinash Digits:[7, 2, 8] avg:-31.54 match:100.0%
+Imp: TerryD Digits:[4, 4, 7] avg:-40.0 match:35.71%
+Usr: Avinash Digits:[5, 4, 5] avg:-37.5 match:58.33%
+Imp: Hilts Digits:[1, 3, 1] avg:-55.84 match:15.0%
+Usr: Avinash Digits:[9, 2, 3] avg:-22.94 match:100.0%
+Imp: Fintan Digits:[6, 0, 9] avg:-57.65 match:0.0%
+Usr: Avinash Digits:[9, 3, 2] avg:-27.28 match:93.75%
+Imp: JakeM Digits:[8, 2, 3] avg:-46.32 match:16.67%
+Usr: Avinash Digits:[5, 4, 9] avg:-28.77 match:96.43%
+Imp: wavedavey Digits:[4, 7, 6] avg:-45.59 match:11.11%
+Usr: Avinash Digits:[3, 4, 5] avg:-34.35 match:70.0%
+Imp: Fri123 Digits:[9, 0, 2] avg:-43.59 match:34.78%
+Usr: Avinash Digits:[2, 4, 9] avg:-32.64 match:66.67%
+Imp: Fri123 Digits:[8, 0, 4] avg:-49.27 match:14.29%
+Usr: Avinash Digits:[2, 3, 5] avg:-31.35 match:87.5%
+Imp: ThumbsUp Digits:[7, 5, 3] avg:-36.48 match:52.63%
+Usr: Avinash Digits:[5, 9, 3] avg:-27.86 match:96.15%
+Imp: MayaB Digits:[1, 0, 8] avg:-27.6 match:84.21%
+Usr: Avinash Digits:[4, 2, 5] avg:-38.61 match:44.44%
+Imp: Djfdemo Digits:[6, 6, 5] avg:-46.34 match:16.67%
+Usr: Avinash Digits:[3, 9, 4] avg:-31.73 match:86.36%
+Imp: Hilts Digits:[0, 7, 3] avg:-53.81 match:14.29%
+Usr: Avinash Digits:[2, 5, 9] avg:-35.42 match:58.33%
+Imp: wavedavey Digits:[4, 4, 3] avg:-50.3 match:23.81%
+Usr: Avinash Digits:[2, 3, 4] avg:-32.16 match:61.11%
+Imp: Nola_07 Digits:[7, 5, 3] avg:-29.52 match:74.36%
+False Accept Rate (FAR):11.67% False Reject Rate (FRR):10.0% Match Threshold:66.5%
+-----------------------------
+User: 'Duncan' digits recorded: 20
+Usr: Duncan Digits:[2, 6, 1] avg:-19.01 match:100.0%
+Imp: Hilts Digits:[7, 6, 5] avg:-140.9 match:0.0%
+Usr: Duncan Digits:[0, 3, 9] avg:-19.98 match:100.0%
+Imp: wavedavey Digits:[0, 5, 4] avg:-58545.88 match:0.0%
+Usr: Duncan Digits:[5, 7, 8] avg:-20.91 match:100.0%
+Imp: fergie Digits:[0, 1, 7] avg:-68.85 match:12.9%
+Usr: Duncan Digits:[4, 7, 8] avg:-12.39 match:100.0%
+Imp: fergie Digits:[8, 2, 1] avg:-164668.91 match:4.76%
+Usr: Duncan Digits:[9, 4, 2] avg:-18.93 match:100.0%
+Imp: David Digits:[7, 4, 7] avg:-22430.57 match:0.0%
+Usr: Duncan Digits:[6, 3, 0] avg:-48.52 match:62.5%
+Imp: Denis Digits:[0, 9, 7] avg:-176.78 match:47.83%
+False Accept Rate (FAR):0.0% False Reject Rate (FRR):0.0% Match Threshold:62.3%
+-----------------------------
+User: 'Sean1' digits recorded: 29
+Usr: Sean1 Digits:[1, 0, 8] avg:-17.02 match:100.0%
+Imp: Fri123 Digits:[7, 9, 9] avg:-95.81 match:23.53%
+Usr: Sean1 Digits:[9, 2, 5] avg:-14.13 match:100.0%
+Imp: fergie Digits:[1, 0, 0] avg:-20.27 match:95.0%
+Usr: Sean1 Digits:[7, 6, 4] avg:-24.4 match:100.0%
+Imp: Hilts Digits:[8, 1, 7] avg:-377.14 match:0.0%
+Usr: Sean1 Digits:[3, 1, 0] avg:-17.56 match:100.0%
+Imp: TheMaster Digits:[0, 7, 0] avg:-2046.77 match:27.5%
+Usr: Sean1 Digits:[8, 2, 9] avg:-17.69 match:100.0%
+Imp: mrangry Digits:[5, 9, 5] avg:-548.74 match:10.26%
+Usr: Sean1 Digits:[7, 5, 4] avg:-17.66 match:100.0%
+Imp: David Digits:[8, 5, 7] avg:-121.96 match:4.76%
+Usr: Sean1 Digits:[6, 3, 8] avg:-21.14 match:100.0%
+Imp: j_mcg Digits:[4, 1, 6] avg:-55.34 match:80.0%
+*SKIPPED* Usr: Sean1 Digits:[4, 9, 5] avg:-69.57 match:12.5%
+Usr: Sean1 Digits:[3, 2, 0] avg:-32.15 match:94.74%
+Imp: wavedavey Digits:[4, 5, 4] avg:-47589.44 match:23.81%
+False Accept Rate (FAR):6.25% False Reject Rate (FRR):6.25% Match Threshold:94.8%
+-----------------------------
+User: 'Ronan B' digits recorded: 60
+Usr: Ronan B Digits:[3, 7, 2] avg:-23.75 match:100.0%
+Imp: Trer_71 Digits:[8, 0, 3] avg:-58.14 match:40.0%
+Usr: Ronan B Digits:[9, 6, 5] avg:-18.43 match:100.0%
+Imp: j_mcg Digits:[9, 4, 8] avg:-76.29 match:45.45%
+Usr: Ronan B Digits:[4, 0, 1] avg:-14.33 match:100.0%
+Imp: TheMaster Digits:[7, 7, 4] avg:-10261.5 match:21.74%
+Usr: Ronan B Digits:[8, 3, 2] avg:-22.74 match:100.0%
+Imp: TheMaster Digits:[0, 2, 6] avg:-1277.07 match:22.5%
+Usr: Ronan B Digits:[4, 6, 7] avg:-22.49 match:82.76%
+Imp: Hilts Digits:[7, 7, 6] avg:-96.68 match:13.04%
+Usr: Ronan B Digits:[0, 5, 9] avg:-25.96 match:86.67%
+Imp: mrangry Digits:[7, 1, 7] avg:-38438.19 match:17.95%
+Usr: Ronan B Digits:[8, 1, 5] avg:-26.18 match:94.74%
+Imp: Trer_71 Digits:[2, 1, 8] avg:-33.0 match:86.67%
+Usr: Ronan B Digits:[3, 4, 7] avg:-21.57 match:100.0%
+Imp: Robert Digits:[5, 9, 9] avg:-63.81 match:18.18%
+Usr: Ronan B Digits:[2, 1, 6] avg:-14.03 match:100.0%
+Imp: FinoH Digits:[3, 2, 8] avg:-30.75 match:76.19%
+Usr: Ronan B Digits:[9, 0, 8] avg:-19.89 match:100.0%
+Imp: j_mcg Digits:[5, 7, 2] avg:-342.43 match:13.33%
+Usr: Ronan B Digits:[8, 0, 3] avg:-24.68 match:84.21%
+Imp: Sean1 Digits:[1, 6, 4] avg:-83.16 match:43.48%
+Usr: Ronan B Digits:[5, 1, 3] avg:-15.52 match:100.0%
+Imp: wavedavey Digits:[6, 9, 5] avg:-49408.86 match:0.0%
+Usr: Ronan B Digits:[8, 0, 5] avg:-26.96 match:83.33%
+Imp: 12345 Digits:[2, 0, 9] avg:-69.7 match:25.0%
+Usr: Ronan B Digits:[1, 1, 3] avg:-12.86 match:100.0%
+Imp: Avinash Digits:[1, 3, 0] avg:-39.0 match:45.45%
+Usr: Ronan B Digits:[8, 0, 5] avg:-27.17 match:80.0%
+Imp: Hilts Digits:[3, 0, 6] avg:-97.61 match:0.0%
+Usr: Ronan B Digits:[5, 3, 0] avg:-16.55 match:100.0%
+Imp: Maria Digits:[9, 6, 8] avg:-6155.33 match:0.0%
+Usr: Ronan B Digits:[8, 1, 1] avg:-35.45 match:75.0%
+Imp: Avinash Digits:[7, 8, 5] avg:-227712.4 match:23.81%
+Usr: Ronan B Digits:[3, 0, 5] avg:-21.53 match:100.0%
+Imp: Michael Digits:[2, 5, 1] avg:-171.91 match:50.0%
+Usr: Ronan B Digits:[8, 3, 8] avg:-25.47 match:100.0%
+Imp: TerryD Digits:[3, 3, 0] avg:-131.19 match:54.29%
+Usr: Ronan B Digits:[0, 1, 5] avg:-12.88 match:96.43%
+Imp: Trer_71 Digits:[0, 0, 5] avg:-20.52 match:95.24%
+False Accept Rate (FAR):5.0% False Reject Rate (FRR):5.0% Match Threshold:82.6%
+-----------------------------
+User: 'mrangry' digits recorded: 40
+Usr: mrangry Digits:[4, 2, 7] avg:-30.31 match:91.43%
+Imp: JakeM Digits:[3, 6, 5] avg:-28.65 match:100.0%
+Usr: mrangry Digits:[1, 9, 5] avg:-27.05 match:92.11%
+Imp: BenOS Digits:[3, 9, 0] avg:-113.27 match:3.33%
+Usr: mrangry Digits:[3, 0, 6] avg:-31.08 match:100.0%
+Imp: gwenreil Digits:[6, 7, 7] avg:-149.78 match:0.0%
+Usr: mrangry Digits:[8, 7, 0] avg:-36.85 match:86.67%
+Imp: Trer_71 Digits:[2, 2, 4] avg:-48.04 match:83.33%
+Usr: mrangry Digits:[1, 3, 5] avg:-22.49 match:100.0%
+Imp: Nola_07 Digits:[9, 3, 4] avg:-37.82 match:55.88%
+Usr: mrangry Digits:[2, 4, 8] avg:-30.17 match:88.57%
+Imp: ThumbsUp Digits:[9, 3, 9] avg:-31.61 match:65.85%
+Usr: mrangry Digits:[9, 6, 8] avg:-25.73 match:97.56%
+Imp: ThumbsUp Digits:[9, 5, 8] avg:-30.83 match:71.79%
+Usr: mrangry Digits:[6, 4, 3] avg:-35.75 match:78.57%
+Imp: Duncan Digits:[3, 6, 8] avg:-40.11 match:36.84%
+Usr: mrangry Digits:[0, 3, 6] avg:-31.52 match:100.0%
+Imp: PaulMcC Digits:[1, 5, 4] avg:-24.61 match:100.0%
+Usr: mrangry Digits:[4, 8, 0] avg:-25.84 match:100.0%
+Imp: Duncan Digits:[5, 3, 4] avg:-34.94 match:61.9%
+*SKIPPED* Usr: mrangry Digits:[6, 4, 8] avg:-46.7 match:27.78%
+Usr: mrangry Digits:[0, 3, 8] avg:-24.6 match:100.0%
+Imp: TheMaster Digits:[4, 0, 1] avg:-30.22 match:100.0%
+Usr: mrangry Digits:[4, 6, 3] avg:-27.64 match:97.3%
+Imp: Duncan Digits:[8, 7, 0] avg:-50.45 match:10.0%
+False Accept Rate (FAR):12.5% False Reject Rate (FRR):12.5% Match Threshold:91.3%
+-----------------------------
+User: 'Elizabeth W.' digits recorded: 45
+Usr: Elizabeth W. Digits:[6, 5, 0] avg:-80.99 match:40.0%
+Imp: gwenreil Digits:[9, 5, 0] avg:-149.09 match:32.61%
+Usr: Elizabeth W. Digits:[1, 2, 4] avg:-24.66 match:83.33%
+Imp: MikeK Digits:[2, 7, 2] avg:-1394.24 match:0.0%
+Usr: Elizabeth W. Digits:[8, 3, 7] avg:-38.66 match:80.0%
+Imp: fergie Digits:[6, 5, 1] avg:-242.39 match:0.0%
+Usr: Elizabeth W. Digits:[9, 6, 2] avg:-32.16 match:77.42%
+Imp: IDoNotCare Digits:[1, 2, 5] avg:-167.34 match:37.93%
+Usr: Elizabeth W. Digits:[4, 1, 3] avg:-24.02 match:90.0%
+Imp: wavedavey Digits:[8, 7, 5] avg:-2507.22 match:0.0%
+Usr: Elizabeth W. Digits:[5, 7, 9] avg:-25.49 match:100.0%
+Imp: BenOS Digits:[0, 2, 1] avg:-27703.84 match:36.17%
+Usr: Elizabeth W. Digits:[0, 8, 6] avg:-33.78 match:91.67%
+Imp: Nola_07 Digits:[7, 2, 1] avg:-42.57 match:58.97%
+Usr: Elizabeth W. Digits:[8, 4, 3] avg:-30.38 match:100.0%
+Imp: j_mcg Digits:[4, 0, 7] avg:-45.67 match:80.0%
+Usr: Elizabeth W. Digits:[7, 4, 3] avg:-25.2 match:100.0%
+Imp: TeriP Digits:[2, 1, 0] avg:-1179.49 match:10.34%
+Usr: Elizabeth W. Digits:[8, 7, 6] avg:-136.79 match:75.0%
+Imp: wavedavey Digits:[1, 6, 0] avg:-76.38 match:38.46%
+Usr: Elizabeth W. Digits:[3, 8, 7] avg:-32.2 match:78.57%
+Imp: Robert Digits:[3, 5, 6] avg:-41.86 match:66.67%
+*SKIPPED* Usr: Elizabeth W. Digits:[6, 4, 3] avg:-54.92 match:20.0%
+Usr: Elizabeth W. Digits:[8, 4, 7] avg:-31.42 match:93.33%
+Imp: IDoNotCare Digits:[9, 5, 3] avg:-175.74 match:27.91%
+Usr: Elizabeth W. Digits:[6, 4, 3] avg:-48.2 match:50.0%
+Imp: ThumbsUp Digits:[4, 0, 1] avg:-36.12 match:79.31%
+*SKIPPED* Usr: Elizabeth W. Digits:[6, 8, 7] avg:-66.93 match:19.05%
+False Accept Rate (FAR):7.69% False Reject Rate (FRR):7.69% Match Threshold:74.8%
+-----------------------------
+User: 'TerryD' digits recorded: 90
+*SKIPPED* Usr: TerryD Digits:[2, 7, 4] avg:-41.49 match:16.67%
+Usr: TerryD Digits:[3, 8, 5] avg:-31.53 match:70.97%
+Imp: MayaB Digits:[4, 0, 9] avg:-156.96 match:3.33%
+Usr: TerryD Digits:[6, 9, 0] avg:-31.92 match:82.05%
+Imp: Fri123 Digits:[2, 4, 1] avg:-69.81 match:13.79%
+Usr: TerryD Digits:[1, 6, 1] avg:-22.82 match:100.0%
+Imp: FinoH Digits:[4, 9, 6] avg:-23.18 match:100.0%
+Usr: TerryD Digits:[0, 5, 2] avg:-28.18 match:82.05%
+Imp: Avinash Digits:[2, 4, 5] avg:-675.0 match:68.75%
+Usr: TerryD Digits:[8, 7, 9] avg:-31.18 match:71.88%
+Imp: MayaB Digits:[3, 7, 8] avg:-442.7 match:6.06%
+Usr: TerryD Digits:[4, 3, 8] avg:-28.86 match:83.33%
+Imp: TheMaster Digits:[9, 1, 9] avg:-30.95 match:71.79%
+Usr: TerryD Digits:[3, 9, 6] avg:-29.07 match:81.58%
+Imp: IDoNotCare Digits:[1, 9, 6] avg:-158.06 match:34.48%
+Usr: TerryD Digits:[2, 7, 1] avg:-29.98 match:85.71%
+Imp: Duncan Digits:[1, 4, 1] avg:-23.54 match:100.0%
+Usr: TerryD Digits:[0, 5, 4] avg:-26.96 match:83.67%
+Imp: gwenreil Digits:[6, 9, 8] avg:-29569.57 match:0.0%
+Usr: TerryD Digits:[4, 2, 1] avg:-26.7 match:100.0%
+Imp: JakeM Digits:[0, 5, 3] avg:-24.07 match:100.0%
+Usr: TerryD Digits:[0, 5, 1] avg:-27.68 match:79.59%
+Imp: Trer_71 Digits:[4, 1, 8] avg:-29.85 match:90.0%
+Usr: TerryD Digits:[4, 5, 0] avg:-23.49 match:100.0%
+Imp: David Digits:[1, 2, 1] avg:-45.07 match:40.91%
+Usr: TerryD Digits:[2, 6, 5] avg:-26.2 match:88.89%
+Imp: Nola_07 Digits:[1, 7, 0] avg:-35.7 match:48.57%
+Usr: TerryD Digits:[0, 8, 7] avg:-27.3 match:76.92%
+Imp: Robert Digits:[5, 2, 9] avg:-35.23 match:50.0%
+Usr: TerryD Digits:[7, 0, 8] avg:-27.35 match:91.49%
+Imp: IDoNotCare Digits:[7, 9, 2] avg:-7002.11 match:17.14%
+Usr: TerryD Digits:[5, 6, 5] avg:-24.4 match:97.44%
+Imp: Avinash Digits:[3, 5, 9] avg:-36.87 match:37.5%
+Usr: TerryD Digits:[0, 6, 7] avg:-27.06 match:80.0%
+Imp: mrangry Digits:[5, 4, 6] avg:-156.94 match:2.56%
+Usr: TerryD Digits:[8, 6, 7] avg:-29.42 match:76.0%
+Imp: Macwfd Digits:[9, 2, 8] avg:-33.66 match:48.72%
+Usr: TerryD Digits:[5, 0, 8] avg:-26.16 match:94.19%
+Imp: 12345 Digits:[1, 0, 4] avg:-19.97 match:100.0%
+Usr: TerryD Digits:[5, 0, 6] avg:-25.86 match:100.0%
+Imp: wavedavey Digits:[1, 9, 2] avg:-56.91 match:0.0%
+Usr: TerryD Digits:[7, 8, 6] avg:-25.87 match:93.18%
+Imp: Duncan Digits:[2, 4, 6] avg:-29.48 match:77.78%
+Usr: TerryD Digits:[5, 8, 7] avg:-27.98 match:95.45%
+Imp: Trer_71 Digits:[7, 3, 4] avg:-32.82 match:52.94%
+Usr: TerryD Digits:[0, 8, 6] avg:-27.92 match:71.05%
+Imp: David Digits:[5, 4, 1] avg:-50.45 match:14.71%
+Usr: TerryD Digits:[7, 5, 0] avg:-33.14 match:74.19%
+Imp: Michael Digits:[1, 8, 0] avg:-54.54 match:16.67%
+Usr: TerryD Digits:[6, 5, 7] avg:-34.83 match:48.65%
+Imp: ThumbsUp Digits:[9, 8, 8] avg:-45.83 match:27.03%
+Usr: TerryD Digits:[0, 8, 8] avg:-25.39 match:88.37%
+Imp: mrangry Digits:[6, 4, 2] avg:-44893.79 match:0.0%
+Usr: TerryD Digits:[0, 7, 6] avg:-27.04 match:79.07%
+Imp: Avinash Digits:[2, 4, 8] avg:-675.0 match:68.75%
+Usr: TerryD Digits:[5, 8, 7] avg:-26.44 match:92.11%
+Imp: wavedavey Digits:[6, 3, 2] avg:-5739.68 match:0.0%
+Usr: TerryD Digits:[5, 6, 0] avg:-30.55 match:78.79%
+Imp: IDoNotCare Digits:[7, 7, 1] avg:-5295.23 match:26.32%
+False Accept Rate (FAR):10.34% False Reject Rate (FRR):10.34% Match Threshold:76.8%
+-----------------------------
+User: 'j_mcg' digits recorded: 55
+Usr: j_mcg Digits:[6, 0, 4] avg:-41.13 match:83.33%
+Imp: JakeM Digits:[7, 4, 9] avg:-63.91 match:77.78%
+Usr: j_mcg Digits:[7, 5, 1] avg:-27.22 match:100.0%
+Imp: MikeK Digits:[0, 4, 2] avg:-81.81 match:65.96%
+Usr: j_mcg Digits:[3, 2, 9] avg:-26.86 match:100.0%
+Imp: Ronan B Digits:[8, 1, 8] avg:-82.98 match:31.58%
+Usr: j_mcg Digits:[8, 2, 7] avg:-30.09 match:100.0%
+Imp: Trer_71 Digits:[4, 9, 2] avg:-29.57 match:100.0%
+Usr: j_mcg Digits:[8, 0, 9] avg:-46.92 match:87.5%
+Imp: Ronan B Digits:[2, 6, 1] avg:-61.33 match:58.33%
+Usr: j_mcg Digits:[5, 3, 6] avg:-26.91 match:100.0%
+Imp: David Digits:[1, 6, 8] avg:-81.43 match:45.45%
+Usr: j_mcg Digits:[1, 4, 1] avg:-16.52 match:100.0%
+Imp: FinoH Digits:[2, 9, 3] avg:-63.26 match:45.83%
+Usr: j_mcg Digits:[3, 9, 8] avg:-36.1 match:100.0%
+Imp: Seven Whistler Digits:[1, 3, 2] avg:-85.05 match:59.26%
+Usr: j_mcg Digits:[7, 1, 7] avg:-24.02 match:100.0%
+Imp: TheMaster Digits:[8, 0, 2] avg:-34.66 match:100.0%
+Usr: j_mcg Digits:[3, 8, 9] avg:-23.52 match:100.0%
+Imp: Seven Whistler Digits:[6, 3, 2] avg:-62.8 match:63.64%
+Usr: j_mcg Digits:[1, 3, 8] avg:-20.99 match:100.0%
+Imp: Duncan Digits:[4, 1, 8] avg:-21.22 match:100.0%
+Usr: j_mcg Digits:[7, 9, 9] avg:-19.89 match:100.0%
+Imp: Elizabeth W. Digits:[0, 7, 6] avg:-58.19 match:66.67%
+Usr: j_mcg Digits:[7, 8, 3] avg:-30.6 match:96.0%
+Imp: Denis Digits:[8, 0, 8] avg:-37.47 match:100.0%
+Usr: j_mcg Digits:[1, 3, 9] avg:-15.62 match:100.0%
+Imp: IDoNotCare Digits:[8, 8, 1] avg:-117.36 match:31.25%
+Usr: j_mcg Digits:[7, 8, 1] avg:-32.08 match:94.12%
+Imp: JakeM Digits:[3, 8, 5] avg:-61.78 match:50.0%
+Usr: j_mcg Digits:[1, 3, 9] avg:-29.76 match:95.65%
+Imp: Macwfd Digits:[7, 6, 5] avg:-159.48 match:18.18%
+Usr: j_mcg Digits:[8, 7, 7] avg:-36.92 match:85.71%
+Imp: MayaB Digits:[2, 6, 0] avg:-48.88 match:77.14%
+Usr: j_mcg Digits:[9, 1, 3] avg:-20.64 match:100.0%
+Imp: Sean1 Digits:[4, 7, 3] avg:-15.63 match:100.0%
+False Accept Rate (FAR):13.89% False Reject Rate (FRR):13.89% Match Threshold:95.8%
+-----------------------------
+User: 'Seven Whistler' digits recorded: 30
+Usr: Seven Whistler Digits:[8, 9, 4] avg:-37.02 match:90.91%
+Imp: Ronan B Digits:[2, 3, 9] avg:-217.22 match:66.67%
+Usr: Seven Whistler Digits:[6, 5, 1] avg:-31.95 match:81.82%
+Imp: 12345 Digits:[5, 8, 2] avg:-35.61 match:59.38%
+Usr: Seven Whistler Digits:[2, 0, 7] avg:-32.48 match:85.48%
+Imp: gwenreil Digits:[9, 6, 2] avg:-88.14 match:30.43%
+Usr: Seven Whistler Digits:[3, 8, 9] avg:-31.35 match:91.67%
+Imp: MayaB Digits:[3, 6, 2] avg:-81.86 match:18.52%
+Usr: Seven Whistler Digits:[5, 6, 2] avg:-32.98 match:90.91%
+Imp: FinoH Digits:[3, 5, 8] avg:-28.74 match:100.0%
+Usr: Seven Whistler Digits:[3, 1, 0] avg:-35.86 match:80.0%
+Imp: PaulMcC Digits:[7, 2, 0] avg:-25.26 match:100.0%
+Usr: Seven Whistler Digits:[7, 4, 5] avg:-34.14 match:70.59%
+Imp: TeriP Digits:[7, 4, 8] avg:-43.58 match:14.29%
+Usr: Seven Whistler Digits:[0, 3, 4] avg:-26.19 match:100.0%
+Imp: Denis Digits:[2, 7, 4] avg:-28.46 match:100.0%
+Usr: Seven Whistler Digits:[9, 9, 3] avg:-31.37 match:100.0%
+Imp: Fintan Digits:[2, 9, 1] avg:-789.38 match:13.64%
+Usr: Seven Whistler Digits:[4, 5, 0] avg:-30.61 match:100.0%
+Imp: TheMaster Digits:[8, 6, 3] avg:-32.0 match:81.82%
+False Accept Rate (FAR):15.0% False Reject Rate (FRR):15.0% Match Threshold:85.3%
+-----------------------------
+User: 'Denis' digits recorded: 90
+Usr: Denis Digits:[1, 3, 9] avg:-25.21 match:95.45%
+Imp: Robert Digits:[5, 1, 1] avg:-68.49 match:36.36%
+Usr: Denis Digits:[4, 2, 5] avg:-22.19 match:100.0%
+Imp: TerryD Digits:[6, 5, 3] avg:-277.05 match:2.5%
+Usr: Denis Digits:[7, 8, 0] avg:-24.64 match:100.0%
+Imp: Elizabeth W. Digits:[1, 1, 2] avg:-25.87 match:92.86%
+Usr: Denis Digits:[6, 9, 3] avg:-30.15 match:90.91%
+Imp: Michael Digits:[6, 5, 8] avg:-334.26 match:0.0%
+Usr: Denis Digits:[7, 0, 5] avg:-19.89 match:100.0%
+Imp: PaulMcC Digits:[2, 2, 7] avg:-34.02 match:70.83%
+Usr: Denis Digits:[4, 1, 8] avg:-16.56 match:100.0%
+Imp: mrangry Digits:[0, 4, 4] avg:-114.0 match:42.11%
+Usr: Denis Digits:[6, 2, 8] avg:-26.49 match:100.0%
+Imp: Nola_07 Digits:[5, 0, 3] avg:-63.25 match:2.7%
+Usr: Denis Digits:[6, 0, 4] avg:-26.24 match:100.0%
+Imp: Ronan B Digits:[6, 7, 3] avg:-82.56 match:5.88%
+Usr: Denis Digits:[5, 2, 1] avg:-22.05 match:100.0%
+Imp: MikeK Digits:[6, 6, 8] avg:-173.95 match:14.29%
+Usr: Denis Digits:[7, 3, 9] avg:-14.67 match:100.0%
+Imp: Ronan B Digits:[8, 4, 8] avg:-85.86 match:10.53%
+*SKIPPED* Usr: Denis Digits:[8, 6, 5] avg:-56.89 match:18.75%
+Usr: Denis Digits:[0, 1, 0] avg:-43.9 match:75.0%
+Imp: Michael Digits:[9, 9, 2] avg:-88.88 match:38.1%
+Usr: Denis Digits:[5, 1, 6] avg:-45.32 match:50.0%
+Imp: Trer_71 Digits:[9, 5, 2] avg:-35.55 match:80.0%
+*SKIPPED* Usr: Denis Digits:[8, 8, 5] avg:-53.34 match:18.18%
+Usr: Denis Digits:[7, 0, 9] avg:-30.76 match:85.71%
+Imp: Fintan Digits:[4, 4, 2] avg:-82.79 match:7.69%
+Usr: Denis Digits:[5, 7, 9] avg:-26.81 match:100.0%
+Imp: PaulMcC Digits:[3, 6, 8] avg:-53.04 match:28.57%
+Usr: Denis Digits:[8, 0, 9] avg:-33.17 match:93.75%
+Imp: Seven Whistler Digits:[4, 2, 2] avg:-54.99 match:50.0%
+Usr: Denis Digits:[0, 5, 7] avg:-26.08 match:100.0%
+Imp: Elizabeth W. Digits:[6, 4, 7] avg:-97.22 match:0.0%
+Usr: Denis Digits:[8, 8, 0] avg:-36.04 match:81.25%
+Imp: Duncan Digits:[9, 8, 3] avg:-48.38 match:33.33%
+Usr: Denis Digits:[7, 5, 9] avg:-27.47 match:91.67%
+Imp: Seven Whistler Digits:[6, 6, 5] avg:-183.16 match:18.18%
+Usr: Denis Digits:[0, 6, 2] avg:-30.45 match:88.57%
+Imp: Fintan Digits:[3, 9, 0] avg:-274.16 match:0.0%
+Usr: Denis Digits:[9, 7, 8] avg:-24.58 match:100.0%
+Imp: MayaB Digits:[5, 3, 5] avg:-67.49 match:12.12%
+Usr: Denis Digits:[5, 1, 6] avg:-37.45 match:95.24%
+Imp: BenOS Digits:[2, 4, 7] avg:-77.88 match:75.0%
+Usr: Denis Digits:[4, 7, 8] avg:-32.31 match:91.67%
+Imp: mrangry Digits:[1, 5, 1] avg:-57.44 match:57.89%
+Usr: Denis Digits:[2, 5, 0] avg:-22.29 match:100.0%
+Imp: wavedavey Digits:[9, 3, 5] avg:-254.01 match:0.0%
+Usr: Denis Digits:[2, 9, 3] avg:-18.4 match:100.0%
+Imp: Fintan Digits:[4, 0, 4] avg:-82.79 match:7.69%
+Usr: Denis Digits:[5, 7, 6] avg:-19.85 match:100.0%
+Imp: mrangry Digits:[9, 0, 5] avg:-36.81 match:87.5%
+Usr: Denis Digits:[2, 7, 9] avg:-39.14 match:92.31%
+Imp: j_mcg Digits:[6, 0, 5] avg:-103.41 match:58.33%
+Usr: Denis Digits:[3, 6, 2] avg:-48.84 match:70.0%
+Imp: Trer_71 Digits:[9, 1, 2] avg:-66.7 match:0.0%
+Usr: Denis Digits:[7, 3, 9] avg:-51.11 match:50.0%
+Imp: TeriP Digits:[1, 0, 3] avg:-85.37 match:5.56%
+False Accept Rate (FAR):7.14% False Reject Rate (FRR):5.36% Match Threshold:74.8%
+-----------------------------
+User: 'Maria' digits recorded: 90
+Usr: Maria Digits:[7, 9, 6] avg:-50.37 match:62.5%
+Imp: FinoH Digits:[4, 5, 1] avg:-34.0 match:100.0%
+Usr: Maria Digits:[1, 5, 3] avg:-35.21 match:100.0%
+Imp: Ronan B Digits:[2, 9, 8] avg:-48.79 match:58.33%
+Usr: Maria Digits:[8, 4, 0] avg:-34.82 match:100.0%
+Imp: JakeM Digits:[5, 3, 9] avg:-42.15 match:84.62%
+Usr: Maria Digits:[2, 2, 0] avg:-31.9 match:100.0%
+Imp: 12345 Digits:[3, 3, 8] avg:-52.21 match:9.09%
+Usr: Maria Digits:[8, 3, 5] avg:-50.21 match:46.67%
+Imp: Nola_07 Digits:[4, 3, 5] avg:-37.1 match:100.0%
+Usr: Maria Digits:[4, 9, 6] avg:-31.92 match:100.0%
+Imp: Denis Digits:[5, 6, 4] avg:-38.13 match:95.0%
+Usr: Maria Digits:[7, 1, 5] avg:-35.43 match:100.0%
+Imp: Duncan Digits:[2, 4, 6] avg:-32.7 match:100.0%
+Usr: Maria Digits:[2, 6, 0] avg:-36.66 match:80.0%
+Imp: Elizabeth W. Digits:[9, 1, 9] avg:-40.88 match:95.45%
+Usr: Maria Digits:[7, 8, 1] avg:-44.58 match:44.0%
+Imp: Trer_71 Digits:[8, 3, 6] avg:-53.07 match:18.18%
+Usr: Maria Digits:[9, 4, 3] avg:-38.17 match:96.15%
+Imp: TeriP Digits:[1, 8, 1] avg:-42.76 match:58.82%
+Usr: Maria Digits:[2, 1, 9] avg:-28.28 match:100.0%
+Imp: wavedavey Digits:[2, 2, 9] avg:-99.74 match:0.0%
+Usr: Maria Digits:[8, 6, 1] avg:-32.89 match:100.0%
+Imp: 12345 Digits:[9, 8, 2] avg:-44.17 match:66.67%
+Usr: Maria Digits:[2, 9, 6] avg:-27.41 match:100.0%
+Imp: MayaB Digits:[5, 6, 3] avg:-35.07 match:100.0%
+Usr: Maria Digits:[8, 8, 1] avg:-43.46 match:69.23%
+Imp: gwenreil Digits:[5, 3, 1] avg:-39.41 match:100.0%
+Usr: Maria Digits:[6, 9, 2] avg:-45.14 match:60.0%
+Imp: TheMaster Digits:[9, 9, 8] avg:-40.08 match:92.31%
+Usr: Maria Digits:[2, 9, 6] avg:-28.01 match:100.0%
+Imp: j_mcg Digits:[1, 1, 6] avg:-29.03 match:100.0%
+Usr: Maria Digits:[8, 1, 2] avg:-44.01 match:73.33%
+Imp: IDoNotCare Digits:[8, 0, 6] avg:-54.92 match:14.29%
+Usr: Maria Digits:[9, 8, 6] avg:-35.37 match:100.0%
+Imp: David Digits:[3, 9, 6] avg:-54.99 match:33.33%
+Usr: Maria Digits:[1, 8, 1] avg:-29.14 match:100.0%
+Imp: IDoNotCare Digits:[8, 5, 3] avg:-54.92 match:14.29%
+Usr: Maria Digits:[6, 2, 9] avg:-41.23 match:60.0%
+Imp: 12345 Digits:[7, 6, 8] avg:-48.9 match:62.5%
+Usr: Maria Digits:[2, 8, 6] avg:-24.37 match:100.0%
+Imp: fergie Digits:[4, 0, 7] avg:-39.16 match:91.18%
+Usr: Maria Digits:[9, 1, 6] avg:-37.16 match:100.0%
+Imp: Djfdemo Digits:[6, 2, 1] avg:-58.82 match:0.0%
+Usr: Maria Digits:[1, 8, 9] avg:-30.86 match:100.0%
+Imp: mrangry Digits:[6, 0, 8] avg:-300.85 match:0.0%
+Usr: Maria Digits:[2, 6, 1] avg:-27.41 match:100.0%
+Imp: Hilts Digits:[6, 5, 3] avg:-79.82 match:0.0%
+Usr: Maria Digits:[8, 9, 2] avg:-43.89 match:70.59%
+Imp: gwenreil Digits:[7, 2, 5] avg:-42.88 match:74.29%
+Usr: Maria Digits:[9, 1, 2] avg:-38.65 match:96.77%
+Imp: BenOS Digits:[3, 8, 6] avg:-109.16 match:40.0%
+Usr: Maria Digits:[6, 8, 2] avg:-48.0 match:46.67%
+Imp: fergie Digits:[3, 7, 4] avg:-53.6 match:16.67%
+Usr: Maria Digits:[8, 1, 9] avg:-36.49 match:100.0%
+Imp: Avinash Digits:[9, 5, 6] avg:-37.32 match:96.67%
+Usr: Maria Digits:[6, 6, 8] avg:-44.02 match:83.33%
+Imp: JakeM Digits:[6, 2, 9] avg:-69.38 match:47.37%
+Usr: Maria Digits:[1, 2, 9] avg:-27.66 match:100.0%
+Imp: IDoNotCare Digits:[4, 3, 2] avg:-39.07 match:96.97%
+False Accept Rate (FAR):18.33% False Reject Rate (FRR):18.33% Match Threshold:92.2%
+-----------------------------
+User: 'David' digits recorded: 60
+Usr: David Digits:[6, 1, 5] avg:-35.18 match:50.0%
+Imp: 12345 Digits:[4, 6, 8] avg:-29.15 match:92.86%
+Usr: David Digits:[8, 9, 2] avg:-36.12 match:50.0%
+Imp: Robert Digits:[5, 4, 3] avg:-36.03 match:63.64%
+Usr: David Digits:[7, 0, 3] avg:-34.42 match:60.0%
+Imp: wavedavey Digits:[4, 2, 5] avg:-55.03 match:23.81%
+Usr: David Digits:[4, 9, 0] avg:-25.72 match:100.0%
+Imp: Fri123 Digits:[0, 7, 4] avg:-38.86 match:41.67%
+Usr: David Digits:[8, 7, 6] avg:-31.05 match:95.24%
+Imp: Fintan Digits:[9, 8, 7] avg:-37.87 match:24.32%
+Usr: David Digits:[3, 2, 5] avg:-29.79 match:100.0%
+Imp: Djfdemo Digits:[9, 4, 2] avg:-41.89 match:18.75%
+Usr: David Digits:[4, 1, 2] avg:-24.84 match:96.97%
+Imp: MikeK Digits:[1, 5, 9] avg:-51.27 match:0.0%
+Usr: David Digits:[3, 5, 4] avg:-31.18 match:93.1%
+Imp: TerryD Digits:[5, 7, 0] avg:-52.63 match:14.71%
+Usr: David Digits:[1, 9, 7] avg:-28.57 match:95.45%
+Imp: Ronan B Digits:[1, 8, 6] avg:-27.87 match:92.86%
+Usr: David Digits:[6, 8, 0] avg:-34.43 match:53.33%
+Imp: Duncan Digits:[8, 8, 4] avg:-31.09 match:95.0%
+Usr: David Digits:[0, 6, 3] avg:-30.67 match:69.44%
+Imp: fergie Digits:[4, 5, 7] avg:-25.3 match:100.0%
+Usr: David Digits:[8, 7, 7] avg:-36.89 match:52.63%
+Imp: ThumbsUp Digits:[6, 2, 2] avg:-47.59 match:0.0%
+Usr: David Digits:[3, 0, 8] avg:-34.58 match:61.29%
+Imp: Seven Whistler Digits:[7, 6, 0] avg:-65.71 match:17.65%
+Usr: David Digits:[6, 8, 0] avg:-35.64 match:43.75%
+Imp: 12345 Digits:[8, 5, 0] avg:-34.91 match:80.0%
+*SKIPPED* Usr: David Digits:[6, 3, 7] avg:-37.18 match:28.57%
+Usr: David Digits:[8, 0, 6] avg:-37.77 match:44.0%
+Imp: fergie Digits:[8, 2, 9] avg:-39.66 match:33.33%
+Usr: David Digits:[3, 7, 6] avg:-31.05 match:89.66%
+Imp: 12345 Digits:[0, 9, 6] avg:-31.42 match:84.0%
+Usr: David Digits:[7, 3, 0] avg:-33.97 match:56.0%
+Imp: Fintan Digits:[7, 1, 0] avg:-44.81 match:26.09%
+Usr: David Digits:[8, 3, 0] avg:-36.29 match:57.14%
+Imp: Duncan Digits:[7, 4, 6] avg:-24.53 match:100.0%
+Usr: David Digits:[7, 6, 8] avg:-34.88 match:51.52%
+Imp: wavedavey Digits:[2, 2, 1] avg:-48.31 match:25.0%
+False Accept Rate (FAR):21.05% False Reject Rate (FRR):21.05% Match Threshold:57.0%
+-----------------------------
+User: 'PaulMcC' digits recorded: 90
+Usr: PaulMcC Digits:[2, 1, 3] avg:-23.25 match:92.31%
+Imp: 12345 Digits:[9, 6, 8] avg:-28.91 match:96.67%
+Usr: PaulMcC Digits:[9, 0, 7] avg:-23.2 match:100.0%
+Imp: Sean1 Digits:[5, 9, 0] avg:-30.64 match:96.43%
+Usr: PaulMcC Digits:[4, 6, 5] avg:-20.95 match:88.46%
+Imp: Sean1 Digits:[9, 3, 4] avg:-26.96 match:100.0%
+Usr: PaulMcC Digits:[8, 8, 6] avg:-27.1 match:100.0%
+Imp: Fri123 Digits:[3, 5, 9] avg:-109.47 match:13.64%
+Usr: PaulMcC Digits:[5, 1, 9] avg:-32.28 match:78.57%
+Imp: Denis Digits:[7, 9, 0] avg:-118.11 match:20.0%
+Usr: PaulMcC Digits:[7, 0, 2] avg:-18.46 match:100.0%
+Imp: JakeM Digits:[4, 1, 4] avg:-26.29 match:100.0%
+Usr: PaulMcC Digits:[4, 3, 7] avg:-11.3 match:96.0%
+Imp: Macwfd Digits:[5, 1, 2] avg:-85.74 match:34.29%
+Usr: PaulMcC Digits:[8, 0, 4] avg:-16.43 match:100.0%
+Imp: MayaB Digits:[1, 6, 8] avg:-116.52 match:55.56%
+Usr: PaulMcC Digits:[2, 6, 5] avg:-16.46 match:100.0%
+Imp: Duncan Digits:[3, 8, 5] avg:-30.55 match:94.44%
+Usr: PaulMcC Digits:[3, 1, 9] avg:-21.04 match:100.0%
+Imp: Ronan B Digits:[2, 8, 6] avg:-71.26 match:86.96%
+Usr: PaulMcC Digits:[3, 4, 9] avg:-23.85 match:100.0%
+Imp: Maria Digits:[8, 8, 3] avg:-6083.56 match:0.0%
+Usr: PaulMcC Digits:[0, 7, 7] avg:-23.16 match:100.0%
+Imp: Fintan Digits:[5, 3, 4] avg:-193.25 match:0.0%
+Usr: PaulMcC Digits:[9, 0, 4] avg:-15.52 match:100.0%
+Imp: j_mcg Digits:[5, 6, 7] avg:-66.1 match:15.38%
+Usr: PaulMcC Digits:[3, 7, 4] avg:-25.16 match:92.31%
+Imp: gwenreil Digits:[8, 2, 6] avg:-1656.15 match:6.9%
+Usr: PaulMcC Digits:[0, 3, 9] avg:-22.72 match:100.0%
+Imp: Ronan B Digits:[7, 5, 4] avg:-31.56 match:83.33%
+Usr: PaulMcC Digits:[7, 9, 0] avg:-25.31 match:86.96%
+Imp: Fintan Digits:[9, 4, 1] avg:-147.56 match:0.0%
+Usr: PaulMcC Digits:[4, 3, 7] avg:-17.75 match:100.0%
+Imp: Fri123 Digits:[2, 2, 1] avg:-210.88 match:8.7%
+Usr: PaulMcC Digits:[4, 3, 0] avg:-30.27 match:95.83%
+Imp: TerryD Digits:[8, 2, 3] avg:-214.21 match:27.27%
+Usr: PaulMcC Digits:[9, 7, 4] avg:-18.62 match:100.0%
+Imp: Denis Digits:[9, 7, 6] avg:-247.32 match:23.08%
+Usr: PaulMcC Digits:[3, 9, 0] avg:-23.89 match:100.0%
+Imp: mrangry Digits:[0, 4, 1] avg:-2413.91 match:10.53%
+Usr: PaulMcC Digits:[7, 9, 3] avg:-17.72 match:100.0%
+Imp: wavedavey Digits:[8, 0, 5] avg:-685.35 match:0.0%
+Usr: PaulMcC Digits:[4, 0, 4] avg:-2.1 match:100.0%
+Imp: mrangry Digits:[6, 6, 3] avg:-76499.56 match:0.0%
+Usr: PaulMcC Digits:[3, 9, 0] avg:-25.74 match:94.74%
+Imp: Trer_71 Digits:[5, 8, 4] avg:-32.09 match:88.89%
+Usr: PaulMcC Digits:[7, 0, 4] avg:-35.58 match:62.5%
+Imp: Michael Digits:[0, 6, 0] avg:-65.12 match:66.67%
+Usr: PaulMcC Digits:[7, 3, 9] avg:-17.01 match:100.0%
+Imp: IDoNotCare Digits:[9, 1, 2] avg:-1671.64 match:36.0%
+Usr: PaulMcC Digits:[7, 9, 4] avg:-24.27 match:83.33%
+Imp: Fintan Digits:[1, 4, 3] avg:-91.06 match:10.0%
+Usr: PaulMcC Digits:[0, 3, 4] avg:-26.08 match:90.0%
+Imp: Nola_07 Digits:[6, 4, 6] avg:-85.6 match:16.67%
+Usr: PaulMcC Digits:[9, 7, 3] avg:-25.67 match:94.74%
+Imp: Robert Digits:[0, 1, 3] avg:-105.22 match:66.67%
+Usr: PaulMcC Digits:[0, 3, 4] avg:-26.09 match:85.0%
+Imp: 12345 Digits:[3, 0, 8] avg:-29.74 match:95.65%
+Usr: PaulMcC Digits:[0, 9, 7] avg:-18.75 match:100.0%
+Imp: Fintan Digits:[9, 2, 6] avg:-168.56 match:0.0%
+False Accept Rate (FAR):10.0% False Reject Rate (FRR):10.0% Match Threshold:89.8%
+-----------------------------
+User: '12345' digits recorded: 30
+Usr: 12345 Digits:[7, 2, 3] avg:-28.48 match:96.88%
+Imp: mrangry Digits:[4, 9, 7] avg:-224.33 match:11.43%
+Usr: 12345 Digits:[6, 9, 0] avg:-27.55 match:100.0%
+Imp: Fintan Digits:[0, 9, 1] avg:-303.29 match:3.33%
+Usr: 12345 Digits:[5, 1, 4] avg:-21.35 match:100.0%
+Imp: Sean1 Digits:[6, 2, 5] avg:-34.68 match:90.0%
+Usr: 12345 Digits:[8, 4, 7] avg:-23.0 match:100.0%
+Imp: fergie Digits:[9, 1, 7] avg:-194.45 match:48.48%
+Usr: 12345 Digits:[6, 0, 8] avg:-28.67 match:90.0%
+Imp: Sean1 Digits:[4, 1, 0] avg:-18.34 match:100.0%
+Usr: 12345 Digits:[9, 3, 5] avg:-19.89 match:100.0%
+Imp: MikeK Digits:[8, 4, 8] avg:-47599.91 match:0.0%
+Usr: 12345 Digits:[1, 2, 5] avg:-14.75 match:100.0%
+Imp: BenOS Digits:[4, 2, 0] avg:-43485.62 match:71.88%
+Usr: 12345 Digits:[9, 1, 8] avg:-24.26 match:100.0%
+Imp: TheMaster Digits:[0, 0, 3] avg:-375.96 match:82.35%
+Usr: 12345 Digits:[2, 6, 7] avg:-22.34 match:100.0%
+Imp: Michael Digits:[2, 6, 0] avg:-150.71 match:50.0%
+Usr: 12345 Digits:[4, 3, 0] avg:-15.74 match:100.0%
+Imp: gwenreil Digits:[9, 7, 1] avg:-193.05 match:39.62%
+False Accept Rate (FAR):5.0% False Reject Rate (FRR):5.0% Match Threshold:96.7%
+-----------------------------
+User: 'Fri123' digits recorded: 65
+Usr: Fri123 Digits:[6, 1, 5] avg:-36.01 match:100.0%
+Imp: Trer_71 Digits:[8, 7, 8] avg:-48.47 match:72.73%
+Usr: Fri123 Digits:[2, 8, 0] avg:-42.83 match:93.1%
+Imp: gwenreil Digits:[8, 1, 3] avg:-77137.59 match:0.0%
+Usr: Fri123 Digits:[9, 3, 4] avg:-26.88 match:100.0%
+Imp: BenOS Digits:[3, 3, 6] avg:-298524.11 match:13.33%
+Usr: Fri123 Digits:[7, 7, 3] avg:-30.19 match:100.0%
+Imp: Duncan Digits:[5, 8, 1] avg:-25.77 match:100.0%
+Usr: Fri123 Digits:[8, 6, 4] avg:-30.12 match:100.0%
+Imp: mrangry Digits:[9, 5, 5] avg:-105.56 match:54.17%
+Usr: Fri123 Digits:[2, 1, 5] avg:-44.33 match:91.3%
+Imp: BenOS Digits:[6, 8, 1] avg:-177207.18 match:5.0%
+Usr: Fri123 Digits:[0, 9, 1] avg:-28.41 match:100.0%
+Imp: JakeM Digits:[2, 7, 4] avg:-32.53 match:100.0%
+Usr: Fri123 Digits:[3, 7, 8] avg:-25.25 match:100.0%
+Imp: Robert Digits:[7, 0, 5] avg:-36.61 match:100.0%
+Usr: Fri123 Digits:[9, 2, 5] avg:-26.08 match:100.0%
+Imp: Macwfd Digits:[4, 6, 9] avg:-52.74 match:92.86%
+Usr: Fri123 Digits:[4, 0, 6] avg:-21.06 match:100.0%
+Imp: Fintan Digits:[1, 6, 8] avg:-46.84 match:100.0%
+Usr: Fri123 Digits:[6, 1, 7] avg:-38.46 match:100.0%
+Imp: FinoH Digits:[2, 9, 6] avg:-32.03 match:100.0%
+Usr: Fri123 Digits:[0, 5, 0] avg:-32.29 match:100.0%
+Imp: ThumbsUp Digits:[5, 4, 4] avg:-68.4 match:51.52%
+Usr: Fri123 Digits:[1, 6, 7] avg:-25.76 match:100.0%
+Imp: Elizabeth W. Digits:[2, 4, 2] avg:-35.53 match:100.0%
+Usr: Fri123 Digits:[5, 0, 7] avg:-29.48 match:100.0%
+Imp: Fintan Digits:[3, 2, 5] avg:-65.41 match:33.33%
+Usr: Fri123 Digits:[5, 1, 6] avg:-29.23 match:100.0%
+Imp: gwenreil Digits:[7, 8, 4] avg:-75440.84 match:28.57%
+Usr: Fri123 Digits:[6, 7, 5] avg:-47.39 match:92.86%
+Imp: gwenreil Digits:[0, 2, 9] avg:-47637.85 match:4.17%
+Usr: Fri123 Digits:[1, 0, 5] avg:-29.02 match:100.0%
+Imp: Duncan Digits:[1, 2, 8] avg:-24.72 match:100.0%
+Usr: Fri123 Digits:[1, 0, 6] avg:-26.76 match:100.0%
+Imp: TeriP Digits:[0, 6, 1] avg:-114.79 match:72.73%
+Usr: Fri123 Digits:[7, 7, 0] avg:-30.55 match:100.0%
+Imp: IDoNotCare Digits:[7, 1, 9] avg:-58487.12 match:36.84%
+*SKIPPED* Usr: Fri123 Digits:[6, 5, 1] avg:-102.53 match:25.0%
+Usr: Fri123 Digits:[1, 5, 6] avg:-26.74 match:100.0%
+Imp: Michael Digits:[9, 7, 7] avg:-35.53 match:100.0%
+False Accept Rate (FAR):20.0% False Reject Rate (FRR):7.5% Match Threshold:99.8%
+-----------------------------
+User: 'fergie' digits recorded: 30
+Usr: fergie Digits:[7, 9, 0] avg:-28.23 match:84.62%
+Imp: Ronan B Digits:[8, 8, 8] avg:-50.67 match:47.37%
+Usr: fergie Digits:[2, 6, 5] avg:-21.97 match:100.0%
+Imp: wavedavey Digits:[6, 5, 6] avg:-79.81 match:0.0%
+Usr: fergie Digits:[3, 4, 8] avg:-32.78 match:100.0%
+Imp: BenOS Digits:[5, 1, 6] avg:-40.83 match:68.42%
+Usr: fergie Digits:[1, 2, 0] avg:-22.45 match:100.0%
+Imp: Denis Digits:[0, 9, 9] avg:-48.53 match:68.97%
+Usr: fergie Digits:[7, 3, 1] avg:-30.9 match:100.0%
+Imp: j_mcg Digits:[3, 9, 2] avg:-29.47 match:100.0%
+Usr: fergie Digits:[4, 6, 8] avg:-15.95 match:100.0%
+Imp: PaulMcC Digits:[7, 4, 6] avg:-16.64 match:100.0%
+Usr: fergie Digits:[9, 5, 6] avg:-22.8 match:100.0%
+Imp: Seven Whistler Digits:[2, 2, 5] avg:-57.39 match:51.61%
+Usr: fergie Digits:[8, 1, 4] avg:-57.15 match:61.9%
+Imp: Macwfd Digits:[7, 9, 9] avg:-291.27 match:16.0%
+Usr: fergie Digits:[3, 5, 0] avg:-28.86 match:100.0%
+Imp: Elizabeth W. Digits:[2, 0, 2] avg:-33.55 match:100.0%
+Usr: fergie Digits:[9, 2, 7] avg:-26.33 match:100.0%
+Imp: Nola_07 Digits:[5, 7, 1] avg:-32.13 match:94.59%
+False Accept Rate (FAR):15.0% False Reject Rate (FRR):10.0% Match Threshold:99.8%
+-----------------------------
+User: 'Fintan' digits recorded: 90
+Usr: Fintan Digits:[6, 4, 7] avg:-33.56 match:90.91%
+Imp: David Digits:[3, 3, 0] avg:-48.13 match:3.7%
+Usr: Fintan Digits:[0, 1, 9] avg:-31.58 match:79.31%
+Imp: Denis Digits:[1, 2, 7] avg:-86.01 match:0.0%
+Usr: Fintan Digits:[2, 3, 5] avg:-30.83 match:92.31%
+Imp: gwenreil Digits:[5, 8, 4] avg:-91.42 match:0.0%
+Usr: Fintan Digits:[8, 6, 5] avg:-27.99 match:100.0%
+Imp: Sean1 Digits:[0, 5, 4] avg:-66.58 match:0.0%
+Usr: Fintan Digits:[9, 1, 8] avg:-28.92 match:97.3%
+Imp: Djfdemo Digits:[6, 9, 1] avg:-70.99 match:11.11%
+Usr: Fintan Digits:[0, 7, 2] avg:-31.08 match:76.67%
+Imp: Hilts Digits:[9, 0, 1] avg:-49.44 match:12.9%
+Usr: Fintan Digits:[4, 3, 8] avg:-26.62 match:92.59%
+Imp: Robert Digits:[3, 3, 2] avg:-50.87 match:20.0%
+Usr: Fintan Digits:[5, 7, 3] avg:-28.89 match:94.74%
+Imp: Michael Digits:[8, 7, 7] avg:-78.79 match:0.0%
+Usr: Fintan Digits:[4, 6, 2] avg:-25.98 match:100.0%
+Imp: TerryD Digits:[0, 7, 7] avg:-74.03 match:7.69%
+Usr: Fintan Digits:[0, 9, 1] avg:-35.4 match:63.33%
+Imp: Maria Digits:[7, 1, 4] avg:-196.26 match:0.0%
+Usr: Fintan Digits:[8, 4, 7] avg:-43.51 match:47.83%
+Imp: Robert Digits:[7, 6, 5] avg:-58.71 match:0.0%
+Usr: Fintan Digits:[2, 5, 4] avg:-31.13 match:83.33%
+Imp: gwenreil Digits:[7, 7, 1] avg:-83.38 match:0.0%
+Usr: Fintan Digits:[5, 7, 8] avg:-30.56 match:90.62%
+Imp: mrangry Digits:[4, 6, 8] avg:-90.25 match:0.0%
+Usr: Fintan Digits:[2, 7, 4] avg:-32.72 match:76.92%
+Imp: 12345 Digits:[8, 7, 6] avg:-47.75 match:0.0%
+Usr: Fintan Digits:[5, 8, 2] avg:-32.11 match:90.91%
+Imp: JakeM Digits:[5, 8, 4] avg:-38.84 match:34.62%
+Usr: Fintan Digits:[7, 5, 8] avg:-34.46 match:65.0%
+Imp: IDoNotCare Digits:[5, 7, 1] avg:-90.5 match:0.0%
+Usr: Fintan Digits:[2, 4, 4] avg:-31.5 match:85.71%
+Imp: 12345 Digits:[8, 0, 7] avg:-47.75 match:0.0%
+*SKIPPED* Usr: Fintan Digits:[2, 8, 5] avg:-61.43 match:6.9%
+Usr: Fintan Digits:[7, 4, 7] avg:-31.75 match:83.33%
+Imp: Michael Digits:[6, 4, 2] avg:-67.76 match:0.0%
+Usr: Fintan Digits:[5, 2, 8] avg:-29.64 match:93.75%
+Imp: BenOS Digits:[2, 8, 1] avg:-57.96 match:0.0%
+Usr: Fintan Digits:[5, 7, 2] avg:-34.19 match:66.67%
+Imp: fergie Digits:[8, 7, 6] avg:-41.35 match:11.76%
+Usr: Fintan Digits:[8, 4, 2] avg:-34.21 match:70.0%
+Imp: Maria Digits:[4, 1, 4] avg:-100.63 match:0.0%
+Usr: Fintan Digits:[8, 7, 5] avg:-41.58 match:68.18%
+Imp: TheMaster Digits:[0, 9, 5] avg:-79.99 match:0.0%
+Usr: Fintan Digits:[4, 4, 5] avg:-33.49 match:62.5%
+Imp: j_mcg Digits:[8, 0, 8] avg:-78.94 match:0.0%
+Usr: Fintan Digits:[8, 2, 7] avg:-32.9 match:82.35%
+Imp: IDoNotCare Digits:[4, 5, 3] avg:-76.6 match:15.15%
+*SKIPPED* Usr: Fintan Digits:[4, 7, 8] avg:-59.64 match:7.14%
+Usr: Fintan Digits:[2, 5, 4] avg:-28.4 match:100.0%
+Imp: JakeM Digits:[6, 0, 5] avg:-48.1 match:11.76%
+Usr: Fintan Digits:[8, 2, 7] avg:-36.81 match:45.0%
+Imp: TheMaster Digits:[0, 6, 4] avg:-66.35 match:0.0%
+Usr: Fintan Digits:[5, 5, 2] avg:-29.27 match:100.0%
+Imp: Michael Digits:[3, 9, 6] avg:-71.03 match:0.0%
+Usr: Fintan Digits:[7, 8, 4] avg:-32.01 match:84.0%
+Imp: David Digits:[5, 3, 4] avg:-50.93 match:0.0%
+False Accept Rate (FAR):0.0% False Reject Rate (FRR):0.0% Match Threshold:44.8%
+-----------------------------
+User: 'TeriP' digits recorded: 45
+Usr: TeriP Digits:[6, 5, 1] avg:-36.47 match:100.0%
+Imp: Trer_71 Digits:[6, 4, 8] avg:-72.08 match:50.0%
+Usr: TeriP Digits:[3, 0, 9] avg:-32.56 match:100.0%
+Imp: FinoH Digits:[7, 5, 3] avg:-31.34 match:100.0%
+Usr: TeriP Digits:[7, 4, 2] avg:-35.1 match:100.0%
+Imp: PaulMcC Digits:[4, 2, 0] avg:-24.35 match:100.0%
+Usr: TeriP Digits:[8, 1, 5] avg:-49.09 match:71.43%
+Imp: Seven Whistler Digits:[1, 9, 5] avg:-35.48 match:100.0%
+Usr: TeriP Digits:[3, 0, 8] avg:-38.29 match:96.88%
+Imp: Fintan Digits:[8, 5, 7] avg:-54.18 match:78.57%
+Usr: TeriP Digits:[4, 2, 7] avg:-32.63 match:100.0%
+Imp: Macwfd Digits:[2, 0, 3] avg:-64.18 match:74.07%
+Usr: TeriP Digits:[6, 9, 6] avg:-74.71 match:56.67%
+Imp: Robert Digits:[7, 7, 1] avg:-41.2 match:91.67%
+Usr: TeriP Digits:[7, 2, 3] avg:-33.04 match:100.0%
+Imp: Elizabeth W. Digits:[7, 4, 4] avg:-27.42 match:100.0%
+Usr: TeriP Digits:[0, 5, 1] avg:-29.63 match:100.0%
+Imp: Duncan Digits:[4, 9, 5] avg:-28.53 match:100.0%
+Usr: TeriP Digits:[8, 4, 9] avg:-33.24 match:100.0%
+Imp: Trer_71 Digits:[6, 9, 3] avg:-93.95 match:22.22%
+Usr: TeriP Digits:[6, 3, 9] avg:-37.15 match:100.0%
+Imp: IDoNotCare Digits:[0, 1, 8] avg:-36.69 match:95.12%
+Usr: TeriP Digits:[7, 8, 8] avg:-33.8 match:100.0%
+Imp: fergie Digits:[1, 1, 7] avg:-30.6 match:100.0%
+Usr: TeriP Digits:[6, 3, 9] avg:-85.29 match:48.15%
+Imp: Robert Digits:[1, 5, 6] avg:-32.85 match:100.0%
+Usr: TeriP Digits:[7, 6, 9] avg:-35.66 match:100.0%
+Imp: Duncan Digits:[0, 5, 4] avg:-33.72 match:92.59%
+Usr: TeriP Digits:[3, 7, 8] avg:-36.61 match:100.0%
+Imp: JakeM Digits:[3, 0, 0] avg:-38.29 match:100.0%
+False Accept Rate (FAR):26.67% False Reject Rate (FRR):13.33% Match Threshold:99.8%
+-----------------------------
+User: 'FinoH' digits recorded: 60
+Usr: FinoH Digits:[9, 8, 5] avg:-24.26 match:90.24%
+Imp: Avinash Digits:[5, 3, 8] avg:-94.78 match:21.74%
+Usr: FinoH Digits:[7, 3, 6] avg:-14.93 match:100.0%
+Imp: PaulMcC Digits:[4, 8, 6] avg:-33.58 match:76.92%
+Usr: FinoH Digits:[0, 2, 4] avg:-35.06 match:77.27%
+Imp: mrangry Digits:[7, 8, 9] avg:-57395.37 match:27.78%
+Usr: FinoH Digits:[1, 2, 1] avg:-13.64 match:100.0%
+Imp: Denis Digits:[3, 3, 3] avg:-37.83 match:66.67%
+Usr: FinoH Digits:[0, 8, 6] avg:-16.8 match:100.0%
+Imp: Djfdemo Digits:[0, 8, 5] avg:-33.48 match:68.75%
+Usr: FinoH Digits:[9, 7, 4] avg:-16.74 match:100.0%
+Imp: ThumbsUp Digits:[6, 7, 3] avg:-210.87 match:0.0%
+Usr: FinoH Digits:[5, 3, 3] avg:-21.91 match:100.0%
+Imp: fergie Digits:[4, 0, 6] avg:-104.8 match:71.43%
+Usr: FinoH Digits:[6, 7, 2] avg:-36.6 match:61.54%
+Imp: MikeK Digits:[3, 6, 5] avg:-3879.41 match:0.0%
+Usr: FinoH Digits:[4, 5, 0] avg:-11.77 match:100.0%
+Imp: MayaB Digits:[3, 6, 9] avg:-131.79 match:11.11%
+Usr: FinoH Digits:[8, 9, 1] avg:-22.49 match:92.86%
+Imp: MayaB Digits:[1, 1, 6] avg:-45.79 match:56.41%
+Usr: FinoH Digits:[0, 6, 9] avg:-22.44 match:93.75%
+Imp: Ronan B Digits:[6, 3, 4] avg:-1405.06 match:0.0%
+Usr: FinoH Digits:[8, 5, 8] avg:-23.18 match:100.0%
+Imp: PaulMcC Digits:[2, 1, 7] avg:-44.23 match:61.54%
+Usr: FinoH Digits:[0, 9, 6] avg:-21.88 match:97.14%
+Imp: JakeM Digits:[7, 0, 7] avg:-194.94 match:78.95%
+Usr: FinoH Digits:[5, 8, 0] avg:-19.72 match:100.0%
+Imp: Duncan Digits:[4, 9, 0] avg:-32.03 match:69.23%
+Usr: FinoH Digits:[6, 9, 5] avg:-33.84 match:78.57%
+Imp: BenOS Digits:[8, 5, 4] avg:-125150.85 match:11.11%
+Usr: FinoH Digits:[9, 8, 0] avg:-58.17 match:37.25%
+Imp: IDoNotCare Digits:[1, 8, 7] avg:-232.88 match:34.48%
+Usr: FinoH Digits:[6, 5, 6] avg:-36.74 match:55.56%
+Imp: Maria Digits:[0, 7, 6] avg:-81.42 match:15.62%
+Usr: FinoH Digits:[0, 9, 5] avg:-158.35 match:32.08%
+Imp: gwenreil Digits:[4, 7, 9] avg:-71.81 match:9.38%
+Usr: FinoH Digits:[8, 5, 9] avg:-35.33 match:65.22%
+Imp: j_mcg Digits:[7, 5, 1] avg:-42796.29 match:23.53%
+Usr: FinoH Digits:[6, 0, 8] avg:-47.24 match:53.85%
+Imp: Nola_07 Digits:[9, 5, 2] avg:-35.55 match:55.17%
+False Accept Rate (FAR):15.0% False Reject Rate (FRR):15.0% Match Threshold:66.5%
+-----------------------------
+User: 'Robert' digits recorded: 70
+Usr: Robert Digits:[5, 4, 7] avg:-28.86 match:92.86%
+Imp: TerryD Digits:[1, 5, 7] avg:-34.73 match:43.33%
+Usr: Robert Digits:[9, 8, 2] avg:-22.21 match:100.0%
+Imp: Djfdemo Digits:[9, 1, 6] avg:-59.24 match:9.09%
+Usr: Robert Digits:[6, 1, 3] avg:-32.48 match:63.64%
+Imp: TheMaster Digits:[7, 5, 6] avg:-3739.52 match:70.0%
+Usr: Robert Digits:[0, 8, 0] avg:-24.76 match:94.44%
+Imp: MayaB Digits:[5, 7, 4] avg:-37.22 match:28.57%
+Usr: Robert Digits:[9, 7, 1] avg:-22.69 match:90.91%
+Imp: TheMaster Digits:[1, 4, 0] avg:-25.1 match:82.14%
+Usr: Robert Digits:[6, 3, 2] avg:-26.05 match:100.0%
+Imp: Macwfd Digits:[4, 6, 5] avg:-22.36 match:83.33%
+Usr: Robert Digits:[5, 4, 4] avg:-25.76 match:100.0%
+Imp: Duncan Digits:[9, 7, 4] avg:-25.7 match:100.0%
+Usr: Robert Digits:[9, 3, 2] avg:-22.31 match:100.0%
+Imp: mrangry Digits:[8, 4, 2] avg:-459.59 match:16.67%
+Usr: Robert Digits:[7, 8, 6] avg:-26.34 match:90.91%
+Imp: Ronan B Digits:[0, 0, 4] avg:-24.37 match:89.29%
+Usr: Robert Digits:[5, 1, 0] avg:-28.75 match:75.0%
+Imp: Seven Whistler Digits:[5, 8, 6] avg:-38.39 match:31.82%
+Usr: Robert Digits:[6, 3, 2] avg:-30.03 match:72.73%
+Imp: Nola_07 Digits:[1, 4, 0] avg:-22.51 match:96.3%
+Usr: Robert Digits:[4, 8, 6] avg:-26.28 match:76.92%
+Imp: fergie Digits:[1, 6, 2] avg:-26.66 match:85.0%
+Usr: Robert Digits:[4, 8, 3] avg:-23.67 match:100.0%
+Imp: Fri123 Digits:[7, 1, 6] avg:-58.17 match:30.0%
+Usr: Robert Digits:[2, 6, 3] avg:-24.18 match:90.0%
+Imp: PaulMcC Digits:[4, 1, 2] avg:-17.33 match:100.0%
+Usr: Robert Digits:[8, 2, 4] avg:-32.1 match:85.71%
+Imp: Fintan Digits:[7, 9, 3] avg:-91.12 match:0.0%
+Usr: Robert Digits:[6, 4, 3] avg:-30.93 match:66.67%
+Imp: Trer_71 Digits:[4, 6, 4] avg:-27.58 match:75.0%
+Usr: Robert Digits:[8, 2, 2] avg:-31.17 match:80.0%
+Imp: 12345 Digits:[2, 0, 4] avg:-32.64 match:59.26%
+Usr: Robert Digits:[3, 4, 8] avg:-28.87 match:90.0%
+Imp: TerryD Digits:[3, 2, 2] avg:-54.44 match:34.21%
+Usr: Robert Digits:[6, 4, 8] avg:-29.09 match:77.78%
+Imp: Fintan Digits:[9, 7, 5] avg:-52.48 match:0.0%
+Usr: Robert Digits:[3, 2, 6] avg:-30.58 match:83.33%
+Imp: Duncan Digits:[6, 8, 1] avg:-44.76 match:0.0%
+*SKIPPED* Usr: Robert Digits:[8, 2, 4] avg:-41.01 match:20.0%
+Usr: Robert Digits:[3, 6, 2] avg:-26.75 match:90.91%
+Imp: MikeK Digits:[7, 9, 4] avg:-2129.39 match:0.0%
+Usr: Robert Digits:[4, 6, 8] avg:-27.45 match:84.62%
+Imp: Djfdemo Digits:[7, 8, 1] avg:-43.34 match:47.06%
+False Accept Rate (FAR):15.91% False Reject Rate (FRR):15.91% Match Threshold:82.0%
+-----------------------------
+User: 'MayaB' digits recorded: 60
+Usr: MayaB Digits:[8, 1, 2] avg:-39.62 match:54.55%
+Imp: gwenreil Digits:[1, 4, 4] avg:-30.08 match:60.53%
+Usr: MayaB Digits:[3, 4, 7] avg:-29.18 match:96.3%
+Imp: Michael Digits:[1, 6, 8] avg:-33.76 match:68.18%
+Usr: MayaB Digits:[6, 0, 9] avg:-35.46 match:70.59%
+Imp: 12345 Digits:[1, 6, 0] avg:-42.13 match:22.73%
+Usr: MayaB Digits:[5, 3, 7] avg:-29.33 match:90.48%
+Imp: Fri123 Digits:[6, 5, 9] avg:-126.56 match:10.0%
+Usr: MayaB Digits:[6, 5, 1] avg:-34.08 match:92.86%
+Imp: Ronan B Digits:[7, 7, 6] avg:-53.17 match:22.73%
+Usr: MayaB Digits:[8, 9, 0] avg:-34.64 match:75.0%
+Imp: Ronan B Digits:[3, 8, 3] avg:-58.15 match:11.11%
+Usr: MayaB Digits:[4, 2, 4] avg:-26.65 match:93.33%
+Imp: Seven Whistler Digits:[7, 6, 3] avg:-62.29 match:5.88%
+Usr: MayaB Digits:[1, 6, 8] avg:-12.65 match:100.0%
+Imp: FinoH Digits:[7, 1, 4] avg:-42.26 match:45.16%
+Usr: MayaB Digits:[0, 2, 7] avg:-24.83 match:100.0%
+Imp: TerryD Digits:[2, 0, 9] avg:-141.37 match:5.0%
+Usr: MayaB Digits:[5, 3, 9] avg:-27.31 match:100.0%
+Imp: 12345 Digits:[3, 2, 7] avg:-69.42 match:0.0%
+Usr: MayaB Digits:[9, 3, 0] avg:-31.44 match:45.65%
+Imp: Fintan Digits:[8, 9, 8] avg:-90.35 match:0.0%
+Usr: MayaB Digits:[2, 1, 0] avg:-27.21 match:81.82%
+Imp: Duncan Digits:[4, 5, 0] avg:-27.62 match:100.0%
+Usr: MayaB Digits:[1, 9, 2] avg:-22.62 match:100.0%
+Imp: Ronan B Digits:[0, 8, 3] avg:-53.59 match:23.33%
+Usr: MayaB Digits:[3, 0, 2] avg:-25.51 match:100.0%
+Imp: Denis Digits:[4, 8, 6] avg:-37.11 match:57.89%
+Usr: MayaB Digits:[3, 9, 1] avg:-28.89 match:96.88%
+Imp: Maria Digits:[9, 5, 4] avg:-106.97 match:3.85%
+Usr: MayaB Digits:[9, 3, 0] avg:-29.92 match:71.43%
+Imp: IDoNotCare Digits:[1, 6, 4] avg:-39.55 match:41.38%
+Usr: MayaB Digits:[2, 1, 3] avg:-28.71 match:90.0%
+Imp: TerryD Digits:[9, 5, 6] avg:-90.03 match:8.51%
+Usr: MayaB Digits:[9, 2, 1] avg:-24.23 match:93.18%
+Imp: BenOS Digits:[1, 0, 6] avg:-52.07 match:14.29%
+Usr: MayaB Digits:[0, 3, 1] avg:-27.67 match:96.3%
+Imp: ThumbsUp Digits:[5, 5, 6] avg:-58.25 match:15.15%
+Usr: MayaB Digits:[0, 9, 2] avg:-27.69 match:80.95%
+Imp: j_mcg Digits:[0, 1, 3] avg:-32.0 match:80.95%
+False Accept Rate (FAR):5.0% False Reject Rate (FRR):5.0% Match Threshold:70.4%
+-----------------------------
+User: 'gwenreil' digits recorded: 50
+Usr: gwenreil Digits:[1, 4, 0] avg:-25.54 match:79.49%
+Imp: MikeK Digits:[7, 3, 1] avg:-57.06 match:18.92%
+Usr: gwenreil Digits:[5, 8, 3] avg:-27.81 match:100.0%
+Imp: wavedavey Digits:[1, 1, 2] avg:-168.15 match:0.0%
+Usr: gwenreil Digits:[6, 2, 7] avg:-33.4 match:68.57%
+Imp: Hilts Digits:[9, 7, 9] avg:-210.19 match:0.0%
+Usr: gwenreil Digits:[9, 2, 0] avg:-24.09 match:97.37%
+Imp: mrangry Digits:[7, 8, 3] avg:-115.47 match:41.67%
+Usr: gwenreil Digits:[1, 4, 7] avg:-17.6 match:100.0%
+Imp: IDoNotCare Digits:[6, 0, 1] avg:-65.07 match:30.43%
+Usr: gwenreil Digits:[9, 5, 3] avg:-23.02 match:91.3%
+Imp: TeriP Digits:[0, 7, 6] avg:-45.68 match:18.18%
+Usr: gwenreil Digits:[6, 8, 8] avg:-27.91 match:90.32%
+Imp: Macwfd Digits:[4, 1, 9] avg:-28.11 match:92.86%
+Usr: gwenreil Digits:[5, 2, 4] avg:-28.71 match:94.74%
+Imp: Sean1 Digits:[0, 9, 9] avg:-55.51 match:28.21%
+Usr: gwenreil Digits:[9, 7, 3] avg:-20.95 match:100.0%
+Imp: IDoNotCare Digits:[9, 7, 5] avg:-117.94 match:36.0%
+Usr: gwenreil Digits:[1, 6, 0] avg:-18.37 match:97.37%
+Imp: Macwfd Digits:[6, 7, 3] avg:-40.41 match:42.86%
+Usr: gwenreil Digits:[5, 7, 9] avg:-37.15 match:75.76%
+Imp: TeriP Digits:[5, 9, 6] avg:-103.13 match:0.0%
+Usr: gwenreil Digits:[6, 3, 7] avg:-27.05 match:93.75%
+Imp: TeriP Digits:[3, 4, 5] avg:-58.43 match:0.0%
+Usr: gwenreil Digits:[3, 6, 9] avg:-29.68 match:100.0%
+Imp: mrangry Digits:[2, 9, 3] avg:-80.98 match:34.29%
+Usr: gwenreil Digits:[5, 5, 7] avg:-38.16 match:47.62%
+Imp: FinoH Digits:[7, 0, 9] avg:-30.24 match:73.08%
+Usr: gwenreil Digits:[6, 9, 3] avg:-28.92 match:84.85%
+Imp: David Digits:[5, 0, 4] avg:-82.86 match:0.0%
+Usr: gwenreil Digits:[5, 7, 3] avg:-31.79 match:90.0%
+Imp: wavedavey Digits:[6, 2, 9] avg:-167.78 match:0.0%
+False Accept Rate (FAR):6.25% False Reject Rate (FRR):6.25% Match Threshold:72.9%
+-----------------------------
+User: 'Macwfd' digits recorded: 70
+Usr: Macwfd Digits:[6, 8, 1] avg:-32.01 match:92.86%
+Imp: Fintan Digits:[7, 7, 7] avg:-63.54 match:16.67%
+Usr: Macwfd Digits:[4, 7, 5] avg:-14.35 match:100.0%
+Imp: Michael Digits:[5, 9, 4] avg:-41.02 match:54.55%
+Usr: Macwfd Digits:[0, 2, 3] avg:-25.86 match:87.88%
+Imp: Robert Digits:[0, 9, 6] avg:-39.87 match:72.22%
+Usr: Macwfd Digits:[9, 0, 8] avg:-29.84 match:100.0%
+Imp: Elizabeth W. Digits:[4, 7, 4] avg:-27.53 match:100.0%
+Usr: Macwfd Digits:[6, 7, 4] avg:-32.49 match:100.0%
+Imp: David Digits:[3, 6, 0] avg:-59.87 match:8.7%
+Usr: Macwfd Digits:[5, 1, 2] avg:-30.7 match:100.0%
+Imp: Seven Whistler Digits:[5, 7, 7] avg:-45.82 match:45.45%
+Usr: Macwfd Digits:[9, 3, 6] avg:-27.11 match:100.0%
+Imp: IDoNotCare Digits:[2, 4, 0] avg:-35.28 match:85.71%
+Usr: Macwfd Digits:[2, 0, 4] avg:-35.96 match:90.0%
+Imp: ThumbsUp Digits:[6, 4, 2] avg:-60.3 match:0.0%
+Usr: Macwfd Digits:[3, 9, 7] avg:-30.36 match:100.0%
+Imp: gwenreil Digits:[4, 2, 2] avg:-21.56 match:100.0%
+Usr: Macwfd Digits:[1, 5, 8] avg:-21.98 match:100.0%
+Imp: FinoH Digits:[9, 3, 5] avg:-43.77 match:24.39%
+Usr: Macwfd Digits:[1, 3, 8] avg:-30.33 match:96.55%
+Imp: Fintan Digits:[4, 8, 6] avg:-46.83 match:48.15%
+Usr: Macwfd Digits:[9, 2, 1] avg:-37.1 match:81.63%
+Imp: Robert Digits:[4, 5, 1] avg:-33.64 match:100.0%
+Usr: Macwfd Digits:[3, 8, 2] avg:-37.91 match:68.18%
+Imp: fergie Digits:[3, 3, 9] avg:-47.31 match:33.33%
+Usr: Macwfd Digits:[9, 3, 8] avg:-30.79 match:95.0%
+Imp: Ronan B Digits:[8, 8, 1] avg:-66.92 match:10.53%
+Usr: Macwfd Digits:[9, 1, 2] avg:-30.26 match:100.0%
+Imp: j_mcg Digits:[8, 8, 5] avg:-39.86 match:60.0%
+Usr: Macwfd Digits:[1, 2, 8] avg:-25.82 match:86.67%
+Imp: Trer_71 Digits:[4, 0, 7] avg:-31.87 match:100.0%
+Usr: Macwfd Digits:[9, 3, 1] avg:-32.85 match:84.62%
+Imp: BenOS Digits:[3, 3, 1] avg:-273.48 match:10.0%
+Usr: Macwfd Digits:[2, 3, 9] avg:-34.45 match:96.15%
+Imp: j_mcg Digits:[9, 9, 7] avg:-36.46 match:64.0%
+Usr: Macwfd Digits:[8, 3, 8] avg:-49.18 match:57.14%
+Imp: Duncan Digits:[5, 1, 4] avg:-39.54 match:71.43%
+Usr: Macwfd Digits:[1, 9, 2] avg:-26.88 match:95.83%
+Imp: Robert Digits:[6, 3, 4] avg:-43.74 match:28.57%
+Usr: Macwfd Digits:[1, 9, 2] avg:-25.98 match:96.3%
+Imp: TheMaster Digits:[5, 2, 0] avg:-32.2 match:100.0%
+Usr: Macwfd Digits:[3, 8, 9] avg:-39.93 match:57.14%
+Imp: MayaB Digits:[7, 2, 0] avg:-27.18 match:96.55%
+Usr: Macwfd Digits:[8, 1, 3] avg:-44.34 match:58.62%
+Imp: fergie Digits:[9, 9, 9] avg:-39.07 match:66.67%
+False Accept Rate (FAR):13.04% False Reject Rate (FRR):13.04% Match Threshold:86.5%
+-----------------------------
+User: 'Djfdemo' digits recorded: 75
+Usr: Djfdemo Digits:[7, 3, 5] avg:-25.41 match:100.0%
+Imp: TeriP Digits:[7, 4, 9] avg:-151.01 match:36.36%
+Usr: Djfdemo Digits:[4, 2, 6] avg:-19.79 match:100.0%
+Imp: Fintan Digits:[8, 8, 9] avg:-60.66 match:71.43%
+Usr: Djfdemo Digits:[9, 1, 8] avg:-26.34 match:100.0%
+Imp: MayaB Digits:[9, 5, 6] avg:-87.36 match:73.17%
+Usr: Djfdemo Digits:[0, 3, 7] avg:-28.32 match:100.0%
+Imp: Fri123 Digits:[1, 0, 1] avg:-51.58 match:75.86%
+Usr: Djfdemo Digits:[6, 5, 0] avg:-26.27 match:100.0%
+Imp: Michael Digits:[1, 6, 2] avg:-38.45 match:90.91%
+Usr: Djfdemo Digits:[2, 8, 1] avg:-24.65 match:100.0%
+Imp: Macwfd Digits:[0, 4, 7] avg:-5113.35 match:66.67%
+Usr: Djfdemo Digits:[9, 4, 4] avg:-25.02 match:100.0%
+Imp: Ronan B Digits:[5, 2, 7] avg:-30.44 match:100.0%
+Usr: Djfdemo Digits:[1, 5, 7] avg:-29.86 match:100.0%
+Imp: TerryD Digits:[9, 2, 1] avg:-53.03 match:86.05%
+Usr: Djfdemo Digits:[0, 6, 3] avg:-23.78 match:100.0%
+Imp: Duncan Digits:[9, 4, 8] avg:-31.5 match:100.0%
+Usr: Djfdemo Digits:[9, 8, 2] avg:-29.93 match:100.0%
+Imp: MikeK Digits:[2, 4, 2] avg:-22213.79 match:0.0%
+Usr: Djfdemo Digits:[9, 5, 8] avg:-26.33 match:100.0%
+Imp: TerryD Digits:[4, 3, 1] avg:-13753.57 match:43.9%
+Usr: Djfdemo Digits:[4, 1, 9] avg:-24.91 match:100.0%
+Imp: j_mcg Digits:[2, 2, 8] avg:-202859.58 match:60.0%
+Usr: Djfdemo Digits:[1, 4, 5] avg:-27.62 match:100.0%
+Imp: Elizabeth W. Digits:[5, 6, 0] avg:-39.11 match:100.0%
+Usr: Djfdemo Digits:[8, 9, 5] avg:-26.07 match:100.0%
+Imp: David Digits:[6, 0, 1] avg:-5037.41 match:12.5%
+Usr: Djfdemo Digits:[4, 8, 1] avg:-26.36 match:100.0%
+Imp: Sean1 Digits:[1, 1, 7] avg:-23.64 match:100.0%
+Usr: Djfdemo Digits:[5, 1, 8] avg:-28.31 match:100.0%
+Imp: IDoNotCare Digits:[1, 8, 9] avg:-2173.25 match:35.48%
+Usr: Djfdemo Digits:[9, 4, 1] avg:-25.45 match:100.0%
+Imp: TeriP Digits:[4, 9, 5] avg:-168.76 match:38.71%
+Usr: Djfdemo Digits:[4, 5, 9] avg:-28.98 match:100.0%
+Imp: fergie Digits:[1, 0, 1] avg:-27.44 match:100.0%
+Usr: Djfdemo Digits:[8, 9, 1] avg:-29.65 match:100.0%
+Imp: fergie Digits:[5, 4, 2] avg:-306.24 match:70.59%
+Usr: Djfdemo Digits:[4, 8, 5] avg:-22.69 match:100.0%
+Imp: Michael Digits:[8, 6, 8] avg:-60.78 match:85.71%
+Usr: Djfdemo Digits:[8, 1, 4] avg:-26.34 match:100.0%
+Imp: wavedavey Digits:[5, 3, 7] avg:-196.59 match:9.09%
+Usr: Djfdemo Digits:[5, 9, 5] avg:-27.07 match:100.0%
+Imp: Macwfd Digits:[1, 7, 6] avg:-23.56 match:100.0%
+Usr: Djfdemo Digits:[4, 1, 8] avg:-19.29 match:100.0%
+Imp: PaulMcC Digits:[3, 3, 8] avg:-29.73 match:100.0%
+Usr: Djfdemo Digits:[9, 5, 9] avg:-24.4 match:100.0%
+Imp: Robert Digits:[1, 5, 4] avg:-54.02 match:75.0%
+Usr: Djfdemo Digits:[4, 8, 1] avg:-26.99 match:100.0%
+Imp: David Digits:[9, 9, 0] avg:-93.27 match:39.29%
+False Accept Rate (FAR):14.0% False Reject Rate (FRR):0.0% Match Threshold:99.8%
+-----------------------------
+User: 'ThumbsUp' digits recorded: 90
+Usr: ThumbsUp Digits:[1, 6, 0] avg:-23.93 match:73.08%
+Imp: Fintan Digits:[5, 6, 4] avg:-101.3 match:0.0%
+Usr: ThumbsUp Digits:[7, 2, 5] avg:-24.85 match:89.66%
+Imp: MikeK Digits:[3, 6, 2] avg:-290.54 match:0.0%
+Usr: ThumbsUp Digits:[4, 3, 9] avg:-18.61 match:100.0%
+Imp: TheMaster Digits:[7, 5, 7] avg:-62.8 match:73.91%
+Usr: ThumbsUp Digits:[8, 3, 5] avg:-31.6 match:83.33%
+Imp: Seven Whistler Digits:[1, 6, 9] avg:-34.49 match:46.67%
+Usr: ThumbsUp Digits:[2, 9, 0] avg:-24.27 match:100.0%
+Imp: Macwfd Digits:[9, 9, 6] avg:-31.14 match:48.72%
+Usr: ThumbsUp Digits:[4, 6, 1] avg:-19.48 match:100.0%
+Imp: Trer_71 Digits:[3, 0, 2] avg:-30.81 match:73.33%
+Usr: ThumbsUp Digits:[7, 8, 5] avg:-21.27 match:88.89%
+Imp: Trer_71 Digits:[2, 3, 5] avg:-34.84 match:80.0%
+Usr: ThumbsUp Digits:[0, 4, 9] avg:-27.56 match:88.64%
+Imp: David Digits:[9, 9, 4] avg:-65.97 match:0.0%
+Usr: ThumbsUp Digits:[8, 2, 6] avg:-32.5 match:56.25%
+Imp: wavedavey Digits:[6, 5, 1] avg:-257.59 match:0.0%
+Usr: ThumbsUp Digits:[1, 7, 3] avg:-19.07 match:100.0%
+Imp: Avinash Digits:[3, 4, 2] avg:-33.26 match:57.14%
+Usr: ThumbsUp Digits:[5, 2, 0] avg:-25.89 match:100.0%
+Imp: Denis Digits:[7, 0, 7] avg:-27.43 match:70.59%
+Usr: ThumbsUp Digits:[9, 7, 9] avg:-29.37 match:72.73%
+Imp: fergie Digits:[3, 4, 5] avg:-36.68 match:29.41%
+Usr: ThumbsUp Digits:[7, 5, 0] avg:-26.03 match:96.55%
+Imp: Robert Digits:[5, 5, 5] avg:-38.01 match:25.0%
+Usr: ThumbsUp Digits:[2, 5, 0] avg:-29.06 match:100.0%
+Imp: Sean1 Digits:[2, 2, 3] avg:-31.59 match:52.38%
+Usr: ThumbsUp Digits:[2, 7, 9] avg:-28.21 match:86.36%
+Imp: Denis Digits:[4, 6, 9] avg:-29.61 match:63.16%
+Usr: ThumbsUp Digits:[9, 7, 2] avg:-24.55 match:72.5%
+Imp: gwenreil Digits:[7, 3, 6] avg:-157.57 match:31.43%
+Usr: ThumbsUp Digits:[0, 5, 5] avg:-30.27 match:65.0%
+Imp: fergie Digits:[6, 6, 1] avg:-50.08 match:0.0%
+Usr: ThumbsUp Digits:[2, 7, 9] avg:-22.19 match:100.0%
+Imp: Avinash Digits:[7, 7, 0] avg:-2401.95 match:19.05%
+Usr: ThumbsUp Digits:[0, 9, 2] avg:-29.58 match:85.71%
+Imp: Michael Digits:[9, 0, 9] avg:-50.51 match:16.67%
+Usr: ThumbsUp Digits:[7, 5, 0] avg:-30.89 match:66.67%
+Imp: j_mcg Digits:[8, 6, 1] avg:-41.7 match:10.0%
+Usr: ThumbsUp Digits:[2, 5, 9] avg:-26.93 match:65.38%
+Imp: Seven Whistler Digits:[8, 8, 7] avg:-75.66 match:0.0%
+Usr: ThumbsUp Digits:[0, 7, 5] avg:-26.57 match:83.78%
+Imp: gwenreil Digits:[1, 6, 1] avg:-22.81 match:81.58%
+Usr: ThumbsUp Digits:[7, 9, 0] avg:-25.35 match:91.43%
+Imp: JakeM Digits:[7, 9, 9] avg:-97.73 match:68.42%
+Usr: ThumbsUp Digits:[2, 9, 2] avg:-24.51 match:100.0%
+Imp: PaulMcC Digits:[8, 9, 1] avg:-36.52 match:18.75%
+Usr: ThumbsUp Digits:[7, 5, 0] avg:-26.15 match:81.25%
+Imp: TheMaster Digits:[4, 9, 6] avg:-24.33 match:96.0%
+Usr: ThumbsUp Digits:[9, 2, 7] avg:-27.49 match:69.7%
+Imp: TerryD Digits:[5, 8, 7] avg:-55.93 match:5.13%
+Usr: ThumbsUp Digits:[5, 0, 2] avg:-25.32 match:100.0%
+Imp: Macwfd Digits:[6, 9, 7] avg:-488.51 match:0.0%
+Usr: ThumbsUp Digits:[0, 9, 7] avg:-29.33 match:73.91%
+Imp: IDoNotCare Digits:[8, 8, 0] avg:-52.98 match:0.0%
+Usr: ThumbsUp Digits:[5, 2, 0] avg:-27.0 match:100.0%
+Imp: JakeM Digits:[4, 6, 3] avg:-17.64 match:100.0%
+Usr: ThumbsUp Digits:[7, 9, 5] avg:-32.64 match:67.74%
+Imp: MikeK Digits:[5, 2, 6] avg:-116.21 match:8.11%
+False Accept Rate (FAR):10.0% False Reject Rate (FRR):10.0% Match Threshold:72.3%
+-----------------------------
+User: 'IDoNotCare' digits recorded: 89
+Usr: IDoNotCare Digits:[0, 6, 1] avg:-39.07 match:76.6%
+Imp: MayaB Digits:[5, 3, 1] avg:-31.83 match:100.0%
+Usr: IDoNotCare Digits:[8, 3, 7] avg:-35.69 match:100.0%
+Imp: JakeM Digits:[5, 6, 8] avg:-38.63 match:95.24%
+Usr: IDoNotCare Digits:[4, 5, 9] avg:-27.37 match:100.0%
+Imp: MikeK Digits:[1, 5, 5] avg:-58.37 match:27.27%
+Usr: IDoNotCare Digits:[2, 3, 9] avg:-30.75 match:100.0%
+Imp: mrangry Digits:[2, 8, 4] avg:-48.66 match:42.86%
+Usr: IDoNotCare Digits:[5, 8, 6] avg:-35.34 match:97.37%
+Imp: Seven Whistler Digits:[8, 3, 8] avg:-63.68 match:0.0%
+Usr: IDoNotCare Digits:[0, 4, 1] avg:-32.98 match:97.56%
+Imp: Maria Digits:[8, 0, 2] avg:-59.1 match:0.0%
+Usr: IDoNotCare Digits:[7, 2, 4] avg:-31.09 match:100.0%
+Imp: Djfdemo Digits:[5, 9, 8] avg:-42.35 match:77.27%
+Usr: IDoNotCare Digits:[0, 7, 9] avg:-40.2 match:76.6%
+Imp: Avinash Digits:[4, 1, 2] avg:-44.72 match:54.55%
+Usr: IDoNotCare Digits:[8, 5, 6] avg:-38.72 match:100.0%
+Imp: 12345 Digits:[8, 3, 8] avg:-50.09 match:40.0%
+Usr: IDoNotCare Digits:[1, 3, 8] avg:-31.95 match:90.32%
+Imp: j_mcg Digits:[2, 5, 1] avg:-71.19 match:70.0%
+Usr: IDoNotCare Digits:[2, 9, 3] avg:-33.92 match:96.3%
+Imp: Elizabeth W. Digits:[9, 4, 5] avg:-37.49 match:95.45%
+Usr: IDoNotCare Digits:[6, 9, 6] avg:-34.98 match:100.0%
+Imp: Trer_71 Digits:[9, 4, 0] avg:-33.29 match:100.0%
+Usr: IDoNotCare Digits:[3, 8, 2] avg:-35.74 match:100.0%
+Imp: Maria Digits:[4, 7, 4] avg:-36.83 match:96.43%
+Usr: IDoNotCare Digits:[2, 3, 8] avg:-32.12 match:96.43%
+Imp: Robert Digits:[5, 5, 4] avg:-46.67 match:50.0%
+Usr: IDoNotCare Digits:[9, 6, 6] avg:-32.5 match:100.0%
+Imp: Seven Whistler Digits:[9, 1, 3] avg:-41.32 match:56.41%
+Usr: IDoNotCare Digits:[9, 3, 4] avg:-40.06 match:76.92%
+Imp: Hilts Digits:[4, 4, 2] avg:-41.65 match:74.07%
+Usr: IDoNotCare Digits:[8, 3, 8] avg:-37.4 match:85.71%
+Imp: JakeM Digits:[9, 7, 2] avg:-45.74 match:55.56%
+Usr: IDoNotCare Digits:[4, 9, 6] avg:-29.61 match:100.0%
+Imp: MayaB Digits:[0, 5, 6] avg:-39.42 match:72.22%
+Usr: IDoNotCare Digits:[8, 9, 3] avg:-38.12 match:100.0%
+Imp: JakeM Digits:[6, 4, 1] avg:-63.04 match:15.38%
+Usr: IDoNotCare Digits:[6, 4, 3] avg:-37.25 match:97.67%
+Imp: TeriP Digits:[7, 2, 8] avg:-64.33 match:27.27%
+Usr: IDoNotCare Digits:[8, 4, 6] avg:-38.2 match:100.0%
+Imp: Nola_07 Digits:[3, 0, 5] avg:-32.97 match:100.0%
+Usr: IDoNotCare Digits:[9, 6, 1] avg:-28.88 match:100.0%
+Imp: Sean1 Digits:[8, 7, 1] avg:-39.17 match:100.0%
+Usr: IDoNotCare Digits:[4, 7, 0] avg:-29.98 match:100.0%
+Imp: MayaB Digits:[0, 2, 9] avg:-30.84 match:100.0%
+Usr: IDoNotCare Digits:[4, 6, 0] avg:-34.33 match:100.0%
+Imp: Fri123 Digits:[4, 1, 6] avg:-45.35 match:51.72%
+Usr: IDoNotCare Digits:[1, 7, 1] avg:-34.49 match:83.33%
+Imp: Elizabeth W. Digits:[1, 1, 2] avg:-21.39 match:100.0%
+Usr: IDoNotCare Digits:[6, 0, 7] avg:-35.95 match:90.91%
+Imp: ThumbsUp Digits:[0, 5, 8] avg:-41.4 match:65.71%
+Usr: IDoNotCare Digits:[4, 7, 1] avg:-34.69 match:93.33%
+Imp: PaulMcC Digits:[7, 5, 0] avg:-36.18 match:55.0%
+Usr: IDoNotCare Digits:[6, 4, 0] avg:-35.97 match:87.5%
+Imp: Nola_07 Digits:[6, 6, 9] avg:-37.68 match:100.0%
+Usr: IDoNotCare Digits:[0, 4, 1] avg:-58.03 match:46.51%
+Imp: TheMaster Digits:[9, 8, 6] avg:-30.88 match:97.44%
+False Accept Rate (FAR):17.24% False Reject Rate (FRR):17.24% Match Threshold:95.3%
+-----------------------------
+alias,FAR,FRR,eerRef,userRef
+wavedavey,4.35,4.35,71.3,95
+Hilts,14.0,14.0,64.8,94
+Nola_07,8.33,8.33,97.1,98
+TheMaster,2.63,2.63,69.8,87
+MikeK,13.33,13.33,73.2,85
+BenOS,2.78,2.78,77.8,88
+Michael,15.0,15.0,91.1,90
+JakeM,1.67,1.67,66.5,94
+Trer_71,13.33,13.33,81.7,88
+Avinash,11.67,10.0,66.5,85
+Duncan,0.0,0.0,62.3,89
+Sean1,6.25,6.25,94.8,90
+Ronan B,5.0,5.0,82.6,95
+mrangry,12.5,12.5,91.3,89
+Elizabeth W.,7.69,7.69,74.8,89
+TerryD,10.34,10.34,76.8,85
+j_mcg,13.89,13.89,95.8,95
+Seven Whistler,15.0,15.0,85.3,90
+Denis,7.14,5.36,74.8,97
+Maria,18.33,18.33,92.2,89
+David,21.05,21.05,57.0,82
+PaulMcC,10.0,10.0,89.8,95
+12345,5.0,5.0,96.7,98
+Fri123,20.0,7.5,99.8,99
+fergie,15.0,10.0,99.8,94
+Fintan,0.0,0.0,44.8,90
+TeriP,26.67,13.33,99.8,95
+FinoH,15.0,15.0,66.5,91
+Robert,15.91,15.91,82.0,88
+MayaB,5.0,5.0,70.4,92
+gwenreil,6.25,6.25,72.9,90
+Macwfd,13.04,13.04,86.5,94
+Djfdemo,14.0,0.0,99.8,97
+ThumbsUp,10.0,10.0,72.3,86
+IDoNotCare,17.24,17.24,95.3,91
+

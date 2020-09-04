@@ -1,0 +1,88 @@
+             alias  resultReference  ...  gender                age
+0        wavedavey               95  ...    Male              40-49
+1            Hilts               94  ...    Male              50-59
+2          Nola_07               98  ...  Female  Prefer Not to say
+3        TheMaster               87  ...    Male              40-49
+4         CoolDude               91  ...    Male              16-19
+5            MikeK               85  ...    Male              40-49
+6            BenOS               88  ...    Male              50-59
+7          Michael               90  ...    Male              70-79
+8            JakeM               94  ...    Male              16-19
+9          Trer_71               88  ...    Male              40-49
+10         Avinash               85  ...    Male              40-49
+11          Duncan               89  ...    Male              40-49
+12           Niall               97  ...    Male              50-59
+13           Sean1               90  ...    Male              40-49
+14         Ronan B               95  ...    Male              40-49
+15         mrangry               89  ...    Male              50-59
+16    Elizabeth W.               89  ...  Female              50-59
+17       hivemindx               98  ...    Male              50-59
+18           TaraM              100  ...  Female              40-49
+19          TerryD               85  ...    Male              50-59
+20         Padraig               95  ...    Male              50-59
+21           j_mcg               95  ...    Male              50-59
+22  Seven Whistler               90  ...    Male              60-69
+23           Denis               97  ...    Male              40-49
+24           Maria               89  ...  Female              50-59
+25           David               82  ...    Male              70-79
+26         PaulMcC               95  ...    Male              40-49
+27           12345               98  ...    Male              50-59
+28          Fri123               99  ...  Female              40-49
+29          fergie               94  ...    Male              40-49
+30           OwenP               97  ...    Male              50-59
+31          Fintan               90  ...    Male              40-49
+32           TeriP               95  ...  Female              40-49
+33           FinoH               91  ...  Female              50-59
+34          Robert               88  ...    Male              40-49
+35           MayaB               92  ...  Female              20-29
+36        gwenreil               90  ...  Female              40-49
+37          Macwfd               94  ...  Female              50-59
+38         Djfdemo               97  ...    Male              40-49
+39        ThumbsUp               86  ...    Male              16-19
+40      IDoNotCare               91  ...  Female              40-49
+
+[41 rows x 7 columns]
+Number of participants: 41
+alias,resultReference,scoreThreshold,train digits,score digits,gender,age
+wavedavey,95,-46.28971409162932,60,40,Male,40-49
+Hilts,94,-41.81829458377542,40,60,Male,50-59
+Nola_07,98,-43.24544799982603,50,0,Female,Prefer Not to say
+TheMaster,87,-32.73082271587622,40,60,Male,40-49
+CoolDude,91,-39.55579796802731,60,60,Male,16-19
+MikeK,85,-38.560436829319286,60,15,Male,40-49
+BenOS,88,-41.11621853426085,60,25,Male,50-59
+Michael,90,-39.75394672499416,60,60,Male,70-79
+JakeM,94,-33.550797228994355,60,60,Male,16-19
+Trer_71,88,-34.147365366101624,60,15,Male,40-49
+Avinash,85,-38.86720182937725,60,60,Male,40-49
+Duncan,89,-35.989974569994004,40,0,Male,40-49
+Niall,97,-232.5279498781247,50,5,Male,50-59
+Sean1,90,-39.418747041950304,60,0,Male,40-49
+Ronan B,95,-35.28334813725765,60,30,Male,40-49
+mrangry,89,-39.312560826366976,50,20,Male,50-59
+Elizabeth W.,89,-44.208864098263376,50,25,Female,50-59
+hivemindx,98,-527.8599447188709,40,25,Male,50-59
+TaraM,100,-78.57222141494277,40,10,Female,40-49
+TerryD,85,-35.118834142023026,60,60,Male,50-59
+Padraig,95,-144.12954742337735,40,25,Male,50-59
+j_mcg,95,-63.00320596539413,50,35,Male,50-59
+Seven Whistler,90,-37.86025787915092,42,10,Male,60-69
+Denis,97,-44.251942179333,60,60,Male,40-49
+Maria,89,-45.296321293618874,60,60,Female,50-59
+David,82,-35.933629758444255,60,30,Male,70-79
+PaulMcC,95,-39.439440877978754,60,60,Male,40-49
+12345,98,-46.45729318500635,60,0,Male,50-59
+Fri123,99,-60.994143688533015,60,35,Female,40-49
+fergie,94,-46.397947483493006,60,0,Male,40-49
+OwenP,97,-107.79167314489933,60,20,Male,50-59
+Fintan,90,-35.922464906171285,60,60,Male,40-49
+TeriP,95,-57.571885908102786,60,15,Female,40-49
+FinoH,91,-37.55216027027086,60,30,Female,50-59
+Robert,88,-33.85005039693464,60,40,Male,40-49
+MayaB,92,-37.97319843414985,60,30,Female,20-29
+gwenreil,90,-36.09138875476404,60,20,Female,40-49
+Macwfd,94,-40.973589208881556,60,40,Female,50-59
+Djfdemo,97,-67.54972053329497,60,45,Male,40-49
+ThumbsUp,86,-33.41238714535422,60,60,Male,16-19
+IDoNotCare,91,-46.2030219284049,60,60,Female,40-49
+

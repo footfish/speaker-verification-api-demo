@@ -1,0 +1,145 @@
+Number of valid users:35
+Digit set size: 3
+-----------------------------
+User: 'wavedavey' digits recorded: 70
+False Accept Rate (FAR):2.17% False Reject Rate (FRR):2.17% Match Threshold:48.4%
+-----------------------------
+User: 'Hilts' digits recorded: 80
+False Accept Rate (FAR):12.0% False Reject Rate (FRR):12.0% Match Threshold:63.5%
+-----------------------------
+User: 'Nola_07' digits recorded: 20
+False Accept Rate (FAR):8.33% False Reject Rate (FRR):8.33% Match Threshold:96.0%
+-----------------------------
+User: 'TheMaster' digits recorded: 80
+False Accept Rate (FAR):2.63% False Reject Rate (FRR):2.63% Match Threshold:72.9%
+-----------------------------
+User: 'MikeK' digits recorded: 45
+False Accept Rate (FAR):13.33% False Reject Rate (FRR):13.33% Match Threshold:73.2%
+-----------------------------
+User: 'BenOS' digits recorded: 55
+False Accept Rate (FAR):8.33% False Reject Rate (FRR):8.33% Match Threshold:84.8%
+-----------------------------
+User: 'Michael' digits recorded: 90
+False Accept Rate (FAR):11.67% False Reject Rate (FRR):11.67% Match Threshold:89.1%
+-----------------------------
+User: 'JakeM' digits recorded: 90
+False Accept Rate (FAR):5.0% False Reject Rate (FRR):5.0% Match Threshold:79.8%
+-----------------------------
+User: 'Trer_71' digits recorded: 45
+False Accept Rate (FAR):10.0% False Reject Rate (FRR):6.67% Match Threshold:77.6%
+-----------------------------
+User: 'Avinash' digits recorded: 90
+False Accept Rate (FAR):20.0% False Reject Rate (FRR):20.0% Match Threshold:76.8%
+-----------------------------
+User: 'Duncan' digits recorded: 20
+False Accept Rate (FAR):8.33% False Reject Rate (FRR):8.33% Match Threshold:90.8%
+-----------------------------
+User: 'Sean1' digits recorded: 29
+False Accept Rate (FAR):6.25% False Reject Rate (FRR):6.25% Match Threshold:95.8%
+-----------------------------
+User: 'Ronan B' digits recorded: 60
+False Accept Rate (FAR):5.0% False Reject Rate (FRR):5.0% Match Threshold:82.6%
+-----------------------------
+User: 'mrangry' digits recorded: 40
+False Accept Rate (FAR):4.17% False Reject Rate (FRR):4.17% Match Threshold:79.8%
+-----------------------------
+User: 'Elizabeth W.' digits recorded: 45
+False Accept Rate (FAR):7.69% False Reject Rate (FRR):7.69% Match Threshold:52.8%
+-----------------------------
+User: 'TerryD' digits recorded: 90
+False Accept Rate (FAR):12.07% False Reject Rate (FRR):12.07% Match Threshold:78.4%
+-----------------------------
+User: 'j_mcg' digits recorded: 55
+False Accept Rate (FAR):11.11% False Reject Rate (FRR):11.11% Match Threshold:95.5%
+-----------------------------
+User: 'Seven Whistler' digits recorded: 30
+False Accept Rate (FAR):10.0% False Reject Rate (FRR):10.0% Match Threshold:81.7%
+-----------------------------
+User: 'Denis' digits recorded: 90
+False Accept Rate (FAR):3.57% False Reject Rate (FRR):3.57% Match Threshold:69.8%
+-----------------------------
+User: 'Maria' digits recorded: 90
+False Accept Rate (FAR):18.33% False Reject Rate (FRR):18.33% Match Threshold:90.8%
+-----------------------------
+User: 'David' digits recorded: 60
+False Accept Rate (FAR):7.89% False Reject Rate (FRR):5.26% Match Threshold:49.8%
+-----------------------------
+User: 'PaulMcC' digits recorded: 90
+False Accept Rate (FAR):5.0% False Reject Rate (FRR):3.33% Match Threshold:79.8%
+-----------------------------
+User: '12345' digits recorded: 30
+False Accept Rate (FAR):15.0% False Reject Rate (FRR):10.0% Match Threshold:99.8%
+-----------------------------
+User: 'Fri123' digits recorded: 65
+False Accept Rate (FAR):20.0% False Reject Rate (FRR):7.5% Match Threshold:99.8%
+-----------------------------
+User: 'fergie' digits recorded: 30
+False Accept Rate (FAR):10.0% False Reject Rate (FRR):10.0% Match Threshold:86.8%
+-----------------------------
+User: 'Fintan' digits recorded: 90
+False Accept Rate (FAR):0.0% False Reject Rate (FRR):0.0% Match Threshold:44.8%
+-----------------------------
+User: 'TeriP' digits recorded: 45
+False Accept Rate (FAR):13.33% False Reject Rate (FRR):13.33% Match Threshold:99.8%
+-----------------------------
+User: 'FinoH' digits recorded: 60
+False Accept Rate (FAR):10.0% False Reject Rate (FRR):10.0% Match Threshold:58.7%
+-----------------------------
+User: 'Robert' digits recorded: 70
+False Accept Rate (FAR):6.82% False Reject Rate (FRR):6.82% Match Threshold:74.8%
+-----------------------------
+User: 'MayaB' digits recorded: 60
+False Accept Rate (FAR):7.5% False Reject Rate (FRR):7.5% Match Threshold:71.3%
+-----------------------------
+User: 'gwenreil' digits recorded: 50
+False Accept Rate (FAR):6.25% False Reject Rate (FRR):6.25% Match Threshold:70.9%
+-----------------------------
+User: 'Macwfd' digits recorded: 70
+False Accept Rate (FAR):8.7% False Reject Rate (FRR):8.7% Match Threshold:80.8%
+-----------------------------
+User: 'Djfdemo' digits recorded: 75
+False Accept Rate (FAR):12.0% False Reject Rate (FRR):0.0% Match Threshold:99.8%
+-----------------------------
+User: 'ThumbsUp' digits recorded: 90
+False Accept Rate (FAR):3.33% False Reject Rate (FRR):3.33% Match Threshold:65.2%
+-----------------------------
+User: 'IDoNotCare' digits recorded: 89
+False Accept Rate (FAR):17.24% False Reject Rate (FRR):17.24% Match Threshold:95.7%
+-----------------------------
+alias,FAR,FRR,eerRef,userRef
+wavedavey,2.17,2.17,48.4,95
+Hilts,12.0,12.0,63.5,94
+Nola_07,8.33,8.33,96.0,98
+TheMaster,2.63,2.63,72.9,87
+MikeK,13.33,13.33,73.2,85
+BenOS,8.33,8.33,84.8,88
+Michael,11.67,11.67,89.1,90
+JakeM,5.0,5.0,79.8,94
+Trer_71,10.0,6.67,77.6,88
+Avinash,20.0,20.0,76.8,85
+Duncan,8.33,8.33,90.8,89
+Sean1,6.25,6.25,95.8,90
+Ronan B,5.0,5.0,82.6,95
+mrangry,4.17,4.17,79.8,89
+Elizabeth W.,7.69,7.69,52.8,89
+TerryD,12.07,12.07,78.4,85
+j_mcg,11.11,11.11,95.5,95
+Seven Whistler,10.0,10.0,81.7,90
+Denis,3.57,3.57,69.8,97
+Maria,18.33,18.33,90.8,89
+David,7.89,5.26,49.8,82
+PaulMcC,5.0,3.33,79.8,95
+12345,15.0,10.0,99.8,98
+Fri123,20.0,7.5,99.8,99
+fergie,10.0,10.0,86.8,94
+Fintan,0.0,0.0,44.8,90
+TeriP,13.33,13.33,99.8,95
+FinoH,10.0,10.0,58.7,91
+Robert,6.82,6.82,74.8,88
+MayaB,7.5,7.5,71.3,92
+gwenreil,6.25,6.25,70.9,90
+Macwfd,8.7,8.7,80.8,94
+Djfdemo,12.0,0.0,99.8,97
+ThumbsUp,3.33,3.33,65.2,86
+IDoNotCare,17.24,17.24,95.7,91
+
