@@ -9,9 +9,8 @@ Normally speaker verification (authentication) systems are centralised. Meaning 
 ## How to use it:
 You will need to perform the following steps; 
 
-1. ***Training*** - This 'trains' the model with your speech. 
-2. ***Testing*** - This sets a benchmark for your speech. 
-3. ***Scoring*** - This is the 'verification', the higher the score the more likely it's you (if it works!). Obviously you will need to have trained and tested the model before scoring will work. 
+1. ***Training*** - This 'trains' the model with your speech and sets a benchmark for your speech. . 
+2. ***Scoring*** - This is the 'verification', the higher the score the more likely it's you (if it works!). Obviously you will need to have trained and tested the model before scoring will work. 
 
 ## How it works:
 Your browser will use the microphone to capture spoken digits, then process these to feature vectors ([MFCC's - mel frequency cepstral coefficients](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum)). The feature vectors are sent to a remote API for speaker verification. The browser uses [Web Audio API ](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) and [Meyda JS library](https://meyda.js.org/guides/online-web-audio) to capture the spoken data. The remote API uses a GMM ([Gaussian Mixture Model](https://en.wikipedia.org/wiki/Mixture_model)) machine learning method for speaker verification.
@@ -22,6 +21,8 @@ Training the model:
 ![Training screenshot](./screenshots/training.png)
 
 ## Demonstration 
+See a [youtube video](https://youtu.be/Hd9TVjA0NCE)
+
 See [Live demo on Heroku](https://speaker-verification-api-demo.herokuapp.com/) (running on a free dyno, might be a slow to start)
 
 
