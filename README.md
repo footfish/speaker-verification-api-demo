@@ -2,9 +2,13 @@
 This is a demonstration of speaker verification (aka speaker authentication) using a REST API.
 
 ## Summary:
+
+
 Normally speaker verification (authentication) systems are centralised. Meaning audio is recorded, then sent to the centralised system for processing. That's inefficent Web applications. This demonstrates an alternative distributed approach. Speech 'features' are extracted in the browser, then sent via REST API for authentication. 
 
 **Note**: This is an academic exercise, not production code. 
+
+![Traditional approach vs this approach](./images/oldvnew.png)
 
 ## How to use it:
 You will need to perform the following steps; 
@@ -18,12 +22,10 @@ Your browser will use the microphone to capture spoken digits, then process thes
 
 ## Screenshots
 Training the model:
-![Training screenshot](./screenshots/training.png)
+![Training screenshot](./images/training.png)
 
 ## Demonstration 
 See a (very boring) [youtube video](https://youtu.be/Hd9TVjA0NCE)
-
-See [Live demo on Heroku](https://speaker-verification-api-demo.herokuapp.com/) (running on a free dyno, might be a slow to start. You will need to fill in registeration form to use it)
 
 
 ## Installation:
@@ -71,7 +73,7 @@ set MONGODB_URI='mongodb://your-user:your-pass@your-host:your-port/your-dbname'
 ## Heroku Deployment:
 The application can quickly be deployed to [Heroku](https://www.heroku.com/). 
 You will need a Heroku account and the [Heruku cli](https://devcenter.heroku.com/articles/heroku-cli) installed. 
-You will need a Heroku mongolab addon (or equivalent MongoDb service)
+This uses Heroku mongolab addon which was discontinued on November 10, 2020, you will need to use an equivalent MongoDb service.
 
 ```
 heroku create
