@@ -1,12 +1,14 @@
 # Speaker Verification API demo
 This is a demonstration of speaker verification (aka speaker authentication) using a REST API.
 
+_This was part of an MSC desertation. [Read full paper](A_REST_API_approach_to_Distributed_Speaker_Verification.pdf)_
+
 ## Summary:
 
 
-Normally speaker verification (authentication) systems are centralised. Meaning audio is recorded, then sent to the centralised system for processing. That's inefficent Web applications. This demonstrates an alternative distributed approach. Speech 'features' are extracted in the browser, then sent via REST API for authentication. 
+Normally speaker verification (authentication) systems are centralised. Meaning audio is recorded, then sent to the centralised system for processing. That's inefficent for Web applications. This demonstrates an alternative distributed approach. Speech 'features' are extracted in the browser, then sent via REST API for authentication. 
 
-**Note**: This is an academic exercise, not production code. 
+**Note**: _This is an academic exercise, not production code._
 
 ![Traditional approach vs this approach](./images/oldvnew.png)
 
@@ -25,7 +27,7 @@ Training the model:
 ![Training screenshot](./images/training.png)
 
 ## Demonstration 
-See a (very boring) [youtube video](https://youtu.be/Hd9TVjA0NCE)
+See a (very exciting) [youtube video](https://youtu.be/Hd9TVjA0NCE)
 
 
 ## Installation:
@@ -73,8 +75,7 @@ set MONGODB_URI='mongodb://your-user:your-pass@your-host:your-port/your-dbname'
 ## Heroku Deployment:
 The application can quickly be deployed to [Heroku](https://www.heroku.com/). 
 You will need a Heroku account and the [Heruku cli](https://devcenter.heroku.com/articles/heroku-cli) installed. 
-This uses Heroku mongolab addon which was discontinued on November 10, 2020, you will need to use an equivalent MongoDb service.
-
+_This deployment used Heroku mongolab addon which was discontinued on November 10, 2020, you will need to use an equivalent MongoDb service._
 ```
 heroku create
 #Env. variables (If using mongolab MONGODB_URI will be set up automatically)
@@ -83,6 +84,9 @@ heroku config
 git push heroku master
 heroku open
 ```
+
+#### Sample data 
+Optionally you can load the provided [sample database](../samples/sample_db/userdata.bson) of 35 users. This is useful for benchmarking and intrusion testing.
 
 ### Background 
 You will find a good step-by-step example of Python speech processing code [here](https://github.com/footfish/python-speechprocessing-example) 
