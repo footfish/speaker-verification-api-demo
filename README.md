@@ -1,7 +1,7 @@
 # Speaker Verification API demo
 This is a demonstration of speaker verification (aka speaker authentication) using a REST API.
 
-_This was part of an MSC desertation. [Read full paper](./dissertation/A_REST_API_approach_to_Distributed_Speaker_Verification.pdf)_
+_This was part of an MSC dissertation. [Read full paper](./dissertation/A_REST_API_approach_to_Distributed_Speaker_Verification.pdf)_
 
 ## Summary:
 
