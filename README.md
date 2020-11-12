@@ -1,7 +1,7 @@
 # Speaker Verification API demo
 This is a demonstration of speaker verification (aka speaker authentication) using a REST API.
 
-_This was part of an MSC dissertation. [Read full paper](./dissertation/A_REST_API_approach_to_Distributed_Speaker_Verification.pdf)_
+_This was part of an MSc dissertation. [Read full paper](./dissertation/A_REST_API_approach_to_Distributed_Speaker_Verification.pdf)_
 
 ## Summary:
 
@@ -12,22 +12,30 @@ Normally speaker verification (authentication) systems are centralised. Meaning 
 
 ![Traditional approach vs this approach](./images/oldvnew.png)
 
+
+## Web Application ##
+
+This web application is designed to demonstrate using a REST API for speaker authentication. It consists of a static HTML page and a REST api (implemented in python). 
+
+## How it works:
+Your browser will use the microphone to capture spoken digits, then process these to feature vectors ([MFCC's - mel frequency cepstral coefficients](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum)). The feature vectors are sent to a remote API for speaker verification. The browser uses [Web Audio API ](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) and [Meyda JS library](https://meyda.js.org/guides/online-web-audio) to capture the spoken data. The remote API uses a GMM ([Gaussian Mixture Model](https://en.wikipedia.org/wiki/Mixture_model)) machine learning method for speaker verification.
+
 ## How to use it:
 You will need to perform the following steps; 
 
 1. ***Training*** - This 'trains' the model with your speech and sets a benchmark for your speech. . 
 2. ***Scoring*** - This is the 'verification', the higher the score the more likely it's you (if it works!). Obviously you will need to have trained and tested the model before scoring will work. 
 
-## How it works:
-Your browser will use the microphone to capture spoken digits, then process these to feature vectors ([MFCC's - mel frequency cepstral coefficients](https://en.wikipedia.org/wiki/Mel-frequency_cepstrum)). The feature vectors are sent to a remote API for speaker verification. The browser uses [Web Audio API ](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) and [Meyda JS library](https://meyda.js.org/guides/online-web-audio) to capture the spoken data. The remote API uses a GMM ([Gaussian Mixture Model](https://en.wikipedia.org/wiki/Mixture_model)) machine learning method for speaker verification.
+## Demonstration 
+You can watch a (very exciting) [youtube video](https://youtu.be/Hd9TVjA0NCE).
+
+Or [try the applicaton](https://speaker-verification-api-demo.herokuapp.com/login) (note it may be slow to start as it's running on a free Heroku dyno). You will need to 'register', but us any email address and get instant access, there's no validation of registration details. 
 
 
 ## Screenshots
 Training the model:
 ![Training screenshot](./images/training.png)
 
-## Demonstration 
-See a (very exciting) [youtube video](https://youtu.be/Hd9TVjA0NCE)
 
 
 ## Installation:
@@ -75,7 +83,7 @@ set MONGODB_URI='mongodb://your-user:your-pass@your-host:your-port/your-dbname'
 ## Heroku Deployment:
 The application can quickly be deployed to [Heroku](https://www.heroku.com/). 
 You will need a Heroku account and the [Heruku cli](https://devcenter.heroku.com/articles/heroku-cli) installed. 
-_This deployment used Heroku mongolab addon which was discontinued on November 10, 2020, you will need to use an equivalent MongoDb service._
+_The original deployment used Heroku mongolab addon which was discontinued on November 10, 2020, you will need to use an equivalent MongoDb service - the demo is currently using a sandbox MongoDB Atlas tier._
 ```
 heroku create
 #Env. variables (If using mongolab MONGODB_URI will be set up automatically)

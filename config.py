@@ -31,8 +31,7 @@ Where data is stored:
   Full details of this can be found here https://docs.mlab.com/eu-data-protection/
   
 How long will it will be stored for: 
-- 'User credential' data will be deleted on or before November 10, 2020.
-- Data deleted by the user in the application on or before November 10, 2020 will be permenantly deleted (ie. not contributed to a public repository).
+- 'User credential' (ie. email) data will be obfiscated regularly. I suggest using a made up email address.
 - 'Other' data may be stored indefinitely. 
 '''
 
