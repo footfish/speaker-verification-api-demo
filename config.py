@@ -8,7 +8,7 @@ Please read the data and privacy statement in full:
 This web application has been created for research purposes. You must be aged 16 or over to register and contribute. 
 By registering with this application and checking the consent boxes below you are acknowledging that all data collected and stored is contributed as open data, with the exception of user credentials (email/username). 
 
-All data collected (with the exception of user credentials) is contributed with a Creative Commons Attribution (CC-BY) Licence - https://creativecommons.org/licenses/by/4.0/legalcode 
+All data collected (with the exc:eption of user credentials) is contributed with a Creative Commons Attribution (CC-BY) Licence - https://creativecommons.org/licenses/by/4.0/legalcode 
 
 The following user data is collected and stored: 
 - 'User credential' data (email/username) * NOTE: This is private, never shared 
@@ -25,10 +25,10 @@ Why data is collected and stored:
 
 Where data is stored: 
   With the exception of user credentials, all other data may be archived and made publicly available and stored anywhere under the Creative Commons Attribution (CC-BY) Licence. 
-  Live application user data is stored in a MongoDB hosted in an mlab sandbox - https://www.mlab.com/
-  Mlab sandbox is utilising Amazon Web Services hosting location US East (N. Virginia)
-  mLab has implemented the necessary practices and documentation to address the requirements of GDPR
-  Full details of this can be found here https://docs.mlab.com/eu-data-protection/
+  Live application user data is stored in a MongoDB Atlas hosted in sandbox - https://www.mongodb.com/
+  MongoDB Atlas sandbox is utilising Amazon Web Services hosting location US East (N. Virginia)
+  MongoDB has implemented the necessary practices and documentation to address the requirements of GDPR
+  Full details of this can be found here https://www.mongodb.com/cloud/trust/compliance/gdpr
   
 How long will it will be stored for: 
 - 'User credential' (ie. email) data will be obfiscated regularly. I suggest using a made up email address.
